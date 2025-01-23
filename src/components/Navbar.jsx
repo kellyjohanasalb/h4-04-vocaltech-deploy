@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Login } from "../../client/src/Pages/Login/index"
 import { MdArrowDropDown } from "react-icons/md";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
   return (
@@ -48,7 +51,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="flex items-center space-x-4">
-        <button className="text-sm text-gray-700 hover:text-gray-900">
+        <button className="text-sm text-gray-700 hover:text-gray-900" onClick={() => navigate("/Login")} >
           Ingresar
         </button>
         <button
