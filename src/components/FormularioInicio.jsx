@@ -3,14 +3,26 @@ import ProgressBar from "./ProgressBar";
 import Comunicación from "./cards/Comunicacion";
 import Tecnología from "./cards/Tecnologia";
 import Combinado from "./cards/Combinado";
+import { useNavigate } from "react-router-dom";
 
 const FormularioInicio = () => {
+    const navigate = useNavigate();
+
+    const handleBackClick = () => {
+        navigate("/"); 
+    };
+
     return (
         <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg p-6">
             {/* Sección izquierda del encabezado */}
             <div className="flex items-center mb-4">
-                <FaArrowLeftLong className="text-gray-600 w-5 h-5 mr-2" />
-                <span className="text-gray-600 font-medium">Regresar</span>
+                <button
+                    onClick={handleBackClick} // Maneja el clic del botón
+                    className="flex items-center text-gray-600"
+                >
+                    <FaArrowLeftLong className="w-5 h-5 mr-2" />
+                    <span className="font-medium">Regresar</span>
+                </button>
             </div>
             
             {/* Encabezado */}

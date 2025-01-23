@@ -1,15 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Formulario from "./Pages/Fromulario";
 import LandingPage from "./Pages/LandingPage"; 
-import Login from "../client/src/Pages/Login/index"
-import Resgistro from "../client/src/modules/auth/pages/Registronuevo"
+import Login from "./Pages/Login";
+import Registro from "./Pages/Registronuevo"
+
+
 
 function App() {
   return (
     <Router>
       <Routes>
          {/* Ruta para el registro */}
-         <Route path="/regitro" element={<Resgistro />} />
+         <Route path="/registro" element={<Registro  />} />
 
          {/* Ruta para el login */}
          <Route path="/login" element={<Login />} />

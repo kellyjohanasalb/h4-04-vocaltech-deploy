@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Login } from "../../client/src/Pages/Login/index"
 import { MdArrowDropDown } from "react-icons/md";
 
 function Navbar() {
@@ -51,9 +50,14 @@ function Navbar() {
         </ul>
       </div>
       <div className="flex items-center space-x-4">
-        <button className="text-sm text-gray-700 hover:text-gray-900" onClick={() => navigate("/Login")} >
+        {/* Botón de Ingresar */}
+        <button
+          className="text-sm text-gray-700 hover:text-gray-900"
+          onClick={() => navigate("/login")}
+        >
           Ingresar
         </button>
+        {/* Botón de Diagnóstico */}
         <button
           className="flex justify-center items-center gap-2 h-[46px] px-4 rounded-[16px] bg-gradient-to-r from-[#2575FC] via-[#052855] to-[#6A11CB] shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)] text-[#F8F8F8] font-semibold text-[18px] leading-normal"
         >

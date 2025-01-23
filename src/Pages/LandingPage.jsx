@@ -133,7 +133,7 @@ function LandingPage() {
         {/* Button */}
         <div className="flex justify-end w-full">
           <button
-            className="flex items-center gap-2 -px-6[0.5rem]  text-black bg-white border border-gray-300 rounded-3xl hover:shadow-md"
+            className="flex items-center gap-2 -px-6[0.5rem]  text-black bg-white rounded-3xl hover:shadow-md"
             onClick={() => navigate("/formulario")} 
           >
             <span className="font-normal text-[18px] leading-normal">
