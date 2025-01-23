@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { MdArrowRightAlt } from "react-icons/md";
 import empresa from "../assets/images/empresa grande.png";
@@ -8,6 +9,8 @@ import CPU from "../assets/icons/CPU Bolt morado.png";
 import Round from "../assets/icons/Round Graph morado.png";
 
 function LandingPage() {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navbar Component */}
@@ -30,7 +33,7 @@ function LandingPage() {
             </div>
 
             {/* Empresas */}
-            <div className="flex items-end gap-4 p-2 h-[108px] rounded-lg">
+            <div className="flex items-end gap-4 -p-2[0.5rem] h-[108px] rounded-lg">
               <img
                 src={empresa}
                 alt="Empresas"
@@ -47,7 +50,7 @@ function LandingPage() {
             </div>
 
             {/* Emprendedores */}
-            <div className="flex items-end gap-4 p-2 h-[108px] rounded-lg mt-4">
+            <div className="flex items-end gap-4 -p-2[0.5rem h-[108px] rounded-lg mt-4">
               <img
                 src={emprendedor}
                 alt="Emprendedores"
@@ -129,7 +132,10 @@ function LandingPage() {
 
         {/* Button */}
         <div className="flex justify-end w-full">
-          <button className="flex items-center gap-2 px-6 -py-4[1.5rem] text-black bg-white border border-gray-300 rounded-3xl hover:shadow-md">
+          <button
+            className="flex items-center gap-2 px-6 py-4 text-black bg-white border border-gray-300 rounded-3xl hover:shadow-md"
+            onClick={() => navigate("/formulario")} 
+          >
             <span className="font-normal text-[18px] leading-normal">
               Comenzar ahora
             </span>
