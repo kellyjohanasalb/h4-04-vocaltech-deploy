@@ -50,11 +50,11 @@ function LandingPage() {
             </div>
 
             {/* Emprendedores */}
-            <div className="flex items-end gap-4 -p-2[0.5rem h-[108px] rounded-lg mt-4">
+            <div className="flex items-end gap-4 -p-2[0.5rem] h-[108px] rounded-lg mt-4">
               <img
                 src={emprendedor}
                 alt="Emprendedores"
-                className="w-[40%] rounded-md object-cover"
+                className="w-[37%] rounded-md object-cover"
               />
               <div className="flex flex-col justify-end h-full p-2 gap-4">
                 <h3 className="text-[15px] font-semibold text-black font-manrope">
@@ -133,7 +133,7 @@ function LandingPage() {
         {/* Button */}
         <div className="flex justify-end w-full">
           <button
-            className="flex items-center gap-2 px-6 py-4 text-black bg-white border border-gray-300 rounded-3xl hover:shadow-md"
+            className="flex items-center gap-2 -px-6[0.5rem]  text-black bg-white border border-gray-300 rounded-3xl hover:shadow-md"
             onClick={() => navigate("/formulario")} 
           >
             <span className="font-normal text-[18px] leading-normal">
