@@ -9,7 +9,7 @@ const FormularioInicio = () => {
     const navigate = useNavigate();
 
     const handleBackClick = () => {
-        navigate("/"); 
+        navigate("/");
     };
 
     return (
@@ -24,7 +24,7 @@ const FormularioInicio = () => {
                     <span className="font-medium">Regresar</span>
                 </button>
             </div>
-            
+
             {/* Encabezado */}
             <div className="text-center mb-6">
                 <h1 className="text-5xl md:text-6xl font-bold">
@@ -56,6 +56,27 @@ const FormularioInicio = () => {
                     title="Combinado"
                     description="Tu proyecto necesita tanto comunicación como tecnología"
                 />
+            </div>
+
+            {/* Nuevo texto centrado y botones */}
+            <div className="text-center mt-8">
+                <h3 className="text-[#424242] text-xl font-medium font-[Manrope]">
+                    Para continuar, cuéntanos quién eres para adaptar tu diagnóstico
+                </h3>
+            </div>
+            <div className="flex justify-center gap-6 mt-6">
+                {/* Botón Soy Emprendedor */}
+                <button
+                    className="flex px-4 py-2 justify-center items-center gap-2 rounded-full border bg-[#C415D7] text-white font-medium"
+                >
+                    Soy Emprendedor
+                </button>
+                {/* Botón Represento una Empresa */}
+                <button
+                    className="flex w-[235px] h-[45px] px-3 py-2 justify-center items-center gap-2 rounded-full text-white font-medium bg-gradient-to-r from-[#6A11CB] to-[#2575FC] bg-lightgray bg-blend-multiply"
+                >
+                    Represento una Empresa
+                </button>
             </div>
         </div>
     );
