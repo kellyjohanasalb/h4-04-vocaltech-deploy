@@ -1,11 +1,13 @@
-import React from "react";
 import { useFormik } from "formik";
+import { useState } from "react"; // Importa useState
 import { registerSchema } from "../../client/src/modules/auth/validations/ValidationsForm"; // Importamos las validaciones
 import logo from "../assets/VocalTech.png";
 import { Link } from "react-router-dom";
 import { handleFormSubmit } from "../../client/src/modules/auth/services/handleFormSubmit"; // Importa la función
 
 export const SignupForm = () => {
+  const [serverError, setServerError] = useState(""); // Declara el estado para manejar errores
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -109,15 +111,17 @@ export const SignupForm = () => {
             Crear Cuenta
           </button>
         </form>
+        {/* Mostrar error del servidor si existe */}
+        {serverError && (
+          <p className="text-red-500 text-sm text-center mt-4">{serverError}</p>
+        )}
         <div className="text-center">
           <span className="text-sm text-gray-600">¿Ya tienes una cuenta? </span>
           <Link to="/login" className="text-purple-700 hover:underline text-sm">
-            Crear cuenta
+            Iniciar sesión
           </Link>
         </div>
       </div>
     </div>
   );
 };
-
-

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Image1 from "../assets/Rectangle.png";
@@ -134,7 +134,7 @@ const SignIn = () => {
             </div>
 
 {/* Right Section with Carousel */}
-<div className="relative hidden w-full md:w-1/2 md:block flex items-center justify-center bg-transparent">
+<div className="relative hidden w-full md:w-1/2 md:block items-center justify-center bg-transparent">
     <div className="relative w-[80%] h-[73%] overflow-hidden rounded-lg shadow-lg bg-transparent">
         <img
             src={images[currentIndex]}
