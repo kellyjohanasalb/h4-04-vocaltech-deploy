@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Formulario from "./Pages/Fromulario";
 import LandingPage from "./Pages/LandingPage"; 
 import Login from "./Pages/Login";
-import Registro from "./Pages/Registronuevo"
+import Registronuevo from "./Pages/Registronuevo"
 
 
 
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Routes>
          {/* Ruta para el registro */}
-         <Route path="/registro" element={<Registro  />} />
+         <Route path="/registro" element={<Registronuevo  />} />
 
          {/* Ruta para el login */}
          <Route path="/login" element={<Login />} />
