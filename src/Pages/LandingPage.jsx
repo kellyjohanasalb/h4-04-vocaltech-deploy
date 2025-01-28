@@ -1,150 +1,111 @@
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { MdArrowRightAlt } from "react-icons/md";
-import empresa from "../assets/images/empresa grande.png";
-import emprendedor from "../assets/images/imagen ilustrativa.png";
-import infrastructure from "../assets/icons/Buildings.png";
-import Microphone from "../assets/icons/Microphone Large morado.png";
-import CPU from "../assets/icons/CPU Bolt morado.png";
-import Round from "../assets/icons/Round Graph morado.png";
+import { TiArrowRightThick } from "react-icons/ti";
+import etiqueta from "../assets/icons/etiqueta-nuevo.png"
 
-function LandingPage() {
-  const navigate = useNavigate();
-  
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Navbar Component */}
-      <Navbar />
 
-      {/* Main Content */}
-      <div className="mt-[100px] px-8 py-16 bg-white shadow-md rounded-b-[16px] border border-gray-300 mx-16 flex flex-col gap-10">
-        <div className="grid grid-cols-4 gap-8 w-full">
-          {/* Soluciones Adaptadas */}
-          <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src={infrastructure}
-                alt="infrastructure"
-                className="w-6 h-6"
-              />
-              <h2 className="text-lg font-semibold text-stone-600">
-                Soluciones Adaptadas
-              </h2>
-            </div>
+const LandingPage = () => {
+    return (
+        <div className="bg-gray-900 text-white">
+            {/* Navbar */}
+            <header className="p-4 bg-gray-800">
+                <Navbar />
+            </header>
 
-            {/* Empresas */}
-            <div className="flex items-end gap-4 -p-2[0.5rem] h-[108px] rounded-lg">
-              <img
-                src={empresa}
-                alt="Empresas"
-                className="w-[40%] rounded-md object-cover"
-              />
-              <div className="flex flex-col justify-end h-full p-2 gap-4">
-                <h3 className="text-[15px] font-semibold text-black font-manrope">
-                  Empresas
-                </h3>
-                <p className="text-[10px] font-medium text-[#222] font-manrope">
-                  Servicios personalizados para medianas y grandes empresas.
-                </p>
-              </div>
-            </div>
+          {/* Hero Section */}
+<section id="hero" className="text-center py-20">
+    {/* Imagen con estilos personalizados */}
+    <img 
+        src={etiqueta} 
+        alt="" 
+        className="inline-flex p-2 items-center gap-2 rounded-[16px] border border-[#6A11CB] bg-[rgba(106,17,203,0.11)]"
+    />
+    
+    {/* Título con estilos solicitados */}
+    <h1 className="text-white text-center font-dm-sans text-[64px] font-bold leading-normal">
+        Impulsa tu Crecimiento con Soluciones a Medida
+    </h1>
 
-            {/* Emprendedores */}
-            <div className="flex items-end gap-4 -p-2[0.5rem] h-[108px] rounded-lg mt-4">
-              <img
-                src={emprendedor}
-                alt="Emprendedores"
-                className="w-[37%] rounded-md object-cover"
-              />
-              <div className="flex flex-col justify-end h-full p-2 gap-4">
-                <h3 className="text-[15px] font-semibold text-black font-manrope">
-                  Emprendedores
-                </h3>
-                <p className="text-[10px] font-medium text-[#222] font-manrope">
-                  Servicios personalizados para personas, startups y pequeños
-                  negocios.
-                </p>
-              </div>
-            </div>
-          </div>
+    {/* Subtítulo con estilos solicitados */}
+    <p className="text-[#EAEAEA] text-center font-manrope text-[24px] font-semibold leading-normal mt-4">
+        VocalTech le pone voz y tecnología a tu proyecto.
+    </p>
 
-          {/* Comunicación y liderazgo */}
-          <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src={Microphone}
-                alt="Microphone"
-                className="w-6 h-6"
-              />
-              <h2 className="text-lg font-semibold text-stone-600">
-                Comunicación y liderazgo
-              </h2>
-            </div>
-            <ul className="space-y-2 text-black">
-              <li>Comunicación para equipos</li>
-              <li>Mejorar tu presencia ejecutiva</li>
-              <li>Vender tu idea</li>
-              <li>Construir confianza</li>
-            </ul>
-          </div>
+    <div className="mt-6 flex justify-center">
+        {/* Botón para emprendedores */}
+        <button
+            className="flex items-center justify-center gap-2 h-[46px] px-[10px] rounded-[16px] bg-[#0F0F0F] hover:bg-[#1a1a1a] text-white font-bold m-2"
+        >
+            Soluciones para emprendedores
+            <TiArrowRightThick className="w-6 h-6 text-white" />
+        </button>
 
-          {/* Tecnología y talento */}
-          <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src={CPU}
-                alt="CPU"
-                className="w-6 h-6"
-              />
-              <h2 className="text-lg font-semibold text-stone-600">
-                Tecnología y talento
-              </h2>
-            </div>
-            <ul className="space-y-2 text-black">
-              <li>Desarrollo de producto</li>
-              <li>Talento IT validado</li>
-              <li>Optimización de procesos</li>
-              <li>Construcción de MVP</li>
-            </ul>
-          </div>
-
-          {/* Combinado */}
-          <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <img
-                src={Round}
-                alt="Round"
-                className="w-6 h-6"
-              />
-              <h2 className="text-lg font-semibold text-stone-600">
-                Combinado
-              </h2>
-            </div>
-            <ul className="space-y-2 text-black">
-              <li>Comunicar MVP</li>
-              <li>Escalar proyecto</li>
-              <li>Fortalecer liderazgo</li>
-              <li>Estrategias Digitales 360°</li>
-              <li>Gestión Integral de Proyectos</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Button */}
-        <div className="flex justify-end w-full">
-          <button
-            className="flex items-center gap-2 -px-6[0.5rem]  text-black bg-white rounded-3xl hover:shadow-md"
-            onClick={() => navigate("/formulario")} 
-          >
-            <span className="font-normal text-[18px] leading-normal">
-              Comenzar ahora
-            </span>
-            <MdArrowRightAlt className="w-6 h-6" />
-          </button>
-        </div>
-      </div>
+        {/* Botón para empresas */}
+        <button
+            className="flex items-center justify-center gap-[10px] h-[46px] px-[10px] rounded-[16px] bg-gradient-to-br from-[#2575FC] via-[#052855] to-[#D230E3] 
+            shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)] animate-gradientMove 
+            text-white font-bold m-2"
+        >
+            Potencia tu Empresa Ahora
+            <TiArrowRightThick className="w-6 h-6 text-white" />
+        </button>
     </div>
-  );
-}
+</section>
+
+
+            {/* Sección Nosotros */}
+            <section id="nosotros" className="py-16 text-center">
+                <h2 className="text-3xl font-semibold">Juntos, impulsamos tu crecimiento</h2>
+                <div className="mt-4 text-lg">
+                    <p>Más de 20 años ayudando en comunicación y liderazgo.</p>
+                    <button className="mt-6 bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Descubre más sobre VocalTech</button>
+                </div>
+            </section>
+
+            {/* Sección Servicios */}
+            <section id="servicios" className="py-16 text-center">
+                <h2 className="text-3xl font-semibold">Cómo podemos ayudarte a crecer</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div className="bg-gray-800 p-6 rounded-lg">Diagnósticos Personalizados</div>
+                    <div className="bg-gray-800 p-6 rounded-lg">Soluciones Integrales</div>
+                    <div className="bg-gray-800 p-6 rounded-lg">Estrategias de Comunicación</div>
+                </div>
+            </section>
+
+            {/* Sección Empresas & Emprendedores */}
+            <section id="empresas" className="py-16 text-center">
+                <h2 className="text-3xl font-semibold">Soluciones IT para Empresas Innovadoras</h2>
+                <p className="mt-4">Identificamos necesidades clave como comunicación y liderazgo.</p>
+                <button className="mt-6 bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Diagnosticar mi Empresa</button>
+            </section>
+            <section id="emprendedores" className="py-16 text-center">
+                <h2 className="text-3xl font-semibold">Impulsa tu Proyecto Ahora</h2>
+                <p className="mt-4">Accede a herramientas y recursos para crecer.</p>
+                <button className="mt-6 bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">Diagnosticar mi Emprendimiento</button>
+            </section>
+
+            {/* Testimonios */}
+            <section id="testimonios" className="py-16 text-center">
+                <h2 className="text-3xl font-semibold">Lo que dicen nuestros clientes</h2>
+                <div className="mt-6 bg-gray-800 p-6 rounded-lg">
+                    <p>Gracias a VocalTech, nuestra comunicación interna mejoró muchísimo.</p>
+                </div>
+            </section>
+
+            {/* Preguntas Frecuentes */}
+            <section id="faq" className="py-16 text-center">
+                <h2 className="text-3xl font-semibold">Preguntas Frecuentes</h2>
+                <details className="mt-6 bg-gray-800 p-4 rounded-lg">
+                    <summary className="cursor-pointer">¿Qué es VocalTech?</summary>
+                    <p className="mt-2">Una empresa de soluciones en comunicación y tecnología.</p>
+                </details>
+            </section>
+
+            {/* Footer */}
+            <footer className="p-4 bg-gray-800 text-center">
+                <p>&copy; 2025 VocalTech - Todos los derechos reservados.</p>
+            </footer>
+        </div>
+    );
+};
 
 export default LandingPage;

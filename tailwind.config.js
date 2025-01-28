@@ -16,10 +16,21 @@ export default {
       },
       // Fuentes personalizadas
       fontFamily: {
-        manrope: ["Manrope", "sans-serif"], 
+        'dm-sans': ['DM Sans', 'sans-serif'],
+        'manrope': ['Manrope', 'sans-serif'], 
       },
-      // Otras extensiones que puedas necesitar en el futuro
+      // Animaciones personalizadas
+      keyframes: {
+        gradientMove: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      },
+      animation: {
+        gradientMove: 'gradientMove 3s ease infinite',
+      },
     },
   },
-  plugins: [],
+  plugins: [],  
 };
