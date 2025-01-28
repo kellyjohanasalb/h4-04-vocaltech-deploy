@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Image1 from "../assets/Rectangle.png";
 import Image2 from "../assets/Group1.png";
@@ -126,9 +127,9 @@ const SignIn = () => {
                     </form>
                     <p className="mt-10 text-sm text-center">
                         ¿No tienes una cuenta?{" "}
-                        <a href="/registro" className="text-[#6A11CB] hover:underline">
+                        <Link to="/registro" className="text-[#6A11CB] hover:underline">
                             Crear Cuenta
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
