@@ -16,53 +16,32 @@ function Navbar() {
           Vocal<span className="text-purple-600">Tech</span>
         </h1>
         <ul className="hidden md:flex space-x-6 ml-8 relative">
-          {/* Dropdown para Servicios */}
           <li
             className="flex items-end gap-[4px] px-2 text-black hover:text-blue-600 cursor-pointer relative"
-            onMouseEnter={() => navigate("/services")} // Navegar a la página de servicios
+            onMouseEnter={() => navigate("/services")}
           >
             <span>Servicios</span>
             <MdArrowDropDown className="text-lg" />
           </li>
-          <li
-            className="text-black hover:text-blue-600 cursor-pointer"
-
-          >
-            Emprendedores
-          </li>
-          <li
-            className="text-black hover:text-blue-600 cursor-pointer"
-
-          >
-            Empresas
-          </li>
-          <li
-            className="text-black hover:text-blue-600 cursor-pointer"
-
-          >
-            Nosotros
-          </li>
-          <li
-            className="text-black hover:text-blue-600 cursor-pointer"
-          >
-            Contacto
-          </li>
+          <li className="text-black hover:text-blue-600 cursor-pointer">Emprendedores</li>
+          <li className="text-black hover:text-blue-600 cursor-pointer">Empresas</li>
+          <li className="text-black hover:text-blue-600 cursor-pointer">Nosotros</li>
+          <li className="text-black hover:text-blue-600 cursor-pointer">Contacto</li>
         </ul>
       </div>
       <div className="flex items-center space-x-4">
-        {/* Botón de Ingresar */}
         <button
           className="text-sm text-gray-700 hover:text-gray-900"
           onClick={() => navigate("/login")}
         >
           Ingresar
         </button>
-        {/* Botón de Diagnóstico */}
         <button
-          className="relative flex justify-center items-center gap-2 h-[46px] px-4 rounded-[16px] bg-gradient-to-r from-[#2575FC] via-[#052855] to-[#6A11CB] text-[#F8F8F8] font-semibold text-[18px] leading-normal shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)] bg-[length:200%_200%] hover:animate-gradientMove"
-        >
-          Obtener Diagnóstico Gratis
-        </button>
+  className="relative flex justify-center items-center gap-2 h-[46px] px-4 rounded-[16px] bg-gradient-to-r from-[#2575FC] via-[#052855] to-[#6A11CB] text-[#F8F8F8] font-semibold text-[18px] leading-normal shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)] bg-[length:200%_200%] hover:animate-gradientMove"
+  onClick={() => navigate("/formularioinicio")}
+>
+  Obtener Diagnóstico Gratis
+</button>
 
       </div>
     </nav>

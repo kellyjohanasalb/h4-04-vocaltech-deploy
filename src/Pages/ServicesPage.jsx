@@ -113,7 +113,7 @@ function ServicesPage() {
         <div className="flex justify-end w-full">
           <button
             className="flex items-center gap-2 px-6 text-black bg-white rounded-3xl hover:shadow-md"
-            onClick={() => navigate("/formulario")}
+            onClick={() => navigate("/formularioinicio")}
           >
             <span className="font-normal text-[18px] leading-normal">
               Comenzar ahora
