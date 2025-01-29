@@ -30,6 +30,10 @@ export default {
       animation: {
         gradientMove: 'gradientMove 3s ease infinite',
       },
+      // Agregar imagen de fondo personalizada
+      backgroundImage: {
+        'hero-background': "url('/src/assets/imágenes/fondo-landing')",
+      },
     },
   },
   plugins: [],  
