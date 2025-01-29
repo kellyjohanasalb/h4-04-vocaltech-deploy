@@ -17,7 +17,7 @@ const SignIn = () => {
         password: "",
     });
     const [errors, setErrors] = useState({});
-    const [loginError, setLoginError] = useState(""); // Estado para mensaje de error
+    const [loginError, setLoginError] = useState(""); 
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -28,7 +28,10 @@ const SignIn = () => {
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
-        setFormData({ ...formData, [id]: value });
+        setFormData((prevData) => ({
+            ...prevData,
+            [id]: value, 
+        }));
     };
 
     const validateForm = () => {
@@ -45,11 +48,22 @@ const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("Email ingresado:", `"${formData.email}"`);
+        console.log("Contraseña ingresada:", `"${formData.password}"`);
+
         if (validateForm()) {
-            if (formData.email === "sasha@example.com" && formData.password === "sasha123") {
-                navigate("/Adminpage"); // Redirige a la vista Adminpage
+            const emailIngresado = formData.email.trim();
+            const passwordIngresada = formData.password.trim();
+
+            console.log("Comparación Email:", emailIngresado === "sasha@example.com");
+            console.log("Comparación Password:", passwordIngresada === "sasha123");
+
+            if (emailIngresado === "sasha@example.com" && passwordIngresada === "sasha123") {
+                console.log("Autenticación exitosa");
+                navigate("/admin");
             } else {
-                setLoginError("Correo o contraseña incorrectos."); // Mensaje de error
+                console.log("Error de autenticación");
+                setLoginError("Correo o contraseña incorrectos.");
             }
         }
     };
@@ -57,11 +71,13 @@ const SignIn = () => {
     return (
         <div className="flex w-[1440px] h-[1024px] overflow-hidden">
             <div className="relative flex flex-col items-start justify-center w-full md:w-1/2 px-16">
-                <a href="#" className="absolute top-8 left-8 flex items-center text-gray-600 font-medium text-[16px] font-manrope"
-                   onClick={() => navigate("/")}>
+                <button 
+                    onClick={() => navigate("/")} 
+                    className="absolute top-8 left-8 flex items-center text-gray-600 font-medium text-[16px] font-manrope"
+                >
                     <FaArrowLeftLong className="text-gray-600 w-5 h-5 mr-2" />
                     Regresar
-                </a>
+                </button>
                 <div className="w-[480px]">
                     <div className="flex mb-6">
                         <img src={vocal} alt="VolcaTech" className="w-auto h-auto" />
