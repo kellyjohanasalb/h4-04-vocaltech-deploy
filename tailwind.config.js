@@ -32,7 +32,7 @@ export default {
       },
       // Agregar imagen de fondo personalizada
       backgroundImage: {
-        'hero-background': "url('/src/assets/imágenes/fondo-landing')",
+        'hero-background': "url('../assets/images/image 44.png')",
       },
     },
   },
