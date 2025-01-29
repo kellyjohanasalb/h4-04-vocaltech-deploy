@@ -9,6 +9,12 @@ import vocal from "../assets/VocalTech.png";
 
 const images = [Image1, Image2, Image3];
 
+// 🔹 Definimos usuarios válidos para autenticación
+const validUsers = {
+    "sasha@example.com": "sasha123",
+    "sashasawosz@hotmail.com": "sasha123"
+};
+
 const SignIn = () => {
     const navigate = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,7 +23,7 @@ const SignIn = () => {
         password: "",
     });
     const [errors, setErrors] = useState({});
-    const [loginError, setLoginError] = useState(""); 
+    const [loginError, setLoginError] = useState("");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -48,21 +54,18 @@ const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Email ingresado:", `"${formData.email}"`);
-        console.log("Contraseña ingresada:", `"${formData.password}"`);
+        const emailIngresado = formData.email.trim();
+        const passwordIngresada = formData.password.trim();
+
+        console.log("Email ingresado:", `"${emailIngresado}"`);
+        console.log("Contraseña ingresada:", `"${passwordIngresada}"`);
 
         if (validateForm()) {
-            const emailIngresado = formData.email.trim();
-            const passwordIngresada = formData.password.trim();
-
-            console.log("Comparación Email:", emailIngresado === "sasha@example.com");
-            console.log("Comparación Password:", passwordIngresada === "sasha123");
-
-            if (emailIngresado === "sasha@example.com" && passwordIngresada === "sasha123") {
-                console.log("Autenticación exitosa");
+            if (validUsers[emailIngresado] && validUsers[emailIngresado] === passwordIngresada) {
+                console.log("✅ Autenticación exitosa");
                 navigate("/admin");
             } else {
-                console.log("Error de autenticación");
+                console.log("❌ Error de autenticación");
                 setLoginError("Correo o contraseña incorrectos.");
             }
         }
