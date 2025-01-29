@@ -70,7 +70,7 @@ const Stats = () => (
     { title: "Leads", value: "1222", extra: "+10 Este Mes", color: "blue" },
     { title: "Convertidos", value: "55", extra: "+10 Este Mes", color: "green" },
     { title: "Pendientes", value: "12", extra: "+12 Este Mes", color: "purple" },
-  ].map(({ title, value, extra, color }) => (
+  ].map(({ title, value, extra }) => (
     <div key={title} className="p-4 bg-white shadow-md rounded-lg">
        <p className="text-gray-500 font-medium">{title}</p>
       <div className="flex items-center">
