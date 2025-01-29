@@ -1,5 +1,6 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import Image1 from "../assets/Rectangle.png";
 import Image2 from "../assets/Group1.png";
@@ -126,32 +127,32 @@ const SignIn = () => {
                     </form>
                     <p className="mt-10 text-sm text-center">
                         ¿No tienes una cuenta?{" "}
-                        <a href="/registro" className="text-[#6A11CB] hover:underline">
+                        <Link to="/registro" className="text-[#6A11CB] hover:underline">
                             Crear Cuenta
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>
 
-{/* Right Section with Carousel */}
-<div className="relative hidden w-full md:w-1/2 md:block items-center justify-center bg-transparent">
-    <div className="relative w-[80%] h-[73%] overflow-hidden rounded-lg shadow-lg bg-transparent">
-        <img
-            src={images[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
-            className="object-cover w-full h-full bg-transparent"
-        />
-        <div className="absolute flex space-x-2 transform -translate-x-1/2 bottom-4 left-1/2">
-            {images.map((_, index) => (
-                <div
-                    key={index}
-                    className={`w-3 h-3 rounded-full ${index === currentIndex ? "bg-[#6A11CB]" : "bg-[#393939]"
-                        }`}
-                ></div>
-            ))}
-        </div>
-    </div>
-</div>
+            {/* Right Section with Carousel */}
+            <div className="relative hidden w-full md:w-1/2 md:block items-center justify-center bg-transparent">
+                <div className="relative w-[80%] h-[73%] overflow-hidden rounded-lg shadow-lg bg-transparent">
+                    <img
+                        src={images[currentIndex]}
+                        alt={`Slide ${currentIndex + 1}`}
+                        className="object-cover w-full h-full bg-transparent"
+                    />
+                    <div className="absolute flex space-x-2 transform -translate-x-1/2 bottom-4 left-1/2">
+                        {images.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`w-3 h-3 rounded-full ${index === currentIndex ? "bg-[#6A11CB]" : "bg-[#393939]"
+                                    }`}
+                            ></div>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
 
 
