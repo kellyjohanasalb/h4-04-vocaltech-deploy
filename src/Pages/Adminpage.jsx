@@ -1,5 +1,11 @@
-import Dashboard from "../components/Paneladmin"
+import Paneladmin from "../components/Paneladmin"
 
-export const Adminpage = () => {
-    return <Dashboard />;
-  };
+const Adminpage= () => {
+  return (
+    <div>
+    <Paneladmin />
+    </div>
+  ); 
+};
+
+export default Adminpage;

@@ -5,7 +5,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import Image1 from "../assets/Rectangle.png";
 import Image2 from "../assets/Group1.png";
 import Image3 from "../assets/image.png";
-import vocal from "../assets/VocalTech.png"
+import vocal from "../assets/VocalTech.png";
 
 const images = [Image1, Image2, Image3];
 
@@ -17,14 +17,13 @@ const SignIn = () => {
         password: "",
     });
     const [errors, setErrors] = useState({});
+    const [loginError, setLoginError] = useState(""); // Estado para mensaje de error
 
-    // Cambia de imagen automáticamente cada 5 segundos
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 5000);
-
-        return () => clearInterval(interval); // Limpia el intervalo al desmontar
+        return () => clearInterval(interval);
     }, []);
 
     const handleInputChange = (e) => {
@@ -34,14 +33,12 @@ const SignIn = () => {
 
     const validateForm = () => {
         const newErrors = {};
-
         if (!formData.email.trim()) {
             newErrors.email = "El campo Email es obligatorio.";
         }
         if (!formData.password.trim()) {
             newErrors.password = "El campo Contraseña es obligatorio.";
         }
-
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -49,20 +46,19 @@ const SignIn = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            // Lógica para enviar el formulario
-            console.log("Formulario enviado:", formData);
+            if (formData.email === "sasha@example.com" && formData.password === "sasha123") {
+                navigate("/Adminpage"); // Redirige a la vista Adminpage
+            } else {
+                setLoginError("Correo o contraseña incorrectos."); // Mensaje de error
+            }
         }
     };
 
     return (
         <div className="flex w-[1440px] h-[1024px] overflow-hidden">
-            {/* Left Section */}
             <div className="relative flex flex-col items-start justify-center w-full md:w-1/2 px-16">
-                <a
-                    href="#"
-                    className="absolute top-8 left-8 flex items-center text-gray-600 font-medium text-[16px] font-manrope"
-                    onClick={() => navigate("/")}
-                >
+                <a href="#" className="absolute top-8 left-8 flex items-center text-gray-600 font-medium text-[16px] font-manrope"
+                   onClick={() => navigate("/")}>
                     <FaArrowLeftLong className="text-gray-600 w-5 h-5 mr-2" />
                     Regresar
                 </a>
@@ -90,15 +86,10 @@ const SignIn = () => {
                                 value={formData.email}
                                 onChange={handleInputChange}
                             />
-                            {errors.email && (
-                                <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-                            )}
+                            {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
                         </div>
                         <div>
-                            <label
-                                htmlFor="password"
-                                className="block text-[18px] font-medium"
-                            >
+                            <label htmlFor="password" className="block text-[18px] font-medium">
                                 Contraseña
                             </label>
                             <input
@@ -109,19 +100,15 @@ const SignIn = () => {
                                 value={formData.password}
                                 onChange={handleInputChange}
                             />
-                            {errors.password && (
-                                <p className="mt-1 text-sm text-red-500">{errors.password}</p>
-                            )}
+                            {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
                         </div>
+                        {loginError && <p className="text-sm text-red-500">{loginError}</p>}
                         <div className="text-right">
                             <a href="#" className="text-sm text-[#6A11CB] hover:underline">
                                 ¿Olvidaste tu contraseña?
                             </a>
                         </div>
-                        <button
-                            type="submit"
-                            className="w-full py-3 text-[16px] text-white font-medium rounded-full bg-gradient-to-r from-[#6A11CB] to-[#2575FC] hover:opacity-90"
-                        >
+                        <button type="submit" className="w-full py-3 text-[16px] text-white font-medium rounded-full bg-gradient-to-r from-[#6A11CB] to-[#2575FC] hover:opacity-90">
                             Ingresar
                         </button>
                     </form>
@@ -133,29 +120,16 @@ const SignIn = () => {
                     </p>
                 </div>
             </div>
-
-            {/* Right Section with Carousel */}
             <div className="relative hidden w-full md:w-1/2 md:block items-center justify-center bg-transparent">
                 <div className="relative w-[80%] h-[73%] overflow-hidden rounded-lg shadow-lg bg-transparent">
-                    <img
-                        src={images[currentIndex]}
-                        alt={`Slide ${currentIndex + 1}`}
-                        className="object-cover w-full h-full bg-transparent"
-                    />
+                    <img src={images[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="object-cover w-full h-full bg-transparent" />
                     <div className="absolute flex space-x-2 transform -translate-x-1/2 bottom-4 left-1/2">
                         {images.map((_, index) => (
-                            <div
-                                key={index}
-                                className={`w-3 h-3 rounded-full ${index === currentIndex ? "bg-[#6A11CB]" : "bg-[#393939]"
-                                    }`}
-                            ></div>
+                            <div key={index} className={`w-3 h-3 rounded-full ${index === currentIndex ? "bg-[#6A11CB]" : "bg-[#393939]"}`}></div>
                         ))}
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     );
 };

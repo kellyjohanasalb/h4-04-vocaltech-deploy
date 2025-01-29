@@ -4,7 +4,8 @@ import ServicesPage from "./Pages/ServicesPage";
 import Login from "./Pages/Login"; 
 import Register from "./Pages/Register"; 
 import LandingPage from "./Pages/LandingPage"; 
-/* import Adminpage from "./Pages/Adminpage"; */
+import Administracion from "./Pages/Adminpage";
+
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
         <Route path="/formularioinicio" element={<Formulario />} /> 
 
         {/* Rutas de admin */}
-       {/*  <Route path="/Adminpage" element={<Adminpage />} />  */}
+        <Route path="/admin" element={<Administracion  />} />
+
         
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} /> 
