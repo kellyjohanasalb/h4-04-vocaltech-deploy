@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/heroSection";
+import Carrusel from "../components/carruselLandingSection"
 import Nosotros from "../components/nosotrosSection";
 import Servicios from "../components/serviciosSection";
 import Empresas from "../components/empresasSection";
@@ -10,14 +11,15 @@ import Footer from "../components/footer";
 
 const LandingPage = () => {
     return (
-        <div className="bg-gray-900 text-white">
+        <div className=" text-white">
             {/* Navbar */}
-            <header className="p-4 bg-gray-800">
+            <header className="p-4">
                 <Navbar />
             </header>
 
             {/* Secciones */}
             <HeroSection />
+            <Carrusel />
             <Nosotros />
             <Servicios />
             <Empresas />

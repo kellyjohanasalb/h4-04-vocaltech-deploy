@@ -26,9 +26,14 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
       animation: {
         gradientMove: 'gradientMove 3s ease infinite',
+        marquee: 'marquee 40s linear infinite', // ← Esta es la animación de texto en movimiento
       },
       // Agregar imagen de fondo personalizada
       backgroundImage: {
