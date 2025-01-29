@@ -13,7 +13,7 @@ const LandingPage = () => {
     return (
         <div className=" text-white">
             {/* Navbar */}
-            <header className="p-4">
+            <header className="p-4 bg-black">
                 <Navbar />
             </header>
 

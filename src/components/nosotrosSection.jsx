@@ -1,8 +1,10 @@
 import vos from "../assets/icons/Default-vos.png";
+import tech from "../assets/icons/vovaltech.png";
 import country from "../assets/icons/Default.png";
 import mujer from "../assets/images/image-1.png";
 import frameAzul from "../assets/icons/Frame.png";
 import frameMorado from "../assets/icons/Frame (1).png";
+
 
 const Nosotros = () => {
   return (
@@ -49,20 +51,30 @@ const Nosotros = () => {
   className="absolute w-[190px] h-[190px] flex-shrink-0 rotate-[48] left-[-120px] top-[-3%] hidden lg:block"
 />
 
+{/* Bloque 2 - Alianza VocalTech */}
+<div className="inline-flex p-4 items-start gap-[59px] rounded-[16px]  bg-white shadow-[0px_5px_1px_rgba(0,0,0,0),0px_3px_1px_rgba(0,0,0,0.01),0px_2px_1px_rgba(0,0,0,0.04),0px_1px_1px_rgba(0,0,0,0.06)] max-w-md mx-auto">
+  
+  {/* Logo al lado del título "Alianza" */}
+  <img src={tech} alt="Logo VocalTech" className="h-[30px] w-auto" />
 
-          {/* Bloque 2 - Alianza VocalTech */}
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 max-w-md mx-auto">
-            <h3 className="text-lg font-bold">
-              <span className="text-black">Vocal</span>
-              <span className="text-blue-600">Tech</span>
-            </h3>
-            <p className="text-gray-600 text-sm">
-              Combinamos la experiencia de ambos mundos para brindar soluciones integrales y personalizadas.
-            </p>
-            <button className="mt-4 bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
-              Descubre más sobre VocalTech →
-            </button>
-          </div>
+  {/* Contenido de texto */}
+  <div className="text-left">
+    <h3 className="text-black font-bold text-[20px] font-sans">Alianza</h3>
+    <p className="text-[#424242] font-medium text-[16px] font-sans">
+      Combinamos la experiencia de ambos mundos para brindar soluciones integrales y personalizadas.
+    </p>
+
+    {/* Botón con el tamaño y distribución correctos */}
+    <button className="flex w-[264px] h-[40px] px-2 py-4 justify-between items-center rounded-[21px] bg-blue-600 text-white font-bold mt-4 absolute bottom-0 left-0 ">
+      Descubre más sobre VocalTech →
+    </button>
+  </div>
+
+</div>
+
+
+
+
 
           {/* Flecha Morada - Conectando VocalTech y No-Country */}
           <img
