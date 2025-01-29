@@ -1,5 +1,5 @@
 
-import VocalTech1 from "../../../assets/VocalTech1.png";
+import VocalTech1 from "../assets/icons/vovaltech.png";
 import { useState, useEffect } from 'react';
 
 
