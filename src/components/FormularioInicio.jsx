@@ -39,7 +39,7 @@ const FormularioInicio = () => {
                 ¿Qué necesitas construir o mejorar?
             </h2>
             <p className="text-sm text-gray-500 mt-2">
-                Selecciona una opción para que podamos comprender mejor tus necesidades.
+            En Vocaltech te ayudamos a identificar y construir lo que tu negocio necesita.
             </p>
 
             {/* Tarjetas */}
