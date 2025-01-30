@@ -12,6 +12,13 @@ const FormularioInicio = () => {
         navigate("/");
     };
 
+    const handleEmpresaClick = () => {
+        navigate("/form-empresa");
+    };
+    const handleEmprendedorClick = () => {
+        navigate("/form-emprendedor");
+    }
+
     return (
         <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg p-6">
             {/* Sección izquierda del encabezado */}
@@ -66,13 +73,16 @@ const FormularioInicio = () => {
             </div>
             <div className="flex justify-center gap-6 mt-6">
                 {/* Botón Soy Emprendedor */}
+                
                 <button
+                onClick={handleEmpresaClick} // Maneja el clic del botón
                     className="flex px-4 py-2 justify-center items-center gap-2 rounded-full border bg-[#C415D7] text-white font-medium"
                 >
                     Soy Emprendedor
                 </button>
                 {/* Botón Represento una Empresa */}
                 <button
+                    onClick={handleEmprendedorClick}
                     className="flex w-[235px] h-[45px] px-3 py-2 justify-center items-center gap-2 rounded-full text-white font-medium bg-gradient-to-r from-[#6A11CB] to-[#2575FC] bg-lightgray bg-blend-multiply"
                 >
                     Represento una Empresa
