@@ -86,11 +86,11 @@ const Stats = () => (
 );
 // Simulando una respuesta de backend con datos mockeados
 const mockData = [
-  { id: 1, name: "Juan Pérez", email: "juan@correo.com", phone: "123456789", category: "Nuevo", status: "Activo" },
-  { id: 2, name: "Ana Gómez", email: "ana@correo.com", phone: "987654321", category: "Regular", status: "Inactivo" },
-  { id: 3, name: "Carlos Ruiz", email: "carlos@correo.com", phone: "456789123", category: "Nuevo", status: "Activo" },
-  { id: 4, name: "Lucía Martínez", email: "lucia@correo.com", phone: "987123456", category: "Regular", status: "Activo" },
-  { id: 5, name: "Pedro Sánchez", email: "pedro@correo.com", phone: "321654987", category: "Nuevo", status: "Inactivo" },
+  { id: 1, name: "Juan Pérez", email: "juan@correo.com", phone: "123456789", category: "Empresa", status: "Activo" },
+  { id: 2, name: "Ana Gómez", email: "ana@correo.com", phone: "987654321", category: "Emprendedor", status: "Inactivo" },
+  { id: 3, name: "Carlos Ruiz", email: "carlos@correo.com", phone: "456789123", category: "Empresa", status: "Activo" },
+  { id: 4, name: "Lucía Martínez", email: "lucia@correo.com", phone: "987123456", category: "Emprendedor", status: "Activo" },
+  { id: 5, name: "Pedro Sánchez", email: "pedro@correo.com", phone: "321654987", category: "Empresa", status: "Inactivo" },
 ];
 
 const UsersTable = () => {
