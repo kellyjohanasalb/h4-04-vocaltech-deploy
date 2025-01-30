@@ -4,10 +4,9 @@ import ServicesPage from "./Pages/ServicesPage";
 import Login from "./Pages/Login"; 
 import Register from "./Pages/Register"; 
 import LandingPage from "./Pages/LandingPage"; 
-import Adminpage from "./Pages/Adminpage";
-
-
-
+import EmpresaForm from "./components/EmpresaForm";
+import EmprendedorForm from "./components/EmprendedorForm";
+//import { Adminpage } from "./Pages/Adminpage";
 
 function App() {
   return (
@@ -26,9 +25,13 @@ function App() {
         {/* Rutas de formularios */}
         <Route path="/formularioinicio" element={<Formulario />} /> 
 
-        {/* Rutas de admin */}
-        <Route path="/admin" element={<Adminpage />} />
+        {/* Ruta Formulario Empresa */}
+        <Route path="/form-empresa" element={<EmpresaForm />}/>
 
+        {/* Ruta Formulario Emprendedor */}
+        <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
+        {/* Rutas de admin */}
+        {/*<Route path="/admin" element={<Adminpage />} /> */}
         
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} /> 
