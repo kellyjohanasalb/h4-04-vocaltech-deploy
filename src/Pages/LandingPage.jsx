@@ -5,8 +5,9 @@ import Nosotros from "../components/nosotrosSection";
 import Servicios from "../components/serviciosSection";
 import Empresasyempemdedores from "../components/empresas-emprendiminetoSection";
 import Historias from "../components/historiasSection";
-import Testimonios from "../components/testimoniosSection";
+
 import FAQ from "../components/preguntasFrecuentesSection";
+import VocalTech from "../components/vocalTechSection";
 import Footer from "../components/footer";
 
 const LandingPage = () => {
@@ -24,8 +25,8 @@ const LandingPage = () => {
             <Servicios />
             <Empresasyempemdedores />
             <Historias />
-            <Testimonios />
             <FAQ />
+            <VocalTech />
 
             {/* Footer */}
             <Footer />
