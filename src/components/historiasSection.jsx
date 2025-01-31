@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
 import ibm from "../assets/icons/ibm.png";
 import a from "../assets/icons/anegro.png";
