@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoMdArrowDropleftCircle, IoMdArrowDroprightCircle } from "react-icons/io";
 import ibm from "../assets/icons/ibm.png";
 import a from "../assets/icons/anegro.png";
@@ -20,22 +20,32 @@ const testimonios = [
 ];
 
 const HistoriasExito = () => {
-  const [index, setIndex] = useState(0); // Estado para rastrear la posición del carrusel
+  const [index, setIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(2);
 
-  const itemsPerView = 2; // Número de tarjetas visibles
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(1); // En móviles solo muestra 1 testimonio
+      } else {
+        setItemsPerView(2); // En tablets y escritorio muestra 2 testimonios
+      }
+    };
+
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
+
   const totalItems = testimonios.length;
-  const maxIndex = totalItems - itemsPerView; // Último índice permitido
+  const maxIndex = totalItems - itemsPerView;
 
   const scrollLeft = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
+    if (index > 0) setIndex(index - 1);
   };
 
   const scrollRight = () => {
-    if (index < maxIndex) {
-      setIndex(index + 1);
-    }
+    if (index < maxIndex) setIndex(index + 1);
   };
 
   return (
@@ -50,7 +60,7 @@ const HistoriasExito = () => {
       <div className="relative max-w-[600px] ml-auto overflow-hidden">
         <div
           className="flex gap-4 transition-transform duration-300 ease-in-out"
-          style={{ transform: `translateX(-${index * 304}px)` }}
+          style={{ transform: `translateX(-${index * 304}px)`, width: `${testimonios.length * 304}px` }}
         >
           {testimonios.map((testimonio, idx) => (
             <div
@@ -89,17 +99,22 @@ const HistoriasExito = () => {
         </div>
       </div>
 
+      {/* Botones de navegación */}
       <div className="absolute bottom-4 left-32 flex gap-2">
         <button
           onClick={scrollLeft}
-          className={`text-black text-3xl hover:text-gray-700 transition-all duration-300 ${index === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`text-black text-3xl hover:text-gray-700 transition-all duration-300 ${
+            index === 0 ? "opacity-50 cursor-not-allowed" : ""
+          }`}
           disabled={index === 0}
         >
           <IoMdArrowDropleftCircle />
         </button>
         <button
           onClick={scrollRight}
-          className={`text-black text-3xl hover:text-gray-700 transition-all duration-300 ${index >= maxIndex ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`text-black text-3xl hover:text-gray-700 transition-all duration-300 ${
+            index >= maxIndex ? "opacity-50 cursor-not-allowed" : ""
+          }`}
           disabled={index >= maxIndex}
         >
           <IoMdArrowDroprightCircle />
