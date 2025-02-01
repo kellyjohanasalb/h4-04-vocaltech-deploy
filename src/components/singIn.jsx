@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import useLoginUser from "../hooks/useLogin";
 import Image1 from "../assets/Rectangle.png";
 import Image2 from "../assets/Group1.png";
 import Image3 from "../assets/image.png";
@@ -9,21 +10,13 @@ import vocal from "../assets/VocalTech.png";
 
 const images = [Image1, Image2, Image3];
 
-// 🔹 Definimos usuarios válidos para autenticación
-const validUsers = {
-    "sasha@example.com": "sasha123",
-    "sashasawosz@hotmail.com": "sasha123"
-};
-
 const SignIn = () => {
     const navigate = useNavigate();
+    const { handleLogin, loading, error, success } = useLoginUser();
+    
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-    });
+    const [formData, setFormData] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState({});
-    const [loginError, setLoginError] = useState("");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -34,10 +27,7 @@ const SignIn = () => {
 
     const handleInputChange = (e) => {
         const { id, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [id]: value, 
-        }));
+        setFormData((prevData) => ({ ...prevData, [id]: value }));
     };
 
     const validateForm = () => {
@@ -52,21 +42,15 @@ const SignIn = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const emailIngresado = formData.email.trim();
-        const passwordIngresada = formData.password.trim();
-
-        console.log("Email ingresado:", `"${emailIngresado}"`);
-        console.log("Contraseña ingresada:", `"${passwordIngresada}"`);
 
         if (validateForm()) {
-            if (validUsers[emailIngresado] && validUsers[emailIngresado] === passwordIngresada) {
-                console.log("✅ Autenticación exitosa");
+            const response = await handleLogin(formData);
+
+            if (response) {
+                console.log("✅ Inicio de sesión exitoso:", response);
                 navigate("/admin");
-            } else {
-                console.log("❌ Error de autenticación");
-                setLoginError("Correo o contraseña incorrectos.");
             }
         }
     };
@@ -83,7 +67,7 @@ const SignIn = () => {
                 </button>
                 <div className="w-[480px]">
                     <div className="flex mb-6">
-                        <img src={vocal} alt="VolcaTech" className="w-auto h-auto" />
+                        <img src={vocal} alt="VocalTech" className="w-auto h-auto" />
                     </div>
                     <h1 className="text-[32px] font-semibold text-black font-manrope leading-normal">
                         Ingresa a tu cuenta
@@ -121,14 +105,19 @@ const SignIn = () => {
                             />
                             {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
                         </div>
-                        {loginError && <p className="text-sm text-red-500">{loginError}</p>}
+                        {error && <p className="text-sm text-red-500">{error}</p>}
+                        {success && <p className="text-sm text-green-500">{success}</p>}
                         <div className="text-right">
                             <a href="#" className="text-sm text-[#6A11CB] hover:underline">
                                 ¿Olvidaste tu contraseña?
                             </a>
                         </div>
-                        <button type="submit" className="w-full py-3 text-[16px] text-white font-medium rounded-full bg-gradient-to-r from-[#6A11CB] to-[#2575FC] hover:opacity-90">
-                            Ingresar
+                        <button 
+                            type="submit" 
+                            className="w-full py-3 text-[16px] text-white font-medium rounded-full bg-gradient-to-r from-[#6A11CB] to-[#2575FC] hover:opacity-90"
+                            disabled={loading}
+                        >
+                            {loading ? "Cargando..." : "Ingresar"}
                         </button>
                     </form>
                     <p className="mt-10 text-sm text-center">
