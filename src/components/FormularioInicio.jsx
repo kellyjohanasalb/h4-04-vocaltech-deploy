@@ -21,12 +21,12 @@ const FormularioInicio = () => {
     };
 
     return (
-        <div className="w-full max-w-5xl mx-auto bg-white shadow-lg rounded-lg p-4 sm:p-6">
-            {/* Botón regresar */}
+        <div className="w-full max-w-5xl p-6 bg-white rounded-lg shadow-lg">
+            {/* Sección izquierda del encabezado */}
             <div className="flex items-center mb-4">
                 <button
                     onClick={handleBackClick}
-                    className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+                    className="flex items-center text-gray-600 transition-colors hover:text-gray-800"
                 >
                     <FaArrowLeftLong className="w-5 h-5 mr-2" />
                     <span className="font-medium">Regresar</span>
@@ -34,8 +34,8 @@ const FormularioInicio = () => {
             </div>
 
             {/* Encabezado */}
-            <div className="text-center mb-6">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            <div className="mb-6 text-center">
+                <h1 className="text-5xl font-bold md:text-6xl">
                     <span className="text-black">Vocal</span>
                     <span className="text-purple-600">Tech</span>
                 </h1>
@@ -43,15 +43,15 @@ const FormularioInicio = () => {
             </div>
 
             {/* Subtítulo */}
-            <h2 className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-700 font-semibold text-center">
+            <h2 className="mt-4 text-2xl font-semibold text-gray-700">
                 ¿Qué necesitas construir o mejorar?
             </h2>
-            <p className="text-sm sm:text-base text-gray-500 mt-2 text-center">
-                En Vocaltech te ayudamos a identificar y construir lo que tu negocio necesita.
+            <p className="mt-2 text-sm text-gray-500">
+            En Vocaltech te ayudamos a identificar y construir lo que tu negocio necesita.
             </p>
 
             {/* Tarjetas */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-3">
                 <Comunicación
                     title="Comunicación y Liderazgo"
                     description="Potenciar tus habilidades de comunicación"
@@ -67,14 +67,14 @@ const FormularioInicio = () => {
             </div>
 
             {/* Nuevo texto centrado y botones */}
-            <div className="text-center mt-8">
-                <h3 className="text-gray-800 text-lg sm:text-xl font-medium font-[Manrope]">
+            <div className="mt-8 text-center">
+                <h3 className="text-[#424242] text-xl font-medium font-[Manrope]">
                     Para continuar, cuéntanos quién eres para adaptar tu diagnóstico
                 </h3>
             </div>
 
             {/* Botones de selección */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-6 flex-wrap">
+            <div className="flex flex-col flex-wrap justify-center gap-4 mt-6 sm:flex-row sm:gap-6">
                 {/* Botón Soy Emprendedor */}
                 <button
                     onClick={handleEmpresaClick}
