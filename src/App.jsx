@@ -7,9 +7,12 @@ import LandingPage from "./Pages/LandingPage";
 import EmprendedorForm from "./components/EmprendedorForm";
 import FormEmpresaNavi from "./components/FormEmpresaNavi";
 import Mvp1 from "./components/mvp1";
-import { Comunicacion1 } from "./components/Comunicacion1";
-import { Talento1 } from "./components/Talento1";
-import { MVP2 } from "./components/MVP2";
+import Comunicacion1 from "./components/Comunicacion1";
+import Talento1 from "./components/Talento1";
+import MVP2 from "./components/MVP2";
+import Talento2 from "./components/Talento2";
+import Fin from "./components/Fin";
+import FormularioTerminado from "./components/Formulario-Terminado";
 //import FormNavigation from "./components/FormNavigation";
 //import { Adminpage } from "./Pages/Adminpage";
 
@@ -46,11 +49,19 @@ function App() {
         <Route path="/mvp2" element={<MVP2 />} /> 
 
         {/* Rutas de talento1 */}
-        <Route path="/talento1" element={<Talento1 />} /> 
+        <Route path="/talento1" element={<Talento1 />} />
 
+        {/* Rutas de talento2 */}
+        <Route path="/talento2" element={<Talento2 />} />  
 
         {/* Rutas de comunicacion1*/}
-        <Route path="/comunicacion1" element={<Comunicacion1 />} /> 
+        <Route path="/comunicacion1" element={<Comunicacion1 />} />
+
+        {/* Rutas de formulario-terminado*/}
+        <Route path="/formulario-terminado" element={<FormularioTerminado />} /> 
+
+        {/* Rutas de fin*/}
+        <Route path="/fin" element={<Fin />} />  
         
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} /> 

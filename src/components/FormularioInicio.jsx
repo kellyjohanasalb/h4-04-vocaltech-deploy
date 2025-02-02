@@ -77,7 +77,7 @@ const FormularioInicio = () => {
             <div className="flex flex-col flex-wrap justify-center gap-4 mt-6 sm:flex-row sm:gap-6">
                 {/* Botón Soy Emprendedor */}
                 <button
-                    onClick={handleEmpresaClick}
+                    onClick={handleEmprendedorClick}
                     className="w-full sm:w-auto px-6 py-3 text-base sm:text-lg flex justify-center items-center gap-2 rounded-full border bg-[#C415D7] text-white font-medium transition-transform hover:scale-105"
                 >
                     Soy Emprendedor
@@ -85,7 +85,7 @@ const FormularioInicio = () => {
 
                 {/* Botón Represento una Empresa */}
                 <button
-                    onClick={handleEmprendedorClick}
+                    onClick={handleEmpresaClick}
                     className="w-full sm:w-auto px-6 py-3 text-base sm:text-lg flex justify-center items-center gap-2 rounded-full text-white font-medium bg-gradient-to-r from-[#6A11CB] to-[#2575FC] bg-lightgray bg-blend-multiply transition-transform hover:scale-105"
                 >
                     Represento una Empresa
