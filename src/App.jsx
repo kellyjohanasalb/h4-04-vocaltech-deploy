@@ -6,6 +6,10 @@ import Register from "./Pages/Register";
 import LandingPage from "./Pages/LandingPage"; 
 import EmprendedorForm from "./components/EmprendedorForm";
 import FormEmpresaNavi from "./components/FormEmpresaNavi";
+import Mvp1 from "./components/mvp1";
+import { Comunicacion1 } from "./components/Comunicacion1";
+import { Talento1 } from "./components/Talento1";
+import { MVP2 } from "./components/MVP2";
 //import FormNavigation from "./components/FormNavigation";
 //import { Adminpage } from "./Pages/Adminpage";
 
@@ -31,8 +35,22 @@ function App() {
 
         {/* Ruta Formulario Emprendedor */}
         <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
+
         {/* Rutas de admin */}
         {/*<Route path="/admin" element={<Adminpage />} /> */}
+
+        {/* Rutas de mvp1 */}
+        <Route path="/mvp1" element={<Mvp1 />} /> 
+
+        {/* Rutas de mvp1 */}
+        <Route path="/mvp2" element={<MVP2 />} /> 
+
+        {/* Rutas de talento1 */}
+        <Route path="/talento1" element={<Talento1 />} /> 
+
+
+        {/* Rutas de comunicacion1*/}
+        <Route path="/comunicacion1" element={<Comunicacion1 />} /> 
         
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} /> 
