@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import VocalTech1 from "../assets/icons/vovaltech.png";
 import { useParams } from "react-router-dom";
-import DetalleLead from "../components/DetalleLead";
+import DetalleLead from "./DetalleLead";
+
 
 // Sidebar
 const Sidebar = ({ setView }) => (

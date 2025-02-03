@@ -1,11 +1,11 @@
-import Dashboard2 from "../components/PaneladminEmprendedor"
+import Emprendedor from "../components/PaneladminEmprendedor"
 
 const AdminpageEmprendedor= () => {
   return (
     <div>
-    <Dashboard2 />
+    <Emprendedor />
     </div>
-  ); 
+  );
 };
 
 export default AdminpageEmprendedor;

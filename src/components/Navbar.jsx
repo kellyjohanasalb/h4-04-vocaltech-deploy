@@ -23,7 +23,7 @@ function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 mx-auto bg-white border border-gray-300 shadow-md rounded-[32px] max-w-[95%] md:w-[1374px] h-[82px] px-6 md:px-[53px] flex justify-between items-center"
+        className="fixed top-[10px] left-0 right-0 z-50 mx-auto bg-white border border-gray-300 shadow-md rounded-[32px] max-w-[95%] md:w-[1374px] h-[82px] px-6 md:px-[53px] flex justify-between items-center"
         style={{ backdropFilter: "blur(10px)" }}
       >
         <div className="flex items-center justify-between w-full md:justify-start">

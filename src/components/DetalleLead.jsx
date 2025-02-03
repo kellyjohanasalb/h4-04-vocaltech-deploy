@@ -1,3 +1,4 @@
+
 const DetalleLead = ({ leadId }) => {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-50">

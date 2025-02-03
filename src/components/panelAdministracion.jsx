@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+
 import VocalTech1 from "../assets/icons/vovaltech.png";
 import { FaEllipsisV, FaInfoCircle, FaTrashAlt, FaClipboardCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from 'react';
+import chica from "../assets/images/perfil-castaña.png"
 
 // Sidebar
 const Sidebar = ({ setView }) => (
@@ -52,7 +54,7 @@ const Header = () => (
       <div className="flex items-center space-x-2">
         <span>Admin</span>
         <img
-          src="https://via.placeholder.com/40"
+          src={chica}
           alt="Perfil"
           className="w-10 h-10 rounded-full"
         />

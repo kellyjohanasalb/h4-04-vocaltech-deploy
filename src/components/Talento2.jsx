@@ -44,11 +44,11 @@ export default function Talento2() {
         {/* Pregunta 1 */}
         <div className="mb-6">
           <label className="block text-lg font-semibold">
-            1.-¿Cuál es el mayor desafío que enfrentas al contratar talento para tu equipo?
+            1. ¿Cuál es el mayor desafío que enfrentas al contratar talento para tu equipo?
           </label>
           <div className="mt-4 space-y-2">
             {[
-              "Falta de candidatos calificados ",
+              "Falta de candidatos calificados",
               "Proceso largo de selección",
               "Retención de talento",
               "Definición de roles",
@@ -79,7 +79,7 @@ export default function Talento2() {
         {/* Pregunta 2 */}
         <div className="mb-6">
           <label className="block text-lg font-semibold">
-            2.-¿Qué tan definido está el perfil de los roles clave que necesitas cubrir actualmente?
+            2. ¿Qué tan definido está el perfil de los roles clave que necesitas cubrir actualmente?
           </label>
           <div className="mt-4 space-y-2">
             {[
@@ -113,7 +113,7 @@ export default function Talento2() {
         {/* Pregunta 3 */}
         <div className="mb-6">
           <label className="block text-lg font-semibold">
-            3.-¿Te interesaría un acompañamiento especializado para identificar y atraer talento adecuado, especialmente en roles de IT u otros estratégicos?
+            3. ¿Te interesaría un acompañamiento especializado para identificar y atraer talento adecuado, especialmente en roles de IT u otros estratégicos?
           </label>
           <div className="mt-4 space-y-2">
             {[
@@ -146,7 +146,7 @@ export default function Talento2() {
         {/* Pregunta 4 */}
         <div className="mb-6">
           <label className="block text-lg font-semibold">
-            4.-¿Qué roles tecnológicos estás buscando actualmente o creés que serán clave para tu empresa en el corto plazo?
+            4. ¿Qué roles tecnológicos estás buscando actualmente o creés que serán clave para tu empresa en el corto plazo?
           </label>
           <div className="mt-4 space-y-2">
             {[
@@ -182,10 +182,10 @@ export default function Talento2() {
             ))}
           </div>
         </div>
-        {/* Pregunta 4 */}
+        {/* Pregunta 5 */}
         <div className="mb-6">
           <label className="block text-lg font-semibold">
-            5.-¿Qué tan claro tienes el impacto que cada perfil tecnológico puede aportar al crecimiento de tu negocio?
+            5. ¿Qué tan claro tienes el impacto que cada perfil tecnológico puede aportar al crecimiento de tu negocio?
           </label>
           <div className="mt-4 space-y-2">
             {[
