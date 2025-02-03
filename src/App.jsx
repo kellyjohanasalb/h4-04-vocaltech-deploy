@@ -6,7 +6,7 @@ import Register from "./Pages/Register";
 import LandingPage from "./Pages/LandingPage"; 
 import EmpresaForm from "./components/EmpresaForm";
 import EmprendedorForm from "./components/EmprendedorForm";
-//import { Adminpage } from "./Pages/Adminpage";
+import  Adminpage  from "./Pages/Adminpage";
 
 function App() {
   return (
@@ -30,8 +30,9 @@ function App() {
 
         {/* Ruta Formulario Emprendedor */}
         <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
+
         {/* Rutas de admin */}
-        {/*<Route path="/admin" element={<Adminpage />} /> */}
+        <Route path="/admin" element={<Adminpage />} />
         
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} /> 

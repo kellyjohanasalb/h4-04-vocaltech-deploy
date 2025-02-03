@@ -25,6 +25,12 @@ const SignIn = () => {
         return () => clearInterval(interval);
     }, []);
 
+    useEffect(() => {
+        if (success) {
+            navigate("/admin"); // Redirige al dashboard si el login es exitoso
+        }
+    }, [success, navigate]);
+
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [id]: value }));
@@ -32,26 +38,16 @@ const SignIn = () => {
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formData.email.trim()) {
-            newErrors.email = "El campo Email es obligatorio.";
-        }
-        if (!formData.password.trim()) {
-            newErrors.password = "El campo Contraseña es obligatorio.";
-        }
+        if (!formData.email.trim()) newErrors.email = "El campo Email es obligatorio.";
+        if (!formData.password.trim()) newErrors.password = "El campo Contraseña es obligatorio.";
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (validateForm()) {
-            const response = await handleLogin(formData);
-
-            if (response) {
-                console.log("✅ Inicio de sesión exitoso:", response);
-                navigate("/admin");
-            }
+            await handleLogin(formData);
         }
     };
 
@@ -73,8 +69,7 @@ const SignIn = () => {
                         Ingresa a tu cuenta
                     </h1>
                     <p className="text-[16px] mt-4 text-[#616161]">
-                        ¡Qué gusto tenerte por aquí de vuelta! Por favor, completa los
-                        campos.
+                        ¡Qué gusto tenerte por aquí de vuelta! Por favor, completa los campos.
                     </p>
                     <form className="space-y-5 mt-9" onSubmit={handleSubmit}>
                         <div>
