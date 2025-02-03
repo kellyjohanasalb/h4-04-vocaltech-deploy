@@ -14,8 +14,9 @@ import Talento2 from "./components/Talento2";
 import Fin from "./components/Fin";
 import FormularioTerminado from "./components/Formulario-Terminado";
 //import FormNavigation from "./components/FormNavigation";
-//import { Adminpage } from "./Pages/Adminpage";
-
+import  Adminpage  from "./Pages/Adminpage";
+import AdminpageEmprendedor from "./Pages/AdminpageEmprendedor";
+import DetalleLead from "./components/DetalleLead";
 function App() {
   return (
     <Router>
@@ -40,7 +41,10 @@ function App() {
         <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
 
         {/* Rutas de admin */}
-        {/*<Route path="/admin" element={<Adminpage />} /> */}
+        <Route path="/admin" element={<Adminpage />} />
+         {/* Rutas de admin Emprendedor */}
+         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
+         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
 
         {/* Rutas de mvp1 */}
         <Route path="/mvp1" element={<Mvp1 />} /> 
