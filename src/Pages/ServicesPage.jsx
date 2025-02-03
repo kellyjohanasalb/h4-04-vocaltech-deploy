@@ -22,22 +22,22 @@ function ServicesPage() {
           </div>
 
           {/* Empresas */}
-          <div className="flex h-[108px] p-2 items-end gap-4 rounded-lg bg-white w-full border border-gray-200 shadow-sm">
-            <img src={empresa} alt="Empresas" className="h-[100px] w-[100px] rounded-md object-cover" />
+          <div className="flex h-[108px] p-2 items-end gap-4 rounded-lg bg-white w-full">
+            <img src={empresa} alt="Empresas" className="h-[100px] w-[100px] rounded-md object-cover -ml-3 mt-4" />
             <div className="flex flex-col justify-end h-full">
-              <h3 className="text-[15px] font-semibold text-black">Empresas</h3>
-              <p className="text-[14px] font-medium text-[#222] font-manrope text-justify leading-tight">
+              <h3 className="text-[13px] font-semibold text-black">Empresas</h3>
+              <p className="text-[13px] font-medium text-[#222] font-manrope text-justify leading-tight">
                 Servicios personalizados para medianas y grandes empresas.
               </p>
             </div>
           </div>
 
           {/* Emprendedores */}
-          <div className="flex h-[108px] p-2 items-end gap-4 rounded-lg bg-white w-full border border-gray-200 shadow-sm">
-            <img src={emprendedor} alt="Emprendedores" className="h-[100px] w-[100px] rounded-md object-cover" />
+          <div className="flex h-[108px] p-2 items-end gap-4 rounded-lg bg-white w-full ">
+            <img src={emprendedor} alt="Emprendedores" className="h-[100px] w-[100px] rounded-md object-cover -ml-3" />
             <div className="flex flex-col justify-end h-full">
-              <h3 className="text-[15px] font-semibold text-black">Emprendedores</h3>
-              <p className="text-[14px] font-medium text-[#222] font-manrope text-justify leading-tight">
+              <h3 className="text-[13px] font-semibold text-black">Emprendedores</h3>
+              <p className="text-[13px] font-medium text-[#222] font-manrope text-justify leading-tight">
                 Servicios personalizados para startups y pequeños negocios.
               </p>
             </div>
