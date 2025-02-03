@@ -5,9 +5,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import LandingPage from "./Pages/LandingPage";
 import EmprendedorForm from "./components/EmprendedorForm";
-<<<<<<< HEAD
 import  Adminpage  from "./Pages/Adminpage";
-=======
 import FormEmpresaNavi from "./components/FormEmpresaNavi";
 import Mvp1 from "./components/mvp1";
 import Comunicacion1 from "./components/Comunicacion1";
@@ -25,8 +23,7 @@ import TalentoEmpre1 from "./components/TalentoEmpre1";
 import TalentoEmpre2 from "./components/TalentoEmpre2";
 import FinEmpre from "./components/FinEmpre";
 //import FormNavigation from "./components/FormNavigation";
-//import { Adminpage } from "./Pages/Adminpage";
->>>>>>> 428639835a8fa16f68439f4d05acc6345976e624
+
 
 function App() {
   return (
@@ -49,17 +46,12 @@ function App() {
         <Route path="/form-empresa" element={<FormEmpresaNavi />} />
 
         {/* Ruta Formulario Emprendedor */}
-<<<<<<< HEAD
         <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
 
         {/* Rutas de admin */}
         <Route path="/admin" element={<Adminpage />} />
         
-=======
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
-
-        {/* Rutas de admin */}
-        {/*<Route path="/admin" element={<Adminpage />} /> */}
 
         {/* Rutas de mvp1 */}
         <Route path="/mvp1" element={<Mvp1 />} />
@@ -106,7 +98,6 @@ function App() {
         {/* Rutas de fin-empre*/}
         <Route path="/fin-empre" element={<FinEmpre />} />
 
->>>>>>> 428639835a8fa16f68439f4d05acc6345976e624
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} />
       </Routes>
