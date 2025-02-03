@@ -23,8 +23,14 @@ import TalentoEmpre1 from "./components/TalentoEmpre1";
 import TalentoEmpre2 from "./components/TalentoEmpre2";
 import FinEmpre from "./components/FinEmpre";
 //import FormNavigation from "./components/FormNavigation";
+<<<<<<< HEAD
+import  Adminpage  from "./Pages/Adminpage";
+import AdminpageEmprendedor from "./Pages/AdminpageEmprendedor";
+import DetalleLead from "./components/DetalleLead";
+=======
 
 
+>>>>>>> b66ea296da06dde2b3f8626c3f303ee00b6112c7
 function App() {
   return (
     <Router>
@@ -50,8 +56,14 @@ function App() {
 
         {/* Rutas de admin */}
         <Route path="/admin" element={<Adminpage />} />
+<<<<<<< HEAD
+         {/* Rutas de admin Emprendedor */}
+         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
+         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+=======
         
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
+>>>>>>> b66ea296da06dde2b3f8626c3f303ee00b6112c7
 
         {/* Rutas de mvp1 */}
         <Route path="/mvp1" element={<Mvp1 />} />
