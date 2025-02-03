@@ -8,7 +8,7 @@ export default function Comunicacion1() {
         consideras: "",
         impacto: "",
     });
-    const [isFormValid, setIsFormValid] = useState(true);
+    const [setIsFormValid] = useState(true);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -39,7 +39,7 @@ export default function Comunicacion1() {
             <form className="w-full max-w-4xl px-4 mt-20" onSubmit={handleSubmit}>
                 <div className="mb-6">
                     <label className="block text-lg font-semibold" htmlFor="desafio">
-                        1.-¿Qué desafíos principales enfrenta tu equipo en términos de liderazgo y motivación?
+                        1. ¿Qué desafíos principales enfrenta tu equipo en términos de liderazgo y motivación?
                     </label>
                     <input
                         id="desafio"
@@ -53,7 +53,7 @@ export default function Comunicacion1() {
                 </div>
                 <div className="mb-6">
                     <label className="block text-lg font-semibold">
-                        2.-¿Consideras que tu equipo necesita mejorar habilidades blandas como resolución de conflictos, comunicación asertiva, liderazgo o trabajo en equipo?
+                        2. ¿Consideras que tu equipo necesita mejorar habilidades blandas como resolución de conflictos, comunicación asertiva, liderazgo o trabajo en equipo?
                     </label>
                     <div className="mt-4 space-y-2">
                         {["Si", "No", "No estoy seguro/a"].map((consideras, index) => (
@@ -81,7 +81,7 @@ export default function Comunicacion1() {
                 </div>
                 <div>
                     <label className="block text-lg font-semibold" htmlFor="impacto">
-                        3.-¿Qué impacto esperas lograr si mejoras la comunicación, el liderazgo y la gestión de tu equipo?
+                        3. ¿Qué impacto esperas lograr si mejoras la comunicación, el liderazgo y la gestión de tu equipo?
                     </label>
                     <div className="mt-4 space-y-2">
                         {[

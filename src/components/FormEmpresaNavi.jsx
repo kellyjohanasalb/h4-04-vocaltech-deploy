@@ -10,17 +10,16 @@ export default function FormEmpresaNavi() {
     const handleNextClick = (e) => {
         e.preventDefault();
 
-        if (selectedOption6 === "Roles y responsabilidades poco claras" || selectedOption6 === "Muy satisfecho/a") {
+        if (selectedOption6 ===  "Satisfecho/a" || selectedOption6 === "Muy satisfecho/a") {
             navigate("/mvp1"); // Navegar a MVP1
         } else if (
-            selectedOption6 === "Satisfecho/a" ||
             selectedOption6 === "Neutral" ||
             selectedOption6 === "Insatisfecho/a" ||
             selectedOption6 === "Muy insatisfecho/a"
         ) {
             navigate("/comunicacion1"); // Navegar a Comunicacion1
         } else {
-            alert("Por favor, rellene todas las opciones .");
+            alert("Por favor, seleccione todas las opciones .");
         }
     };
 
@@ -117,7 +116,6 @@ export default function FormEmpresaNavi() {
                     </h2>
                     <div className="mt-4 space-y-2">
                         {[
-                            "Roles y responsabilidades poco claras",
                             "Muy satisfecho/a",
                             "Satisfecho/a",
                             "Neutral",
