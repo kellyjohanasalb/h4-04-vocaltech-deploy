@@ -3,7 +3,7 @@ import rectangleTwo from "../assets/images/CUADRO-ESQUINA-2.png";
 
 const Vocaltech = () => {
     return (
-        <section className="relative flex flex-col items-center justify-center text-center py-16 bg-white overflow-hidden">
+        <section className="relative flex flex-col items-center justify-center py-16 overflow-hidden text-center bg-white">
             {/* Imagen en la esquina superior izquierda más visible */}
             <img 
                 src={rectangleTwo} 
@@ -38,7 +38,7 @@ const Vocaltech = () => {
 
             {/* Botón con margen superior para bajar su posición */}
             <button className="mt-16 inline-flex h-[46px] px-[10px] justify-center items-center gap-[10px] flex-shrink-0 rounded-[16px] 
-    bg-gradient-to-r from-[#2575FC] via-[#052855] via-[#6A11CB] to-[#D230E3] 
+    bg-gradient-to-r from-[#2575FC]  via-[#6A11CB] to-[#D230E3] 
     shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)]
     text-white font-medium text-lg hover:scale-105 transition-transform duration-300">
                 <span>Obtener Diagnóstico Ahora</span>

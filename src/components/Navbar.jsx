@@ -26,7 +26,7 @@ function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 mx-auto bg-white border border-gray-300 shadow-md rounded-[32px] max-w-[95%] md:w-[1374px] h-[82px] px-6 md:px-[53px] flex justify-between items-center"
         style={{ backdropFilter: "blur(10px)" }}
       >
-        <div className="flex items-center w-full justify-between md:justify-start">
+        <div className="flex items-center justify-between w-full md:justify-start">
           {/* Logo */}
           <h1 className="text-2xl font-bold text-black">
             Vocal<span className="text-purple-600">Tech</span>
@@ -34,14 +34,14 @@ function Navbar() {
 
           {/* Botón de menú en móviles */}
           <button
-            className="md:hidden text-3xl text-black"
+            className="text-3xl text-black md:hidden"
             onClick={() => setMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <MdClose /> : <MdMenu />}
           </button>
 
           {/* Menú en pantallas grandes */}
-          <ul className="hidden md:flex space-x-6 ml-8">
+          <ul className="hidden ml-8 space-x-6 md:flex">
             <li
               className="flex items-end gap-[4px] px-2 text-black hover:text-blue-600 cursor-pointer"
               onClick={() => setShowServices(true)} // Abre el modal de servicios
@@ -49,15 +49,15 @@ function Navbar() {
               <span>Servicios</span>
               <MdArrowDropDown className="text-lg" />
             </li>
-            <li className="text-black hover:text-blue-600 cursor-pointer">Emprendedores</li>
-            <li className="text-black hover:text-blue-600 cursor-pointer">Empresas</li>
-            <li className="text-black hover:text-blue-600 cursor-pointer">Nosotros</li>
-            <li className="text-black hover:text-blue-600 cursor-pointer">Contacto</li>
+            <li className="text-black cursor-pointer hover:text-blue-600">Emprendedores</li>
+            <li className="text-black cursor-pointer hover:text-blue-600">Empresas</li>
+            <li className="text-black cursor-pointer hover:text-blue-600">Nosotros</li>
+            <li className="text-black cursor-pointer hover:text-blue-600">Contacto</li>
           </ul>
         </div>
 
         {/* Botón y login en pantallas grandes */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="items-center hidden space-x-4 md:flex">
           <Link to="/login" className="text-sm text-gray-700 hover:text-gray-900">
             Ingresar
           </Link>
@@ -75,11 +75,11 @@ function Navbar() {
 
       {/* Modal de Servicios - Máximo Ancho */}
       {showServices && (
-        <div className="fixed inset-0 flex justify-center items-start bg-black bg-opacity-50 backdrop-blur-md z-50">
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 backdrop-blur-md">
           <div className="relative w-[98%] md:w-[95%] max-w-[2100px] bg-white p-[24px] rounded-lg shadow-lg overflow-y-auto mt-[100px]">
             {/* Botón de cerrar con React Icon */}
             <button
-              className="absolute top-4 right-4 text-2xl text-gray-400 hover:text-gray-600 transition"
+              className="absolute text-2xl text-gray-400 transition top-4 right-4 hover:text-gray-600"
               onClick={() => setShowServices(false)}
             >
               <MdClose />
