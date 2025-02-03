@@ -1,6 +1,7 @@
 
 import VocalTech1 from "../assets/icons/vovaltech.png";
 import { useState, useEffect } from 'react';
+import chica from "../assets/images/perfil-castaña.png"
 
 
 const Sidebar = () => (
@@ -52,7 +53,7 @@ const Header = () => (
     <div className="flex items-center space-x-2">
       <span>Admin</span>
       <img
-        src="https://via.placeholder.com/40"
+        src={chica}
         alt="Perfil"
         className="w-10 h-10 rounded-full"
       />
