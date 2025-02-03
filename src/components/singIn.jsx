@@ -27,10 +27,10 @@ const SignIn = () => {
 
     useEffect(() => {
         if (success) {
-            navigate("/admin"); // Redirige al dashboard si el login es exitoso
+            navigate("/adminpage"); // Redirige al dashboard si el login es exitoso
         }
     }, [success, navigate]);
-
+    
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setFormData((prevData) => ({ ...prevData, [id]: value }));
