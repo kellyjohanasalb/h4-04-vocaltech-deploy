@@ -3,10 +3,13 @@ import emprendimiento from "../assets/icons/Buildings 2.png";
 import videoEmpresas from "../assets/images/376a102a79128d91587d5269f7120c5d850aaa83.mp4";
 import imagen from "../assets/images/Placeholder Image-hombre.png";
 import fondoUnificado from "../assets/icons/fonto-unificado.png";
-
+import { useNavigate } from "react-router-dom"; 
 import { MdArrowRightAlt } from "react-icons/md";
 
 const SeccionesUnificadas = () => {
+    const navigate = useNavigate();
+
+
     return (
         <div className="relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${fondoUnificado})` }}>
             <div className="relative z-10 py-16 px-4 sm:px-8 text-white max-w-7xl mx-auto">
@@ -40,7 +43,9 @@ const SeccionesUnificadas = () => {
                             </div>
                         </div>
                         <div className="flex space-x-4">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg">
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg"
+                            onClick={() => navigate("/form-empresa")} // Redirigir al formulario
+                            >
                                 Diagnosticar mi empresa
                             </button>
                             <button className="flex items-center justify-center text-white text-lg border-b-2 border-transparent hover:border-violet gap-2">
@@ -70,7 +75,9 @@ const SeccionesUnificadas = () => {
                             Como emprendedor, accede a herramientas y recursos diseñados para potenciar tu crecimiento. Completa el diagnóstico gratis y recibe una propuesta personalizada adaptada a tus necesidades.
                         </p>
                         <div className="flex space-x-4">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg whitespace-nowrap">
+                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg whitespace-nowrap"
+                            onClick={() => navigate("/form-emprendedor")} // Redirigir al formulario
+                            >
                                 Diagnosticar mi emprendimiento
                             </button>
                             <button className="flex items-center justify-center text-white text-lg border-b-2 border-transparent hover:border-violet gap-2 whitespace-nowrap">

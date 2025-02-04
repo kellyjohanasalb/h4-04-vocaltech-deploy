@@ -6,7 +6,7 @@
   )
 } */
 
-  import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import manos from "../assets/icons/High five representing team success.png";
 import Navbar from "./Navbar";
