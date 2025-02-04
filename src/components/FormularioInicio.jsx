@@ -52,19 +52,23 @@ const FormularioInicio = () => {
 
             {/* Tarjetas */}
             <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-3">
-                <Comunicación
-                    title="Comunicación y Liderazgo"
-                    description="Potenciar tus habilidades de comunicación"
-                />
-                <Tecnología
-                    title="Soluciones Tecnológicas"
-                    description="Impulsar tus proyectos Tech con soluciones a medida"
-                />
-                <Combinado
-                    title="Combinado"
-                    description="Tu proyecto necesita tanto comunicación como tecnología"
-                />
-            </div>
+    <Comunicación
+        className="min-h-[250px] flex flex-col justify-between"
+        title="Comunicación y Liderazgo"
+        description="Potenciar tus habilidades de comunicación"
+    />
+    <Tecnología
+        className="min-h-[250px] flex flex-col justify-between"
+        title="Soluciones Tecnológicas"
+        description="Impulsar tus proyectos Tech con soluciones a medida"
+    />
+    <Combinado
+        className="min-h-[250px] flex flex-col justify-between"
+        title="Combinado"
+        description="Tu proyecto necesita tanto comunicación como tecnología"
+    />
+</div>
+
 
             {/* Nuevo texto centrado y botones */}
             <div className="mt-8 text-center">
