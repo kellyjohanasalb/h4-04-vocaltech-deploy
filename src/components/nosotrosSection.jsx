@@ -53,10 +53,10 @@ const Nosotros = () => {
 
           {/* Bloque 2 - Alianza */}
           <div className="inline-flex w-full max-w-[600px] py-4 px-6 items-start gap-6 rounded-[16px] bg-white shadow-md relative left-0 sm:left-[-40px] lg:left-[-160px] xl:left-[-200px]">
-            <img src={tech} alt="Logo VocalTech" className="h-[30px] flex-shrink-0 self-start" />
-            <div className="flex flex-col flex-grow gap-2">
-              <h3 className="text-black font-bold text-[20px] font-sans">Alianza</h3>
-              <p className="text-[#424242] text-[18px] font-semibold font-manrope">
+            <img src={tech} alt="Logo VocalTech" className="h-[26px] flex-shrink-0 self-start" />
+            <div className="flex flex-col flex-grow gap-1">
+              <h3 className="text-black font-bold text-[23px] font-sans">Alianza</h3>
+              <p className="text-[#424242] text-[18px] font-manrope">
                 Combinamos la experiencia de ambos mundos para brindar soluciones integrales y personalizadas.
               </p>
               <button className="flex w-full sm:w-[318px] h-[46px] px-[8px] py-[8px] justify-between items-center rounded-[16px] bg-[#2684FC] text-white font-manrope text-[18px] font-semibold">
