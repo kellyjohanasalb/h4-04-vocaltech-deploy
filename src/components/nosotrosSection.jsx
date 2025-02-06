@@ -51,20 +51,26 @@ const Nosotros = () => {
             className="absolute w-[120px] sm:w-[160px] lg:w-[190px] h-auto left-[-40px] sm:left-[-60px] lg:left-[-80px] top-[-10px] hidden lg:block"
           />
 
-          {/* Bloque 2 - Alianza */}
-          <div className="inline-flex w-full max-w-[600px] py-4 px-6 items-start gap-6 rounded-[16px] bg-white shadow-md relative left-0 sm:left-[-40px] lg:left-[-160px] xl:left-[-200px]">
-            <img src={tech} alt="Logo VocalTech" className="h-[26px] flex-shrink-0 self-start" />
-            <div className="flex flex-col flex-grow gap-1">
-              <h3 className="text-black font-bold text-[23px] font-sans">Alianza</h3>
-              <p className="text-[#424242] text-[18px] font-manrope">
-                Combinamos la experiencia de ambos mundos para brindar soluciones integrales y personalizadas.
-              </p>
-              <button className="flex w-full sm:w-[318px] h-[46px] px-[8px] py-[8px] justify-between items-center rounded-[16px] bg-[#2684FC] text-white font-manrope text-[18px] font-semibold">
-                Descubre más sobre VocalTech
-                <FaLongArrowAltRight className="w-[24px] h-[24px] flex-shrink-0 text-white" />
-              </button>
-            </div>
-          </div>
+ {/* Bloque 2 - Alianza */}
+<div className="flex flex-col lg:flex-row w-full max-w-[600px] py-6 px-6 items-center lg:items-start gap-6 rounded-[16px] bg-white shadow-md relative left-0 sm:left-[-40px] lg:left-[-160px] xl:left-[-200px]">
+  {/* Logo VocalTech */}
+  <img src={tech} alt="Logo VocalTech" className="h-[26px] flex-shrink-0 self-start" />
+
+  {/* Contenido */}
+  <div className="flex flex-col flex-grow gap-4 text-center lg:text-left w-full">
+    <h3 className="text-black font-bold text-[23px] font-sans">Alianza</h3>
+    <p className="text-[#424242] text-[18px] font-manrope">
+      Combinamos la experiencia de ambos mundos para brindar soluciones integrales y personalizadas.
+    </p>
+    
+    {/* Botón corregido y responsivo */}
+    <button className="flex w-full sm:w-auto max-w-[318px] h-[46px] px-4 py-2 justify-center lg:justify-between items-center rounded-[16px] bg-[#2684FC] text-white font-manrope text-[18px] font-semibold whitespace-nowrap self-center lg:self-start">
+      Descubre más sobre VocalTech
+      <FaLongArrowAltRight className="w-[37px] h-[21px] flex-shrink-0 text-white" />
+    </button>
+  </div>
+</div>
+
 
           {/* Flecha Morada - Conectando VocalTech y No-Country */}
           <img

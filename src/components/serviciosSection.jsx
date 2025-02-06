@@ -7,18 +7,18 @@ const Servicios = () => {
     return (
         <section id="servicios" className="py-16 text-center bg-white">
             {/* TÍTULO PRINCIPAL */}
-            <p className="text-[#9A9A9A] text-center font-dm-sans text-[20px] font-normal leading-normal mb-6">
+            <p className="text-[#9A9A9A] font-dm-sans text-[20px] font-normal leading-normal mb-6">
                 SERVICIOS
             </p>
             
             {/* TÍTULO H2 */}
-            <h2 className="text-black text-center font-dm-sans text-[48px] font-bold leading-none max-w-[613px] mx-auto">
+            <h2 className="text-black font-dm-sans text-[48px] font-bold leading-none max-w-[613px] mx-auto">
                 <span className="block">Cómo podemos ayudarte</span>
                 <span className="block">a crecer</span>
             </h2>
 
-            {/* Párrafo con ícono */}
-            <div className="w-full flex justify-end md:justify-end pr-[108px] mt-16">
+            {/* TEXTO "EXPLORA" - Movido un poco a la izquierda en Desktop */}
+            <div className="w-full flex justify-center md:justify-center lg:justify-end max-w-[1200px] mx-auto px-6 md:px-12 lg:px-16 lg:pr-[80px] mt-16 mb-8">
                 <p className="inline-flex items-center gap-2 text-black">
                     Explora todas las soluciones que tenemos para ti
                     <MdArrowRightAlt className="w-6 h-6 relative top-[2px]" />
@@ -26,10 +26,10 @@ const Servicios = () => {
             </div>
 
             {/* TARJETAS */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-[49px] mt-6 px-6 md:px-16">
-
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] mt-6 px-6 md:px-12 lg:px-16 max-w-[1200px] mx-auto">
+                
                 {/* Tarjeta 1 - Diagnóstico */}
-                <div className="flex flex-col items-start w-[300px] h-[354px] px-4 py-4 pb-8 gap-4 bg-[#FBFBFD] shadow-lg rounded-[10px] border border-gray-300">
+                <div className="flex flex-col items-start flex-1 max-w-[320px] h-auto px-6 py-6 pb-8 gap-4 bg-[#FBFBFD] shadow-lg rounded-[10px] border border-gray-300">
                     <img src={search} alt="Diagnósticos Personalizados" className="w-8 h-8 mb-2" />
                     <h3 className="text-black font-manrope text-[28px] font-bold leading-none text-left">
                         Diagnósticos Personalizados
@@ -42,7 +42,7 @@ const Servicios = () => {
                 </div>
 
                 {/* Tarjeta 2 - Soluciones */}
-                <div className="flex flex-col items-start w-[300px] h-[354px] px-4 py-4 pb-8 gap-4 bg-[#FBFBFD] shadow-lg rounded-[10px] border border-gray-300">
+                <div className="flex flex-col items-start flex-1 max-w-[320px] h-auto px-6 py-6 pb-8 gap-4 bg-[#FBFBFD] shadow-lg rounded-[10px] border border-gray-300">
                     <img src={copa} alt="Soluciones Integrales" className="w-8 h-8 mb-2" />
                     <h3 className="text-black font-manrope text-[28px] font-bold leading-none text-left">
                         Soluciones Integrales
@@ -56,7 +56,7 @@ const Servicios = () => {
                 </div>
 
                 {/* Tarjeta 3 - Estrategias */}
-                <div className="flex flex-col items-start w-[300px] h-[354px] px-4 py-4 pb-8 gap-4 bg-[#FBFBFD] shadow-lg rounded-[10px] border border-gray-300">
+                <div className="flex flex-col items-start flex-1 max-w-[320px] h-auto px-6 py-6 pb-8 gap-4 bg-[#FBFBFD] shadow-lg rounded-[10px] border border-gray-300">
                     <img src={chat} alt="Estrategias de Comunicación" className="w-8 h-8 mb-2" />
                     <h3 className="text-black font-manrope text-[28px] font-bold leading-none text-left">
                         Estrategias de Comunicación
