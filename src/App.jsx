@@ -5,7 +5,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import LandingPage from "./Pages/LandingPage";
 import EmprendedorForm from "./components/EmprendedorForm";
-import  Adminpage  from "./Pages/Adminpage";
+import Adminpage  from "./Pages/Adminpage";
 import FormEmpresaNavi from "./components/FormEmpresaNavi";
 import Mvp1 from "./components/mvp1";
 import Comunicacion1 from "./components/Comunicacion1";
@@ -25,6 +25,12 @@ import FinEmpre from "./components/FinEmpre";
 //import FormNavigation from "./components/FormNavigation";
 import AdminpageEmprendedor from "./Pages/AdminpageEmprendedor";
 import DetalleLead from "./components/DetalleLead";
+import NosotrosPages from "./Pages/NosotrosPages";
+
+
+
+
+
 
 
 function App() {
@@ -103,6 +109,13 @@ function App() {
 
         {/* Rutas de fin-empre*/}
         <Route path="/fin-empre" element={<FinEmpre />} />
+
+
+{/* Ruta de la NosotrosPage */}
+<Route path="/nosotros" element={<NosotrosPages />} />
+
+
+
 
         {/* Ruta 404: Página no encontrada */}
         <Route path="*" element={<div>Página no encontrada - 404</div>} />

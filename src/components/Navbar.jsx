@@ -49,12 +49,12 @@ function Navbar() {
               <span>Servicios</span>
               <MdArrowDropDown className="text-lg" />
             </li>
-            <li className="text-black cursor-pointer hover:text-blue-600">Emprendedores</li>
-            <li className="text-black cursor-pointer hover:text-blue-600">Empresas</li>
-            <li className="text-black cursor-pointer hover:text-blue-600">Nosotros</li>
-            <li className="text-black cursor-pointer hover:text-blue-600 whitespace-nowrap">
-              Contacto
-            </li>
+            <li><Link to="/emprendedores" className="text-black cursor-pointer hover:text-blue-600">Emprendedores</Link></li>
+            <li><Link to="/empresas" className="text-black cursor-pointer hover:text-blue-600">Empresas</Link></li>
+            <li><Link to="/nosotros" className="text-black cursor-pointer hover:text-blue-600">
+  Nosotros
+</Link></li>
+            <li><Link to="/contacto" className="text-black cursor-pointer hover:text-blue-600 whitespace-nowrap">Contacto</Link></li>
           </ul>
         </div>
 
@@ -108,10 +108,12 @@ function Navbar() {
                     Servicios <MdArrowDropDown className="text-lg" />
                   </button>
                 </li>
-                <li className="text-black cursor-pointer hover:text-blue-600 py-4">Emprendedores</li>
-                <li className="text-black cursor-pointer hover:text-blue-600 py-4">Empresas</li>
-                <li className="text-black cursor-pointer hover:text-blue-600 py-4">Nosotros</li>
-                <li className="text-black cursor-pointer hover:text-blue-600 py-4">Contacto</li>
+                <li><Link to="/emprendedores" className="text-black cursor-pointer hover:text-blue-600">Emprendedores</Link></li>
+            <li><Link to="/empresas" className="text-black cursor-pointer hover:text-blue-600">Empresas</Link></li>
+            <li><Link to="/nosotros" className="text-black cursor-pointer hover:text-blue-600">
+  Nosotros
+</Link></li>
+            <li><Link to="/contacto" className="text-black cursor-pointer hover:text-blue-600 whitespace-nowrap">Contacto</Link></li>
               </ul>
             </div>
 
