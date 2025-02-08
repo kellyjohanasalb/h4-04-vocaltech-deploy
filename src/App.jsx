@@ -26,6 +26,7 @@ import FinEmpre from "./components/FinEmpre";
 import AdminpageEmprendedor from "./Pages/AdminpageEmprendedor";
 import DetalleLead from "./components/DetalleLead";
 import NosotrosPages from "./Pages/NosotrosPages";
+import Contacto from "./Pages/Contacto";
 
 
 
@@ -113,6 +114,10 @@ function App() {
 
 {/* Ruta de la NosotrosPage */}
 <Route path="/nosotros" element={<NosotrosPages />} />
+
+
+{/* Ruta de la Contacto */}
+<Route path="/contacto" element={<Contacto />} />
 
 
 
