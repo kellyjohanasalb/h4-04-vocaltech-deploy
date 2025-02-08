@@ -25,7 +25,7 @@ import FinEmpre from "./components/FinEmpre";
 //import FormNavigation from "./components/FormNavigation";
 import AdminpageEmprendedor from "./Pages/AdminpageEmprendedor";
 import DetalleLead from "./components/DetalleLead";
-
+import Adminformulario  from "./Pages/AdminForm";
 
 function App() {
   return (
@@ -49,9 +49,12 @@ function App() {
 
         {/* Ruta Formulario Emprendedor */}
         <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
-
+        
         {/* Rutas de admin */}
         <Route path="/adminpage" element={<Adminpage />} />
+
+          {/* Rutas de admin */}
+          <Route path="/adminForm" element={<Adminformulario />} />
 
          {/* Rutas de admin Emprendedor */}
          <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />

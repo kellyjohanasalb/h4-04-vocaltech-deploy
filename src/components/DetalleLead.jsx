@@ -1,5 +1,5 @@
 
-const DetalleLead = ({ leadId }) => {
+const DetalleLead = ({ leadId,setView }) => {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-50">
       <div className="p-6 bg-white shadow-md rounded-lg max-w-4xl mx-auto w-full">
@@ -66,9 +66,12 @@ const DetalleLead = ({ leadId }) => {
         </div>
       </div>
 
-      {/* Botón Final - Asegurar que siempre es visible */}
+      {/* Botón para cambiar la vista a Adminformulario */}
       <div className="mt-4 flex justify-end p-4">
-        <button className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center space-x-2">
+        <button
+          className="bg-purple-600 text-white px-4 py-2 rounded-md flex items-center space-x-2"
+          onClick={() => setView("adminformulario")}
+        >
           <span>📂</span>
           <span>Ver Respuestas del Formulario</span>
         </button>
