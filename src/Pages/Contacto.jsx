@@ -21,9 +21,9 @@ const Contacto = () => {
                 Las mejores ideas cobran vida cuando se comunican con claridad y estrategia.
                 En VocalTech, te ayudamos a conectar, liderar y construir con impacto.
               </p>
-              <p className="mt-2 text-[18px] font-semibold text-[#424242] font-manrope">Escríbenos y comencemos a crear juntos.</p>
+              <p className="mt-2 text-[18px] font-semibold text-[#424242] font-manrope"><br/>Escríbenos y comencemos a crear juntos.</p>
               <p className="mt-2 text-[18px] font-semibold text-[#9A9A9A] font-manrope w-[390px]">
-                Miles de emprendedores y empresas ya confían en VocalTech para impulsar su comunicación y desarrollo, ¿te sumas?
+               <br/> Miles de emprendedores y empresas ya confían en VocalTech para impulsar su comunicación y desarrollo, ¿te sumas?
               </p>
             </div>
             <div className="flex justify-center space-x-4 mt-[24px] -ml-20 w-full grayscale">
