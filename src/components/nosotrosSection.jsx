@@ -5,8 +5,12 @@ import mujer from "../assets/images/image-1.png";
 import frameAzul from "../assets/icons/Frame.png";
 import frameMorado from "../assets/icons/Frame (1).png";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Nosotros = () => {
+  const navigate = useNavigate();
+
+
   return (
     <section id="nosotros" className="py-16 px-8 relative flex flex-col items-center">
       {/* Sección de Nosotros */}
@@ -64,7 +68,9 @@ const Nosotros = () => {
     </p>
     
     {/* Botón corregido y responsivo */}
-    <button className="flex w-full sm:w-auto max-w-[318px] h-[46px] px-4 py-2 justify-center lg:justify-between items-center rounded-[16px] bg-[#2684FC] text-white font-manrope text-[18px] font-semibold whitespace-nowrap self-center lg:self-start">
+    <button className="flex w-full sm:w-auto max-w-[318px] h-[46px] px-4 py-2 justify-center lg:justify-between items-center rounded-[16px] bg-[#2684FC] text-white font-manrope text-[18px] font-semibold whitespace-nowrap self-center lg:self-start"
+    onClick={() => navigate("/nosotros")}
+    >
       Descubre más sobre VocalTech
       <FaLongArrowAltRight className="w-[37px] h-[21px] flex-shrink-0 text-white" />
     </button>

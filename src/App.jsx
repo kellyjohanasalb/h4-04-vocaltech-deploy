@@ -5,7 +5,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import LandingPage from "./Pages/LandingPage";
 import EmprendedorForm from "./components/EmprendedorForm";
-import Adminpage  from "./Pages/Adminpage";
+import Adminpage from "./Pages/Adminpage";
 import FormEmpresaNavi from "./components/FormEmpresaNavi";
 import Mvp1 from "./components/mvp1";
 import Comunicacion1 from "./components/Comunicacion1";
@@ -55,15 +55,15 @@ function App() {
         <Route path="/form-empresa" element={<FormEmpresaNavi />} />
 
         {/* Ruta Formulario Emprendedor */}
-        <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
+        <Route path="/form-emprendedor" element={<EmprendedorForm />} />
 
         {/* Rutas de admin */}
         <Route path="/adminpage" element={<Adminpage />} />
 
-         {/* Rutas de admin Emprendedor */}
-         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
-         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
-        
+        {/* Rutas de admin Emprendedor */}
+        <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
+        <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
 
         {/* Rutas de mvp1 */}
@@ -84,8 +84,8 @@ function App() {
         {/* Rutas de formulario-terminado*/}
         <Route path="/formulario-terminado" element={<FormularioTerminado />} />
 
-      {/* Rutas de fin*/}
-      <Route path="/fin" element={<Fin />} />
+        {/* Rutas de fin*/}
+        <Route path="/fin" element={<Fin />} />
 
         {/* Rutas de comunicacion-empre1*/}
         <Route path="/comunicacion-empre1" element={<ComunicacionEmpre1 />} />
@@ -112,12 +112,12 @@ function App() {
         <Route path="/fin-empre" element={<FinEmpre />} />
 
 
-{/* Ruta de la NosotrosPage */}
-<Route path="/nosotros" element={<NosotrosPages />} />
+        {/* Ruta de la NosotrosPage */}
+        <Route path="/nosotros" element={<NosotrosPages />} />
 
 
-{/* Ruta de la Contacto */}
-<Route path="/contacto" element={<Contacto />} />
+        {/* Ruta de la Contacto */}
+        <Route path="/contacto" element={<Contacto />} />
 
 
 

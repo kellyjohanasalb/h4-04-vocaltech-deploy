@@ -1,7 +1,10 @@
 import { FaLongArrowAltRight } from "react-icons/fa";
 import rectangleTwo from "../assets/images/CUADRO-ESQUINA-2.png";
+import { useNavigate } from "react-router-dom";
 
 const Vocaltech = () => {
+    const navigete = useNavigate();
+
     return (
         <section className="relative flex flex-col items-center justify-center py-16 overflow-hidden text-center bg-white">
             {/* Imagen en la esquina superior izquierda más visible */}
@@ -40,7 +43,9 @@ const Vocaltech = () => {
             <button className="mt-10 inline-flex h-[46px] px-[10px] justify-center items-center gap-[10px] flex-shrink-0 
     rounded-[16px] bg-[linear-gradient(227deg,#2575FC_-14.85%,#052855_31.53%,#6A11CB_76.16%,#D230E3_119.04%)]
     shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)]
-    text-white font-medium text-lg hover:scale-105 transition-transform duration-300 z-[10] relative">
+    text-white font-medium text-lg hover:scale-105 transition-transform duration-300 z-[10] relative" 
+    onClick={() => navigete("/formularioinicio")}
+    >
     <span>Obtener Diagnóstico Ahora</span>
     <FaLongArrowAltRight className="w-5 h-5" />
 </button>
