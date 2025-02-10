@@ -2,8 +2,13 @@ import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaYoutube } from "react-icons/fa6";
 import { CiLinkedin } from "react-icons/ci";
 import xIcon from "../assets/icons/X.png"; // Importa la imagen de X
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+
+
+
+
     return (
         <footer className="bg-gradient-to-r from-[#2575FC] via-[#052855] to-[#6A11CB] flex flex-col items-start py-16 px-8 md:px-16 max-w-[1440px] mx-auto">
             {/* Contenedor principal (Columna en móvil, Fila en pantallas grandes) */}
@@ -36,14 +41,14 @@ const Footer = () => {
                     </div>
 
                     <p className="text-xs text-white opacity-80">
-                        Al suscribirte, aceptas nuestra <a href="#" className="underline">Política de Privacidad</a> y 
+                        Al suscribirte, aceptas nuestra <a href="#" className="underline">Política de Privacidad</a> y
                         consientes recibir actualizaciones.
                     </p>
                 </div>
 
                 {/* Contenedor Derecho: Servicios, Institucional y Síguenos (Responsive) */}
                 <div className="w-full lg:w-1/2 flex flex-col lg:flex-row justify-start gap-10 pl-6">
-                    
+
                     {/* Servicios */}
                     <div>
                         <h3 className="font-semibold text-white">Servicios</h3>
@@ -62,13 +67,14 @@ const Footer = () => {
                         <h3 className="font-semibold text-white">Institucional</h3>
                         <ul className="mt-6 space-y-2 text-sm">
                             <li className="flex text-white py-2 items-start w-full">
-                                <a href="#" className="hover:underline">Nosotros</a>
+                                <Link to="/nosotros" className="hover:underline">Nosotros</Link>
                             </li>
-                            <li className="flex text-white  py-2 items-start w-full">
-                                <a href="#" className="hover:underline">Contacto</a>
+                            <li className="flex text-white py-2 items-start w-full">
+                                <Link to="/contacto" className="hover:underline">Contacto</Link>
                             </li>
                         </ul>
                     </div>
+
 
                     {/* Redes Sociales */}
                     <div>
