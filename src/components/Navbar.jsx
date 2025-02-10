@@ -28,9 +28,9 @@ function Navbar() {
       >
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
-          <h1 className="text-2xl font-bold text-black">
+          <Link to="/" className="text-2xl font-bold text-black">
             Vocal<span className="text-purple-600">Tech</span>
-          </h1>
+          </Link>
 
           {/* Botón de menú en móviles */}
           <button
