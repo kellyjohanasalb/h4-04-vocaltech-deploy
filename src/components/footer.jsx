@@ -2,10 +2,15 @@ import { CiFacebook } from "react-icons/ci";
 import { FaInstagram, FaYoutube } from "react-icons/fa6";
 import { CiLinkedin } from "react-icons/ci";
 import xIcon from "../assets/icons/X.png"; // Importa la imagen de X
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+    const navigate = useNavigate();
 
+    const handleNavigateNosotros = () => {
+        navigate("/nosotros");
+        window.scrollTo(0, 0); // Hace scroll al inicio
+    };
 
 
 
@@ -66,9 +71,11 @@ const Footer = () => {
                     <div>
                         <h3 className="font-semibold text-white">Institucional</h3>
                         <ul className="mt-6 space-y-2 text-sm">
-                            <li className="flex text-white py-2 items-start w-full">
-                                <Link to="/nosotros" className="hover:underline">Nosotros</Link>
-                            </li>
+                        <li className="flex text-white py-2 items-start w-full">
+                            <button onClick={handleNavigateNosotros} className="hover:underline text-white">
+                                Nosotros
+                            </button>
+                        </li>
                             <li className="flex text-white py-2 items-start w-full">
                                 <Link to="/contacto" className="hover:underline">Contacto</Link>
                             </li>

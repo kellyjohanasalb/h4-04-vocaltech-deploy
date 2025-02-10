@@ -1,7 +1,15 @@
 import fondo from "../../assets/images/bg-nosotros.jpg";
 import vocal from "../../assets/images/VocalTech.png";
+import { useEffect } from "react";
 
 const Nosotros = () => {
+    // Hacer scroll hacia arriba cuando se monta la vista
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+
+
   return (
     <div
       className="relative min-h-screen bg-cover bg-center flex flex-col justify-end items-center gap-[184px] px-[402px] pt-[279px] pb-[39px]"
