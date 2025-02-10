@@ -15,25 +15,25 @@ const FormularioEnviado = () => {
   return (
     <>
       {/* Navbar fijo en la parte superior */}
-      <header className="p-4 bg-white w-full fixed top-0 left-0 z-50 shadow-md">
+      <header className="fixed top-0 left-0 z-50 w-full p-4 bg-white shadow-md">
         <Navbar />
       </header>
 
       {/* Contenedor principal con padding-top para evitar que se esconda detrás del navbar */}
-      <div className="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-white w-full max-w-3xl mx-auto pt-20">
-        <h1 className="text-4xl font-bold text-gray-900 text-center leading-tight">
+      <div className="flex flex-col items-center justify-center w-full max-w-3xl min-h-screen p-6 pt-20 mx-auto text-center bg-white">
+        <h1 className="text-4xl font-bold leading-tight text-center text-gray-900">
           ¡Tu formulario ha sido enviado con éxito!
         </h1>
-        <p className="mt-4 text-lg text-gray-700 max-w-lg px-4 md:px-0">
+        <p className="max-w-lg px-4 mt-4 text-lg text-gray-700 md:px-0">
           Revisaremos tus respuestas y te enviaremos un diagnóstico personalizado a tu correo y WhatsApp.
         </p>
         <Link
           to="/"
-          className="mt-6 flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:from-blue-600 hover:to-purple-700 transition-all text-sm md:text-base"
+          className="flex items-center px-6 py-3 mt-6 text-sm text-white transition-all rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 md:text-base"
         >
           Continuar explorando VocalTech <FaArrowRight className="ml-2" />
         </Link>
-        <div className="mt-8 flex justify-center">
+        <div className="flex justify-center mt-8">
           <img
             src={manos}
             alt="High five"

@@ -4,6 +4,7 @@ import Comunicación from "./cards/Comunicacion";
 import Tecnología from "./cards/Tecnologia";
 import Combinado from "./cards/Combinado";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/icons/image 2.svg"; // Asegúrate de que el nombre sea correcto
 
 const FormularioInicio = () => {
     const navigate = useNavigate();
@@ -22,8 +23,8 @@ const FormularioInicio = () => {
 
     return (
         <div className="w-full max-w-5xl p-6 bg-white rounded-lg shadow-lg">
-            {/* Sección izquierda del encabezado */}
-            <div className="flex items-center mb-4">
+            {/* Contenedor del botón de regresar */}
+            <div className="mb-4">
                 <button
                     onClick={handleBackClick}
                     className="flex items-center text-gray-600 transition-colors hover:text-gray-800"
@@ -33,44 +34,44 @@ const FormularioInicio = () => {
                 </button>
             </div>
 
-            {/* Encabezado */}
-            <div className="mb-6 text-center">
-                <h1 className="text-5xl font-bold md:text-6xl">
-                    <span className="text-black">Vocal</span>
-                    <span className="text-purple-600">Tech</span>
-                </h1>
+            {/* Contenedor centrado del logo y la barra de progreso */}
+            <div className="flex flex-col items-center">
+                <img 
+                    src={logo} 
+                    alt="Vocaltech" 
+                    className="w-[328px] h-auto max-w-full mb-4"
+                />
                 <ProgressBar />
             </div>
 
             {/* Subtítulo */}
-            <h2 className="mt-4 text-2xl font-semibold text-gray-700">
+            <h2 className="mt-6 text-2xl font-semibold text-gray-700 text-center">
                 ¿Qué necesitas construir o mejorar?
             </h2>
-            <p className="mt-2 text-sm text-gray-500">
-            En Vocaltech te ayudamos a identificar y construir lo que tu negocio necesita.
+            <p className="mt-2 text-sm text-gray-500 text-center">
+                En Vocaltech te ayudamos a identificar y construir lo que tu negocio necesita.
             </p>
 
             {/* Tarjetas */}
             <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-3">
-    <Comunicación
-        className="min-h-[250px] flex flex-col justify-between"
-        title="Comunicación y Liderazgo"
-        description="Potenciar tus habilidades de comunicación"
-    />
-    <Tecnología
-        className="min-h-[250px] flex flex-col justify-between"
-        title="Soluciones Tecnológicas"
-        description="Impulsar tus proyectos Tech con soluciones a medida"
-    />
-    <Combinado
-        className="min-h-[250px] flex flex-col justify-between"
-        title="Combinado"
-        description="Tu proyecto necesita tanto comunicación como tecnología"
-    />
-</div>
+                <Comunicación
+                    className="min-h-[250px] flex flex-col justify-between"
+                    title="Comunicación y Liderazgo"
+                    description="Potenciar tus habilidades de comunicación"
+                />
+                <Tecnología
+                    className="min-h-[250px] flex flex-col justify-between"
+                    title="Soluciones Tecnológicas"
+                    description="Impulsar tus proyectos Tech con soluciones a medida"
+                />
+                <Combinado
+                    className="min-h-[250px] flex flex-col justify-between"
+                    title="Combinado"
+                    description="Tu proyecto necesita tanto comunicación como tecnología"
+                />
+            </div>
 
-
-            {/* Nuevo texto centrado y botones */}
+            {/* Texto centrado y botones */}
             <div className="mt-8 text-center">
                 <h3 className="text-[#424242] text-xl font-medium font-[Manrope]">
                     Para continuar, cuéntanos quién eres para adaptar tu diagnóstico

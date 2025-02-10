@@ -11,7 +11,7 @@ const Footer = () => {
                 {/* Bloque de VocalTech + Formulario */}
                 <div className="w-full lg:w-[500px] flex flex-col items-start gap-6">
                     {/* VocalTech */}
-                    <h2 className="text-lg font-semibold w-[106px] h-[17px] leading-[17px]">
+                    <h2 className="text-lg font-semibold text-white w-[106px] h-[17px] leading-[17px]">
                         VocalTech
                     </h2>
 
@@ -35,7 +35,7 @@ const Footer = () => {
                         </button>
                     </div>
 
-                    <p className="text-xs opacity-80">
+                    <p className="text-xs text-white opacity-80">
                         Al suscribirte, aceptas nuestra <a href="#" className="underline">Política de Privacidad</a> y 
                         consientes recibir actualizaciones.
                     </p>
@@ -46,12 +46,12 @@ const Footer = () => {
                     
                     {/* Servicios */}
                     <div>
-                        <h3 className="font-semibold">Servicios</h3>
+                        <h3 className="font-semibold text-white">Servicios</h3>
                         <ul className="mt-6 space-y-2 text-sm">
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white  py-2 items-start w-full">
                                 <a href="#" className="hover:underline">Para Empresas</a>
                             </li>
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white py-2 items-start w-full">
                                 <a href="#" className="hover:underline">Para Emprendedores</a>
                             </li>
                         </ul>
@@ -59,12 +59,12 @@ const Footer = () => {
 
                     {/* Institucional */}
                     <div>
-                        <h3 className="font-semibold">Institucional</h3>
+                        <h3 className="font-semibold text-white">Institucional</h3>
                         <ul className="mt-6 space-y-2 text-sm">
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white py-2 items-start w-full">
                                 <a href="#" className="hover:underline">Nosotros</a>
                             </li>
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white  py-2 items-start w-full">
                                 <a href="#" className="hover:underline">Contacto</a>
                             </li>
                         </ul>
@@ -72,29 +72,29 @@ const Footer = () => {
 
                     {/* Redes Sociales */}
                     <div>
-                        <h3 className="font-semibold">Síguenos</h3>
+                        <h3 className="font-semibold text-white">Síguenos</h3>
                         <ul className="mt-6 space-y-2 text-sm">
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white py-2 items-start w-full">
                                 <a href="#" className="flex items-center gap-2 hover:underline">
                                     <CiFacebook size={20} /> Facebook
                                 </a>
                             </li>
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex  text-white py-2 items-start w-full">
                                 <a href="#" className="flex items-center gap-2 hover:underline">
                                     <FaInstagram size={20} /> Instagram
                                 </a>
                             </li>
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex  text-white py-2 items-start w-full">
                                 <a href="#" className="flex items-center gap-2 hover:underline">
                                     <img src={xIcon} alt="X" className="w-5 h-5" /> X
                                 </a>
                             </li>
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white py-2 items-start w-full">
                                 <a href="#" className="flex items-center gap-2 hover:underline">
                                     <CiLinkedin size={20} /> LinkedIn
                                 </a>
                             </li>
-                            <li className="flex py-2 items-start w-full">
+                            <li className="flex text-white py-2 items-start w-full">
                                 <a href="#" className="flex items-center gap-2 hover:underline">
                                     <FaYoutube size={20} /> Youtube
                                 </a>
@@ -110,10 +110,10 @@ const Footer = () => {
             {/* Derechos reservados y políticas */}
             <div className="w-full flex flex-col md:flex-row justify-between items-center text-xs opacity-80 mt-4">
                 {/* Texto de derechos reservados alineado a la izquierda */}
-                <p className="text-center md:text-left">&copy; 2025 VocalTech. Todos los derechos reservados.</p>
+                <p className="text-center text-white md:text-left">&copy; 2025 VocalTech. Todos los derechos reservados.</p>
 
                 {/* Enlaces alineados a la derecha en desktop, centrados en móvil */}
-                <div className="flex flex-col md:flex-row gap-4 mt-2 md:mt-0">
+                <div className="flex flex-col text-white md:flex-row gap-4 mt-2 md:mt-0">
                     <a href="#" className="hover:underline">Política de Privacidad</a>
                     <a href="#" className="hover:underline">Términos de Servicio</a>
                     <a href="#" className="hover:underline">Configuración de Cookies</a>
