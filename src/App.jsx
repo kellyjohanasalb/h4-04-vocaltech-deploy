@@ -25,6 +25,7 @@ import FinEmpre from "./components/FinEmpre";
 //import FormNavigation from "./components/FormNavigation";
 import AdminpageEmprendedor from "./Pages/AdminpageEmprendedor";
 import DetalleLead from "./components/DetalleLead";
+import Adminformulario  from "./Pages/AdminForm";
 import NosotrosPages from "./Pages/NosotrosPages";
 import Contacto from "./Pages/Contacto";
 
@@ -64,6 +65,18 @@ function App() {
         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
 
+        <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
+        
+        {/* Rutas de admin */}
+        <Route path="/adminpage" element={<Adminpage />} />
+
+          {/* Rutas de admin */}
+          <Route path="/adminForm" element={<Adminformulario />} />
+
+         {/* Rutas de admin Emprendedor */}
+         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
+         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+        
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
 
         {/* Rutas de mvp1 */}
