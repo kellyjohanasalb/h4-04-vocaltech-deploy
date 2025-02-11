@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // O cambiar según tu sistema de rutas.
 import ProgresBar from "./ProgresBar";
+import logo from "../assets/icons/VocalTech.png";
 
 export default function Talento2() {
   const navigate = useNavigate(); // Para redirigir al componente /talento1
@@ -57,7 +58,7 @@ export default function Talento2() {
                     Regresar
                 </button>
                 <img
-                    src="/VocalTech.png"
+                    src={logo}
                     alt="VocalTech"
                     className="lg:w-[328px] h-[54px]"
                 />

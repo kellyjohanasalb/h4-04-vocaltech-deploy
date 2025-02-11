@@ -4,6 +4,7 @@ import ProgresBar from "./ProgresBar";
 import { useFormulario } from "./FormularioContext";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { GrDocumentSound } from "react-icons/gr";
+import logo from "../assets/icons/VocalTech.png";
 
 export default function TalentoEmpre2() {
     const { formData, updateFormData } = useFormulario();
@@ -148,7 +149,7 @@ export default function TalentoEmpre2() {
                         Regresar
                     </button>
                     <img
-                        src="/VocalTech.png"
+                        src={logo}
                         alt="VocalTech"
                         className="lg:w-[328px] h-[54px]"
                     />

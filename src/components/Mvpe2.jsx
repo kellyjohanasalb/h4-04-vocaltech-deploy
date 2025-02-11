@@ -3,6 +3,7 @@ import { CgArrowRight } from "react-icons/cg";
 import ProgresBar from "./ProgresBar";
 import { useNavigate } from "react-router-dom";
 import { useFormulario } from "./FormularioContext";
+import logo from "../assets/icons/VocalTech.png";
 
 export default function Mvpe2() {
         const { updateFormData } = useFormulario(); // Estado para guardar la opción seleccionada
@@ -112,7 +113,7 @@ export default function Mvpe2() {
                     Regresar
                 </button>
                 <img
-                    src="/VocalTech.png"
+                    src={logo}
                     alt="VocalTech"
                     className="lg:w-[328px] h-[54px]"
                 />

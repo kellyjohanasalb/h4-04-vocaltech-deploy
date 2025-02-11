@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useFormulario } from "./FormularioContext";
 import { CgArrowRight } from "react-icons/cg";
 import ProgresBar from "./ProgresBar";
+import logo from "../assets/icons/VocalTech.png";
 
 
 export default function Mvpe1() {
@@ -113,8 +114,8 @@ export default function Mvpe1() {
                     </svg>
                     Regresar
                 </button>
-                <img
-                    src="/VocalTech.png"
+                <img                    
+                    src={logo}
                     alt="VocalTech"
                     className="lg:w-[328px] h-[54px]"
                 />
