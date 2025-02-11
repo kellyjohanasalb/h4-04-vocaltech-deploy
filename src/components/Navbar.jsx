@@ -41,7 +41,7 @@ function Navbar() {
           </button>
 
           {/* Menú en pantallas grandes */}
-          <ul className="hidden ml-8 md:flex gap-8">
+          <ul className="hidden gap-8 ml-8 md:flex">
             <li
               className="flex items-end gap-[4px] px-2 text-black hover:text-blue-600 cursor-pointer"
               onClick={() => setShowServices(true)}
@@ -59,10 +59,10 @@ function Navbar() {
         </div>
 
         {/* Botón y login en pantallas grandes */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="items-center hidden space-x-6 md:flex">
           <Link
             to="/login"
-            className="text-sm text-gray-700 hover:text-gray-900 ml-6 whitespace-nowrap"
+            className="ml-6 text-sm text-gray-700 hover:text-gray-900 whitespace-nowrap"
           >
             Ingresar
           </Link>
@@ -85,10 +85,10 @@ function Navbar() {
 
       {/* Menú desplegable en móviles */}
       {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden">
-          <div className="fixed top-0 left-0 w-4/5 h-full bg-white shadow-md p-6">
+        <div className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden">
+          <div className="fixed top-0 left-0 w-4/5 h-full p-6 bg-white shadow-md">
             <button
-              className="absolute top-4 right-4 text-2xl text-gray-600"
+              className="absolute text-2xl text-gray-600 top-4 right-4"
               onClick={() => setMenuOpen(false)}
             >
               <MdClose />
@@ -99,7 +99,7 @@ function Navbar() {
               <ul className="space-y-6">
                 <li>
                   <button
-                    className="w-full text-left text-black hover:text-blue-600 cursor-pointer flex items-center gap-2 py-4"
+                    className="flex items-center w-full gap-2 py-4 text-left text-black cursor-pointer hover:text-blue-600"
                     onClick={() => {
                       setShowServices(true);
                       setMenuOpen(false);
@@ -118,7 +118,7 @@ function Navbar() {
             </div>
 
             <div className="mt-10">
-              <Link to="/login" className="block text-gray-700 hover:text-gray-900 text-lg">
+              <Link to="/login" className="block text-lg text-gray-700 hover:text-gray-900">
                 Ingresar
               </Link>
               <button

@@ -1,30 +1,98 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import { useFormulario } from "./FormularioContext";
 import { CgArrowRight } from "react-icons/cg";
 import ProgresBar from "./ProgresBar";
 
+
 export default function Mvpe1() {
-    const [selectedOption, setSelectedOption] = useState(""); // Estado para guardar la opción seleccionada
-    const navigate = useNavigate(); // Hook para la navegación
+    const { updateFormData } = useFormulario(); // Estado para guardar la opción seleccionada
+        const navigate = useNavigate(); // Hook para la navegación
+        const [mvpe1, setMvpe1] = useState({
+            name: "",
+            tiempo: "",
+            redes: "",
+            sector_actividad: "",
+            etapa: "",
+            categoria: "Emprendedor",
+            respuestas: {
+                comunicacion: {
+                    capacidad_comunicar: "",
+                    importancia_comunicacion_ventas: "",
+                    seguro_comunicar: "",
+                    principal_desafio: "",
+                    mayor_barrera: "",
+                    impacto_comunicacion_liderazgo: "",
+                    mayor_desafio: ""
+                },
+                pitch: {
+                    pitch: "",
+                    frecuencia_presenta: "",
+                    preparado_presentar: "",
+                    mejorar_pitch: {
+                        claridad: 4,
+                        impacto_persuacion: 4,
+                        presentacion_visual: 4,
+                        seguridad_confianza: 4
+                    },
+                    principales_desafios: ""
+                },
+                mvp: {
+                    desarrollar_mvp: "",
+                    etapa: "",
+                    validado: "",
+                    problema_mvp: "",
+                    mayor_dificultad: ""
+                },
+                talentos: {
+                    incoporar_talento: "",
+                    cualidades: "",
+                    candidatos_evaluados: "",
+                    vertical: "",
+                    rol: "",
+                    desafios: ""
+                }
+            },
+            email: "",
+            whatsapp: "",
+            //capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
+        });
+
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            setMvpe1((prevState) => ({
+                ...prevState,
+                respuestas: {
+                    ...prevState.respuestas,
+                    mvp: {
+                        ...prevState.respuestas.mvp,
+                        [name]: value
+                    },
+                },
+            }));
+        };
+
+        const handleNext = (e) => {
+            e.preventDefault();
+            updateFormData(mvpe1); // Actualiza el JSON global
+            console.log("Datos guardados:", mvpe1);
+
+            const desarrollar_mvp = mvpe1.respuestas.mvp.desarrollar_mvp;
+
+            if (desarrollar_mvp === "Sí, estamos en la fase de idea y necesitamos validar" || desarrollar_mvp === "Sí, ya tenemos una idea valida y queremos desarrollar el MVP") {
+                navigate("/mvpe2"); // Redirigir a la ruta "MVPE 2"
+            } else if (desarrollar_mvp === "No, ya tenemos un producto desarrollado" || desarrollar_mvp === "No, y no consideramos una prioridad") {
+                navigate("/talento-empre1")
+            } else {
+                alert("Por favor selecciona una opción antes de continuar."); // Validar que se haya seleccionado una opción
+            }
+            
+        };
+
     const handleBackClick = () => {
         navigate("/pitch1");
     };
 
-    const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value); // Actualizar el estado con la opción seleccionada
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-        if (selectedOption === "Sí, estamos en la fase de idea y necesitamos validar" || selectedOption === "Sí, ya tenemos una idea valida y queremos desarrollar el MVP") {
-            navigate("/mvpe2"); // Redirigir a la ruta "MVPE 2"
-        } else if (selectedOption === "No, ya tenemos un producto desarrollado"
-            || selectedOption === "No, y no consideramos una prioridad") {
-            navigate("/talento-empre1"); // Redirigir a la ruta "Pitch 2" para las otras opciones
-        } else {
-            alert("Por favor selecciona una opción antes de continuar."); // Validar que se haya seleccionado una opción
-        }
-    };
 
     return (
         <div className="flex flex-col items-center min-h-screen py-8 bg-white">
@@ -58,7 +126,7 @@ export default function Mvpe1() {
         </div>
             <form
                 className="w-full max-w-4xl px-4 mt-20"
-                onSubmit={handleSubmit} // Manejar el evento de envío del formulario
+                onSubmit={handleNext} // Manejar el evento de envío del formulario
             >
                 <div>
                     <label className="block text-lg font-semibold" >
@@ -70,26 +138,26 @@ export default function Mvpe1() {
                             "Sí, ya tenemos una idea valida y queremos desarrollar el MVP",
                             "No, ya tenemos un producto desarrollado",
                             "No, y no consideramos una prioridad"
-                        ].map((emprendimiento, index) => (
+                        ].map((desarrollar_mvp, index) => (
                             <label
-                                htmlFor={`emprendimiento-${index}`}
+                                htmlFor={`desarrollar_mvp-${index}`}
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
-                                    id={`emprendimiento-${index}`}
+                                    id={`desarrollar_mvp-${index}`}
                                     type="radio"
-                                    name="emprendimiento"
-                                    value={emprendimiento}
+                                    name="desarrollar_mvp"
+                                    value={desarrollar_mvp}
                                     className="hidden peer"
-                                    onChange={handleOptionChange} // Manejar el cambio de opción
+                                    onChange={handleChange} // Manejar el cambio de opción
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{emprendimiento}</span>
+                                <span className="text-black">{desarrollar_mvp}</span>
                             </label>
                         ))}
                     </div>

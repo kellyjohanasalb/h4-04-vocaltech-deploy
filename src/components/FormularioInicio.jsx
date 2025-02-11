@@ -22,7 +22,8 @@ const FormularioInicio = () => {
     };
 
     return (
-        <div className="w-full max-w-5xl p-6 bg-white rounded-lg shadow-lg">
+        <div className="w-full h-full px-32 bg-white 2xl:px-[450px]">
+        <div className="w-full h-full max-w-5xl p-6 ">
             {/* Contenedor del botón de regresar */}
             <div className="mb-4">
                 <button
@@ -45,10 +46,10 @@ const FormularioInicio = () => {
             </div>
 
             {/* Subtítulo */}
-            <h2 className="mt-6 text-2xl font-semibold text-gray-700 text-center">
+            <h2 className="mt-6 text-2xl font-semibold text-center text-gray-700">
                 ¿Qué necesitas construir o mejorar?
             </h2>
-            <p className="mt-2 text-sm text-gray-500 text-center">
+            <p className="mt-2 text-sm text-center text-gray-500">
                 En Vocaltech te ayudamos a identificar y construir lo que tu negocio necesita.
             </p>
 
@@ -96,6 +97,7 @@ const FormularioInicio = () => {
                     Represento una Empresa
                 </button>
             </div>
+        </div>
         </div>
     );
 };

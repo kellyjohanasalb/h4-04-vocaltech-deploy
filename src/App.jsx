@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { FormularioProvider } from "./components/FormularioContext";
 import Formulario from "./Pages/Fromulario";
 import ServicesPage from "./Pages/ServicesPage";
 import Login from "./Pages/Login";
@@ -33,14 +34,23 @@ import Contacto from "./Pages/Contacto";
 
 
 
+import Empresas from "./components/Empresas";
+import Emprendedores from "./components/Emprendedores";
 
 
 function App() {
   return (
+    <FormularioProvider>
     <Router>
       <Routes>
         {/* Rutas principales */}
         <Route path="/" element={<LandingPage />} />
+
+        {/* Rutas De empresa*/}
+        <Route path="/empresas" element={<Empresas />} />
+
+        {/* Rutas De emprendedores*/}
+        <Route path="/emprendedores" element={<Emprendedores />} />
 
         {/* Rutas de autenticación */}
         <Route path="/registro" element={<Register />} />
@@ -74,8 +84,8 @@ function App() {
           <Route path="/adminForm" element={<Adminformulario />} />
 
          {/* Rutas de admin Emprendedor */}
-         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
-         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+        <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
+        <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
         
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
 
@@ -139,6 +149,7 @@ function App() {
         <Route path="*" element={<div>Página no encontrada - 404</div>} />
       </Routes>
     </Router>
+    </FormularioProvider>
   );
 }
 
