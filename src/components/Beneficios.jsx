@@ -31,7 +31,7 @@ const Beneficios = () => {
     ];
 
     return (
-        <section className="h-[600px] max-w-6xl px-6 py-12 mx-auto flex flex-col items-center justify-center text-center">
+        <section className="flex flex-col items-center justify-center h-auto max-w-6xl px-6 py-12 mx-auto text-center">
             <div className="w-full mb-10 text-left">
             <h2 className="mb-3 text-5xl font-bold text-left text-black font-dm-sans sm:text-4xl">
                 Beneficios para tu empresa

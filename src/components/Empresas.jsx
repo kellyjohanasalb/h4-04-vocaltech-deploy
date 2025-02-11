@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 
 export default function Empresas() {
     return (
-        <div>
+        <div className="mx-auto">
             <header>
                 <Navbar />
             </header>
@@ -14,5 +14,5 @@ export default function Empresas() {
             <Beneficios />
             <ComoFunciona />
         </div>
-    )
+    );
 }
