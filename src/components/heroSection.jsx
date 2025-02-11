@@ -20,11 +20,11 @@ const HeroSection = () => {
         </div>
 
         <h1 className="text-white text-center font-dm-sans text-[40px] sm:text-[48px] md:text-[55px] font-bold leading-tight mt-6 px-2">
-          Impulsa tu Crecimiento con Soluciones a Medida
+          VocalTech Le Pone Voz Y Tecnología A Tu Proyecto.
         </h1>
 
         <p className="text-[#EAEAEA] text-center font-manrope text-[18px] sm:text-[20px] md:text-[24px] font-semibold leading-normal mt-4 max-w-[90%] sm:max-w-[750px] md:max-w-[804px] mx-auto">
-          VocalTech le pone voz y tecnología a tu proyecto.
+        Impulsa tu Crecimiento con Soluciones a Medida
         </p>
       </div>
 

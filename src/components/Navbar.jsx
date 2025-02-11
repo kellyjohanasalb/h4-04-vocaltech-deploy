@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MdArrowDropDown, MdMenu, MdClose } from "react-icons/md";
 import ServicesPage from "../Pages/ServicesPage"; // Importamos la página de servicios
+import logo from "../assets/icons/VocalTech.png"
+
+
 
 function Navbar() {
   const navigate = useNavigate();
@@ -28,9 +31,10 @@ function Navbar() {
       >
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-black">
-            Vocal<span className="text-purple-600">Tech</span>
-          </Link>
+          <Link to="/" className="flex items-center">
+  <img src={logo} alt="Logo VocalTech" className="w-[150px] h-auto" />
+</Link>
+
 
           {/* Botón de menú en móviles */}
           <button

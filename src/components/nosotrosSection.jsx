@@ -1,5 +1,5 @@
 import vos from "../assets/icons/Default-vos.png";
-import tech from "../assets/icons/vovaltech.png";
+import tech from "../assets/icons/VocalTech.png";
 import country from "../assets/icons/Default.png";
 import mujer from "../assets/images/image-1.png";
 import frameAzul from "../assets/icons/Frame.png";

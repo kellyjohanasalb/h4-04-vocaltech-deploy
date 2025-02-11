@@ -4,7 +4,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import Image1 from "../assets/Rectangle.png";
 import Image2 from "../assets/Group1.png";
 import Image3 from "../assets/image.png";
-import vocal from "../assets/VocalTech.png";
+import vocal from "../assets/icons/VocalTech.png";
 import useRegisterUser from "../hooks/useRegister";
 
 const images = [Image2, Image1, Image3];
