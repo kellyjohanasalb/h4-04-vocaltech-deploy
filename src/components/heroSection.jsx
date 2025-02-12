@@ -3,8 +3,11 @@ import etiqueta from "../assets/icons/Bolt-morado.png";
 import VOS from "../assets/icons/image 23.png";
 import fondo from "../assets/images/image 44.png";
 import Nocountry from "../assets/images/image 31.png";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="hero"
@@ -29,13 +32,17 @@ const HeroSection = () => {
       </div>
 
       <div className="mt-6 flex flex-wrap justify-center gap-4 px-4 sm:px-6">
-        <button className="flex items-center justify-center gap-2 h-[46px] px-4 rounded-[16px] bg-[#0F0F0F] hover:bg-[#1a1a1a] text-white font-bold text-sm sm:text-base">
+        <button className="flex items-center justify-center gap-2 h-[46px] px-4 rounded-[16px] bg-[#0F0F0F] hover:bg-[#1a1a1a] text-white font-bold text-sm sm:text-base"
+        onClick={() => navigate("/emprendedores")}
+        >
           Soluciones para emprendedores
           <TiArrowRightThick className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </button>
         <button className="flex items-center justify-center gap-2 h-[46px] px-4 rounded-[16px] bg-gradient-to-br from-[#2575FC] via-[#052855] to-[#D230E3] 
           shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)] animate-gradientMove 
-          text-white font-bold text-sm sm:text-base">
+          text-white font-bold text-sm sm:text-base"
+          onClick={() => navigate("/empresas")}
+          >
           Potencia tu Empresa Ahora
           <TiArrowRightThick className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </button>
