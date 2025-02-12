@@ -113,13 +113,15 @@ const FinEmpre = () => {
 
                     {/* Botón de enviar */}
                     <button
-                        className="mt-0 w-full flex justify-center items-center gap-2 h-[46px] px-4 rounded-[16px] bg-gradient-to-r from-[#2575FC] via-[#052855] to-[#6A11CB] text-[#F8F8F8] font-semibold text-[18px] leading-normal shadow-[inset_2px_4px_4.8px_rgba(64,64,64,0.25),0px_0px_10px_rgba(48,58,197,0.01),0px_0px_9px_rgba(48,58,197,0.11),0px_0px_7px_rgba(48,58,197,0.39),0px_0px_6px_rgba(48,58,197,0.66),0px_0px_3px_rgba(48,58,197,0.76)] bg-[length:200%_200%] hover:animate-gradientMove whitespace-nowrap"
+                        type="button"
                         onClick={() => {
-                            navigate("/formulario-terminado"); // Ruta actualizada
+                            console.log("✅ Botón presionado: Navegando a /formulario-terminado...");
+                            navigate("/formulario-terminado");
                         }}
                     >
                         Obtener Diagnóstico Gratis
                     </button>
+
                 </form>
 
                 {/* Información adicional */}

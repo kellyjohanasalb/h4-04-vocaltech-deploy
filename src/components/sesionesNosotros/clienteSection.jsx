@@ -34,7 +34,7 @@ const ClientsSection = () => {
         <button className="flex w-[287px] h-[46px] px-4 py-2 rounded-[16px] bg-gradient-to-br from-[#2575FC] via-[#052855] via-[#6A11CB] to-[#D230E3] text-white font-semibold shadow-lg items-center justify-center gap-[10px] flex-shrink-0 inset-shadow transition hover:opacity-80"
         onClick={() => navigate("/contacto")}
         >
-          <span className="font-manrope text-[18px] font-semibold">Contactar Soporte</span>
+          <span className="font-manrope text-[18px] font-semibold">Contactar Ahora</span>
           <FaLongArrowAltRight className="text-white text-lg relative top-[1px]" />
         </button>
       </div>

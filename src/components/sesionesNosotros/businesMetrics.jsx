@@ -12,10 +12,9 @@ const BusinessMetrics = () => {
           <h2 className="text-[32px] md:text-[40px] font-semibold text-black leading-[48px] tracking-[-1.3px] font-dm-sans">
             Unidos Fortalezas:<br className="hidden md:block" />Transforma Negocios
           </h2>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed w-full">
-            Expertos en comunicación y tecnología trabajando por tu éxito.
-          </p>
-        </div>
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed w-full max-w-none whitespace-nowrap">
+  Expertos en comunicación y tecnología trabajando por tu éxito.
+</p>  </div>
 
         {/* Contenedor de imágenes */}
         <div className="flex gap-4 md:gap-6 flex-1 justify-center lg:justify-end">
