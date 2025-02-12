@@ -53,7 +53,7 @@ const Contacto = () => {
                 <label className="block text-black font-manrope text-[18px] font-medium">Mensaje *</label>
                 <textarea rows="4" placeholder="¿En qué te podemos ayudar?" className="w-full mt-2 p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"></textarea>
               </div>
-              <button type="submit" className="w-[388px] h-[46px] bg-[#2684FC] text-white rounded-[16px] flex justify-center items-center gap-2 px-4 text-lg font-semibold hover:bg-blue-700">
+              <button type="submit" className="w-[388px] h-[46px] bg-[#2684FC] text-white rounded-[16px] flex justify-center items-center gap-2 px-4 text-lg  hover:bg-blue-700 ml-16">
                 <TiLocationArrowOutline className="text-white text-2xl fill-white" />
                 Enviar Consulta
               </button>

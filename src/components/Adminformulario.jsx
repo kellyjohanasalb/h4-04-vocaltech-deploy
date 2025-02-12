@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { PaperClipIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid"; // Si usas Heroicons
-import { Paperclip, Send, Eye, ClipboardList } from "lucide-react";
+import {  Eye, ClipboardList } from "lucide-react";
+
+
 export default function Formulario() {
   const [notasInternas, setNotasInternas] = useState("El lead necesita ayuda comunicacional de formar inmediata.Tambien podemos ofrecerte una solucion integral brincandole apoyo tecnologico para que contruya un MVP")
   const [message, setMessage] = useState("Hola Leandro. Vimos tus datos y queremos ayudarte. ¿Te gustaría agendar una reunión?"); // Definir estado para el mensaje
@@ -191,10 +193,12 @@ export default function Formulario() {
         <button className="flex items-center text-sm text-gray-600 hover:text-gray-800 border border-gray-400 rounded-md px-3 py-1 hover:border-gray-600">
           <PaperClipIcon className="w-4 h-4 mr-1" /> Adjuntar archivo
         </button>
-
-        <button className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600">
-          <PaperAirplaneIcon className="w-4 h-4 mr-2" /> Enviar Diagnóstico
-        </button>
+        
+        <div className="flex space-x-4">
+          <button className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 space-x-4">
+            <PaperAirplaneIcon className="w-4 h-4 mr-2" /> Enviar Diagnóstico al Email
+          </button>
+        </div>
       </div>
     </div>
   );

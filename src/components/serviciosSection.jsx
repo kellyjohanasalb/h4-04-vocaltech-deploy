@@ -2,8 +2,12 @@ import search from "../assets/icons/Minimalistic Magnifer.png";
 import chat from "../assets/icons/Chat Round Call.png";
 import copa from "../assets/icons/Cup.png";
 import { MdArrowRightAlt } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Servicios = () => {
+    const navigate = useNavigate();
+
+
     return (
         <section id="servicios" className="py-16 text-center bg-white">
             {/* TÍTULO PRINCIPAL */}
@@ -19,10 +23,12 @@ const Servicios = () => {
 
             {/* TEXTO "EXPLORA" - Movido un poco a la izquierda en Desktop */}
             <div className="w-full flex justify-center md:justify-center lg:justify-end max-w-[1200px] mx-auto px-6 md:px-12 lg:px-16 lg:pr-[80px] mt-16 mb-8">
-                <p className="inline-flex items-center gap-2 text-black">
+                <button className="inline-flex items-center gap-2 text-black"
+                onClick={() => navigate("/nosotros")}
+                >
                     Explora todas las soluciones que tenemos para ti
                     <MdArrowRightAlt className="w-6 h-6 relative top-[2px]" />
-                </p>
+                </button>
             </div>
 
             {/* TARJETAS */}

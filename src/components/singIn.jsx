@@ -6,7 +6,7 @@ import useLoginUser from "../hooks/useLogin";
 import Image1 from "../assets/Rectangle.png";
 import Image2 from "../assets/Group1.png";
 import Image3 from "../assets/image.png";
-import vocal from "../assets/VocalTech.png";
+import vocal from "../assets/icons/VocalTech.png";
 
 const images = [Image1, Image2, Image3];
 

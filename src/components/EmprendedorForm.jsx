@@ -1,25 +1,79 @@
+import { useState } from "react";
+import { useFormulario } from "./FormularioContext";
 import { useNavigate } from "react-router-dom";
 import { CgArrowRight } from "react-icons/cg";
-import { useState } from "react";
 import HeaderEmprendedor from "./HeaderEmprendedor";
 
 export default function EmprendedorForm() {
+    const { updateFormData } = useFormulario();
     const navigate = useNavigate();
+    
+    const [datos, setDatos] = useState({
+        name: "",
+        tiempo: "",
+        redes: "",
+        sector_actividad: "",
+        etapa: "",
+        categoria: "Emprendedor",
+        respuestas: {
+            comunicacion: {
+                capacidad_comunicar: "",
+                importancia_comunicacion_ventas: "",
+                seguro_comunicar: "",
+                principal_desafio: "",
+                mayor_barrera: "",
+                impacto_comunicacion_liderazgo: "",
+                mayor_desafio: ""
+            },
+            pitch: {
+                pitch: "",
+                frecuencia_presenta: "",
+                preparado_presentar: "",
+                mejorar_pitch: {
+                    claridad: 4,
+                    impacto_persuacion: 4,
+                    presentacion_visual: 4,
+                    seguridad_confianza: 4
+                },
+                principales_desafios: ""
+            },
+            mvp: {
+                desarrollar_mvp: "",
+                etapa: "",
+                validado: "",
+                problema_mvp: "",
+                mayor_dificultad: ""
+            },
+            talentos: {
+                incoporar_talento: "",
+                cualidades: "",
+                candidatos_evaluados: "",
+                vertical: "",
+                rol: "",
+                desafios: ""
+            }
+        },
+        email: "",
+        whatsapp: "",
+        capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
+    });
 
-    const [SelectOption, setSelectOption] = useState("");
+    const handleChange = (e) => {
+        setDatos({ ...datos, [e.target.name]: e.target.value });
+    };
 
-    const handleSelectChange = (event) => {
-        event.preventDefault();
+    const handleNext = (e) => {
+        e.preventDefault();
+        updateFormData(datos); // Actualiza el JSON global
+        console.log("Datos guardados:", datos);
 
-        if (SelectOption === "Excelente") {
+        // Redirige según la respuesta seleccionada en la pregunta 6
+        if (datos.capacidad_comunicar === "Excelente") {
             navigate("/pitch1");
-        }else if (
-            SelectOption === "Buena, pero puede mejorar" ||
-            SelectOption === "Necesito mucha ayuda" 
-        ){
+        } else if (datos.capacidad_comunicar === "Buena, pero puede mejorar" || datos.capacidad_comunicar === "Necesito mucha ayuda") {
             navigate("/comunicacion-empre1");
         } else {
-            alert("Por favor, seleccione todas las opciones.");
+            alert("Por favor, complete todas las opciones");
         }
     };
 
@@ -40,7 +94,7 @@ export default function EmprendedorForm() {
             </div>
 
             {/* Form */}
-            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={handleSelectChange}>
+            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={ handleNext }>
                 <div className="mb-6">
                     <label htmlFor="empresa" className="block text-lg font-semibold">
                         1. Nombre de tu emprendimiento
@@ -48,18 +102,22 @@ export default function EmprendedorForm() {
                     <input
                         id="empresa"
                         type="text"
+                        name="name"
                         placeholder="Nombre"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="ubicacion" className="block text-lg font-semibold">
-                        2. ¿Hace cuanto te encuentras emprendiendo esta iniciativa?
+                    <label htmlFor="tiempo" className="block text-lg font-semibold">
+                        2. ¿Hace cuánto te encuentras emprendiendo esta iniciativa?
                     </label>
                     <input
-                        id="ubicacion"
+                        id="tiempo"
                         type="text"
-                        placeholder="Ubicación de tu empresa"
+                        name="tiempo"
+                        placeholder="Ej. 2 años"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
@@ -70,7 +128,9 @@ export default function EmprendedorForm() {
                     <input
                         id="redes"
                         type="text"
+                        name="redes"
                         placeholder="Redes / Sitio web de tu emprendimiento"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
@@ -82,7 +142,9 @@ export default function EmprendedorForm() {
                     <input
                         id="sector"
                         type="text"
+                        name="sector_actividad"
                         placeholder="Ej. Tecnológico, Comercial"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
@@ -107,6 +169,7 @@ export default function EmprendedorForm() {
                                         type="radio"
                                         name="etapa"
                                         value={etapa}
+                                        onChange={handleChange}
                                         className="hidden peer"
                                     />
                                     <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
@@ -119,36 +182,37 @@ export default function EmprendedorForm() {
                             ))}
                         </div>
                     </div>
-                    <div>
-                        <div className="mb-6">
-                            <h2 className="text-lg font-semibold">
-                                6. ¿Cómo describirías tu capacidad para comunicar tu idea?
-                            </h2>
-                            <div className="mt-4 space-y-2">
-                                {["Excelente", "Buena, pero puede mejorar", "Necesito mucha ayuda"].map((opcion, index) => (
-                                    <label
-                                        key={index}
-                                        className="flex items-center gap-2 cursor-pointer"
-                                    >
-                                        <input
-                                            type="radio"
-                                            name="mvp"
-                                            value={opcion}
-                                            onChange={(event) => setSelectOption(event.target.value)}
-                                            className="hidden peer"
-                                        />
-                                        <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
-                                            <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
-                                                {String.fromCharCode(65 + index)}
-                                            </span>
-                                        </div>
-                                        <span className="text-black">{opcion}</span>
-                                    </label>
-                                ))}
-                            </div>
-                        </div>
+                    </div>
+
+                {/* Pregunta 6 */}
+                <div className="mb-6">
+                    <h2 className="text-lg font-semibold">
+                        6. ¿Cómo describirías tu capacidad para comunicar tu idea?
+                    </h2>
+                    <div className="mt-4 space-y-2">
+                        {["Excelente", "Buena, pero puede mejorar", "Necesito mucha ayuda"].map((opcion, index) => (
+                            <label
+                                key={index}
+                                className="flex items-center gap-2 cursor-pointer"
+                            >
+                                <input
+                                    type="radio"
+                                    name="capacidad_comunicar"
+                                    value={opcion}
+                                    onChange={handleChange}
+                                    className="hidden peer"
+                                />
+                                <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
+                                    <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
+                                        {String.fromCharCode(65 + index)}
+                                    </span>
+                                </div>
+                                <span className="text-black">{opcion}</span>
+                            </label>
+                        ))}
                     </div>
                 </div>
+
                 {/* Botón Siguiente */}
                 <div className="flex items-center justify-center">
                     <button

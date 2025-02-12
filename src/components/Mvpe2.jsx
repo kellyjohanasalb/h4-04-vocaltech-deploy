@@ -2,42 +2,96 @@ import { useState } from "react";
 import { CgArrowRight } from "react-icons/cg";
 import ProgresBar from "./ProgresBar";
 import { useNavigate } from "react-router-dom";
+import { useFormulario } from "./FormularioContext";
+import logo from "../assets/icons/VocalTech.png";
 
 export default function Mvpe2() {
-    const [formData, setFormData] = useState({
-        importante: "",
-        seguro: "",
-        desafio: "",
-        barrera: "",
-    });
-    const [isFormValid, setIsFormValid] = useState(true);
+        const { updateFormData } = useFormulario(); // Estado para guardar la opción seleccionada
+            const navigate = useNavigate(); // Hook para la navegación
+            const [mvpe2, setMvpe2] = useState({
+                name: "",
+                tiempo: "",
+                redes: "",
+                sector_actividad: "",
+                etapa: "",
+                categoria: "Emprendedor",
+                respuestas: {
+                    comunicacion: {
+                        capacidad_comunicar: "",
+                        importancia_comunicacion_ventas: "",
+                        seguro_comunicar: "",
+                        principal_desafio: "",
+                        mayor_barrera: "",
+                        impacto_comunicacion_liderazgo: "",
+                        mayor_desafio: ""
+                    },
+                    pitch: {
+                        pitch: "",
+                        frecuencia_presenta: "",
+                        preparado_presentar: "",
+                        mejorar_pitch: {
+                            claridad: 4,
+                            impacto_persuacion: 4,
+                            presentacion_visual: 4,
+                            seguridad_confianza: 4
+                        },
+                        principales_desafios: ""
+                    },
+                    mvp: {
+                        desarrollar_mvp: "",
+                        etapa: "",
+                        validado: "",
+                        problema_mvp: "",
+                        mayor_dificultad: ""
+                    },
+                    talentos: {
+                        incoporar_talento: "",
+                        cualidades: "",
+                        candidatos_evaluados: "",
+                        vertical: "",
+                        rol: "",
+                        desafios: ""
+                    }
+                },
+                email: "",
+                whatsapp: "",
+                //capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
+            });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-    const navigate = useNavigate();
+            const handleChange = (e) => {
+                const { name, value } = e.target;
+                setMvpe2((prevState) => ({
+                    ...prevState,
+                    respuestas: {
+                        ...prevState.respuestas,
+                        mvp: {
+                            ...prevState.respuestas.mvp,
+                            [name]: value
+                        }
+                    }
+                }))
+            };
         const handleBackClick = () => {
             navigate("/mvpe1");
         };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+        const handleNext = (e) => {
+            e.preventDefault();
+            updateFormData(mvpe2);
+            console.log("Datos guardados:", mvpe2);
 
-        // Validar que todas las preguntas están contestadas
-        if (formData.importante && formData.seguro &&
-            formData.desafio && formData.barrera) {
-            // Aquí puedes realizar alguna acción adicional, como redirigir o limpiar el formulario
-            window.location.href = "/talento-empre1"; // Redirige a /pitch1
-        } else {
-            // Si no están todas contestadas, mostrar un error
-            setIsFormValid(false);
-            alert("Por favor, responde todas las preguntas antes de continuar.");
-        }
-    };
+            const etapa = mvpe2.respuestas.mvp.etapa;
+            const validado = mvpe2.respuestas.mvp.validado;
+            const problema_mvp = mvpe2.respuestas.mvp.problema_mvp;
+            const mayor_dificultad = mvpe2.respuestas.mvp.mayor_dificultad;
+
+            if (etapa && validado && problema_mvp && mayor_dificultad) {
+                navigate("/talento-empre1");
+            } else {
+                alert("Por favor, complete todos los campos antes de continuar.");
+            }
+            
+        };
 
     return (
         <div className="flex flex-col items-center min-h-screen py-8 bg-white">
@@ -59,7 +113,7 @@ export default function Mvpe2() {
                     Regresar
                 </button>
                 <img
-                    src="/VocalTech.png"
+                    src={logo}
                     alt="VocalTech"
                     className="lg:w-[328px] h-[54px]"
                 />
@@ -69,7 +123,7 @@ export default function Mvpe2() {
                 <ProgresBar />
             </div>
         </div>
-            <form className="w-full max-w-4xl px-4 mt-20" onSubmit={handleSubmit}>
+            <form className="w-full max-w-4xl px-4 mt-20" onSubmit={handleNext}>
                 <div className="mb-6">
                     <label className="block text-lg font-semibold" >
                         2. ¿En qué etapa de desarrollo se encuentra tu MVP?
@@ -81,24 +135,24 @@ export default function Mvpe2() {
                             "Producto validado con usuarios",
                             "Producto listo para escalar",
                             "Otro"
-                        ].map((importante, index) => (
+                        ].map((etapa, index) => (
                             <label 
                             key={index}
                             className="flex items-center gap-2 cursor-pointer">
                                 <input 
                                 type="radio"
-                                name="importante"
-                                value={importante}
+                                name="etapa"
+                                value={etapa}
                                 className="hidden peer"
-                                checked={formData.importante === importante }
-                                onChange={handleInputChange}
+                                checked={mvpe2.respuestas.mvp.etapa === etapa }
+                                onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{importante}</span>
+                                <span className="text-black">{etapa}</span>
                         </label>
                         ))}
 
@@ -115,41 +169,41 @@ export default function Mvpe2() {
                             "Lanzamiento de una versión inicial al mercado",
                             "Aún no he validado mi idea",
                             "Otro"
-                        ].map((seguro, index) => (
+                        ].map((validado, index) => (
                             <label
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
                                     type="radio"
-                                    name="seguro"
-                                    value={seguro}
+                                    name="validado"
+                                    value={validado}
                                     className="hidden peer"
-                                    checked={formData.seguro === seguro}
-                                    onChange={handleInputChange}
+                                    checked={mvpe2.respuestas.mvp.validado === validado}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{seguro}</span>
+                                <span className="text-black">{validado}</span>
                             </label>
                         ))}
                     </div>
                 </div>
                 <div className="mb-6">
-                <label className="block text-lg font-semibold" htmlFor="desafio">
+                <label className="block text-lg font-semibold" htmlFor="problema_mvp">
                         4. ¿Cuál es el problema específico que tu MVP busca resolver?
                     </label>
                     <input
-                        id="desafio"
-                        name="desafio"
+                        id="problema_mvp"
+                        name="problema_mvp"
                         type="text"
                         placeholder="Ej. Problema específico"
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
-                        value={formData.desafio}
-                        onChange={handleInputChange}
+                        value={mvpe2.respuestas.mvp.problema_mvp}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className="mb-6">
@@ -163,25 +217,25 @@ export default function Mvpe2() {
                             "Dificultad para encontrar un equipo adecuado",
                             "No saber cómo validar la idea",
                             "Otro"
-                        ].map((barrera, index) => (
+                        ].map((mayor_dificultad, index) => (
                             <label
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
-                                    name="barrera"
+                                    name="mayor_dificultad"
                                     type="radio"
-                                    value={barrera}
+                                    value={mayor_dificultad}
                                     className="hidden peer"
-                                    checked={formData.barrera === barrera}
-                                    onChange={handleInputChange}
+                                    checked={mvpe2.respuestas.mvp.mayor_dificultad === mayor_dificultad}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{barrera}</span>
+                                <span className="text-black">{mayor_dificultad}</span>
                             </label>
                         ))}
                     </div>

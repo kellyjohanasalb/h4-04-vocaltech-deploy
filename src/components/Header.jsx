@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ProgresBar from "./ProgresBar";
+import logo from "../assets/icons/VocalTech.png"
 
 
 export default function Header() {
@@ -26,7 +27,7 @@ export default function Header() {
                     Regresar
                 </button>
                 <img
-                    src="/VocalTech.png"
+                    src={logo}
                     alt="VocalTech"
                     className="lg:w-[328px] h-[54px]"
                 />

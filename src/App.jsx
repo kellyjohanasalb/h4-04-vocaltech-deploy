@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { FormularioProvider } from "./components/FormularioContext";
 import Formulario from "./Pages/Fromulario";
 import ServicesPage from "./Pages/ServicesPage";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import LandingPage from "./Pages/LandingPage";
 import EmprendedorForm from "./components/EmprendedorForm";
-import Adminpage  from "./Pages/Adminpage";
+import Adminpage from "./Pages/Adminpage";
 import FormEmpresaNavi from "./components/FormEmpresaNavi";
 import Mvp1 from "./components/mvp1";
 import Comunicacion1 from "./components/Comunicacion1";
@@ -33,14 +34,23 @@ import Adminbuttonconfig  from "./Pages/Adminconfigpage";
 
 
 
+import Empresas from "./components/Empresas";
+import Emprendedores from "./components/Emprendedores";
 
 
 function App() {
   return (
+    <FormularioProvider>
     <Router>
       <Routes>
         {/* Rutas principales */}
         <Route path="/" element={<LandingPage />} />
+
+        {/* Rutas De empresa*/}
+        <Route path="/empresas" element={<Empresas />} />
+
+        {/* Rutas De emprendedores*/}
+        <Route path="/emprendedores" element={<Emprendedores />} />
 
         {/* Rutas de autenticación */}
         <Route path="/registro" element={<Register />} />
@@ -56,7 +66,16 @@ function App() {
         <Route path="/form-empresa" element={<FormEmpresaNavi />} />
 
         {/* Ruta Formulario Emprendedor */}
-        <Route path="/form-emprendedor" element={<EmprendedorForm />}/>
+        <Route path="/form-emprendedor" element={<EmprendedorForm />} />
+
+        {/* Rutas de admin */}
+        <Route path="/adminpage" element={<Adminpage />} />
+
+        {/* Rutas de admin Emprendedor */}
+        <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
+        <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+
+       
         
         {/* Rutas de admin */}
         <Route path="/adminpage" element={<Adminpage />} />
@@ -67,9 +86,7 @@ function App() {
           <Route path="/adminForm-empresa" element={<AdminformEmpresa />} />
              {/* Rutas de admin configbutton*/}
           <Route path="/adminconfig-button" element={<Adminbuttonconfig  />} />  
-         {/* Rutas de admin Emprendedor */}
-         <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
-         <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+       
 
         
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
@@ -92,8 +109,8 @@ function App() {
         {/* Rutas de formulario-terminado*/}
         <Route path="/formulario-terminado" element={<FormularioTerminado />} />
 
-      {/* Rutas de fin*/}
-      <Route path="/fin" element={<Fin />} />
+        {/* Rutas de fin*/}
+        <Route path="/fin" element={<Fin />} />
 
         {/* Rutas de comunicacion-empre1*/}
         <Route path="/comunicacion-empre1" element={<ComunicacionEmpre1 />} />
@@ -120,12 +137,12 @@ function App() {
         <Route path="/fin-empre" element={<FinEmpre />} />
 
 
-{/* Ruta de la NosotrosPage */}
-<Route path="/nosotros" element={<NosotrosPages />} />
+        {/* Ruta de la NosotrosPage */}
+        <Route path="/nosotros" element={<NosotrosPages />} />
 
 
-{/* Ruta de la Contacto */}
-<Route path="/contacto" element={<Contacto />} />
+        {/* Ruta de la Contacto */}
+        <Route path="/contacto" element={<Contacto />} />
 
 
 
@@ -134,6 +151,7 @@ function App() {
         <Route path="*" element={<div>Página no encontrada - 404</div>} />
       </Routes>
     </Router>
+    </FormularioProvider>
   );
 }
 

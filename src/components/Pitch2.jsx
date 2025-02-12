@@ -1,40 +1,110 @@
-import { CgArrowRight } from "react-icons/cg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormulario } from "./FormularioContext";
+import { CgArrowRight } from "react-icons/cg";
 import ProgresBar from "./ProgresBar";
+import logo from "../assets/icons/VocalTech.png";
+
 
 
 
 export default function Pitch2() {
-    const [formData, setFormData] = useState({
-        etapa: "",
-        opcion: "",
-        lograr: "",
-    });
-    const [isFormValid, setIsFormValid] = useState(true);
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
+    const { updateFormData } = useFormulario(); // Estado para guardar la opción seleccionada
+        const navigate = useNavigate(); // Hook para la navegación
+        const [pitch2, setPitch2] = useState({
+            name: "",
+            tiempo: "",
+            redes: "",
+            sector_actividad: "",
+            etapa: "",
+            categoria: "Emprendedor",
+            respuestas: {
+                comunicacion: {
+                    capacidad_comunicar: "",
+                    importancia_comunicacion_ventas: "",
+                    seguro_comunicar: "",
+                    principal_desafio: "",
+                    mayor_barrera: "",
+                    impacto_comunicacion_liderazgo: "",
+                    mayor_desafio: ""
+                },
+                pitch: {
+                    pitch: "",
+                    frecuencia_presenta: "",
+                    preparado_presentar: "",
+                    mejorar_pitch: {
+                        claridad: 4,
+                        impacto_persuacion: 4,
+                        presentacion_visual: 4,
+                        seguridad_confianza: 4
+                    },
+                    principales_desafios: ""
+                },
+                mvp: {
+                    desarrollar_mvp: "",
+                    etapa: "",
+                    validado: "",
+                    problema_mvp: "",
+                    mayor_dificultad: ""
+                },
+                talentos: {
+                    incoporar_talento: "",
+                    cualidades: "",
+                    candidatos_evaluados: "",
+                    vertical: "",
+                    rol: "",
+                    desafios: ""
+                }
+            },
+            email: "",
+            whatsapp: "",
+           // capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
         });
-    };
-    const navigate = useNavigate(); // Hook para la navegación
+
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+        
+            setPitch2(prevState => {
+                let updatedState = { ...prevState };
+        
+                if (["claridad", "impacto_persuacion", "presentacion_visual", "seguridad_confianza"].includes(name)) {
+                    updatedState.respuestas.pitch.mejorar_pitch = {
+                        ...updatedState.respuestas.pitch.mejorar_pitch,
+                        [name]: parseInt(value, 10)
+                    };
+                } else if (["frecuencia_presenta", "preparado_presentar", "principales_desafios"].includes(name)) {
+                    updatedState.respuestas.pitch = {
+                        ...updatedState.respuestas.pitch,
+                        [name]: value
+                    };
+                } else {
+                    updatedState[name] = value;
+                }
+        
+                return updatedState;
+            });
+        };
+        
+
+        const handleNext = (e) => {
+            e.preventDefault();
+            updateFormData(pitch2);
+            console.log("Datos guardados:", pitch2);
+        
+            const { frecuencia_presenta, preparado_presentar, mejorar_pitch, principales_desafios } = pitch2.respuestas.pitch;
+            
+            if (frecuencia_presenta && preparado_presentar && mejorar_pitch.claridad
+                && mejorar_pitch.impacto_persuacion && mejorar_pitch.presentacion_visual
+                && mejorar_pitch.seguridad_confianza && principales_desafios) {
+                navigate("/mvpe1");
+            } else {
+                alert("Por favor, complete todos los campos antes de continuar.");
+            }
+        };
+
         const handleBackClick = () => {
             navigate("/pitch1");
         };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Validar que todos los campos están llenos
-        if (formData.etapa && formData.opcion && formData.lograr) {
-            // Aquí puedes realizar alguna acción adicional, como redirigir o limpiar el formulario
-            window.location.href = "/mvpe1"; // Redirige a /mvpe1
-        } else {
-            // Si no están todos llenos, mostrar un error
-            setIsFormValid(false);
-            alert("Por favor, llena todos los campos antes de continuar.");
-        }
-    }
 
     return (
         <div className="flex flex-col items-center min-h-screen py-8 bg-white">
@@ -57,7 +127,7 @@ export default function Pitch2() {
                     Regresar
                 </button>
                 <img
-                    src="/VocalTech.png"
+                    src={logo}
                     alt="VocalTech"
                     className="lg:w-[328px] h-[54px]"
                 />
@@ -68,7 +138,7 @@ export default function Pitch2() {
             </div>
         </div>
             {/* Form */}
-            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={handleSubmit}>
+            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={handleNext}>
                 <div>
                     <div className="mb-6">
                         <label className="block text-lg font-semibold">
@@ -76,11 +146,11 @@ export default function Pitch2() {
                         </label>
                         <div className="mt-4 space-y-2">
                             {[
-                                "Frecuentemente (al menos una vez al mes",
+                                "Frecuentemente (al menos una vez al mes)",
                                 "Ocasionalmente (varias veces al año)",
                                 "Rara vez (menos de una vez al año)",
                                 "Nunca lo he hecho",
-                            ].map((etapa, index) => (
+                            ].map((frecuencia_presenta, index) => (
                                 <label
                                     key={index}
                                     className="flex items-center gap-2 cursor-pointer"
@@ -88,18 +158,18 @@ export default function Pitch2() {
                                     {/* El input y su contenido están en el mismo label */}
                                     <input
                                         type="radio"
-                                        name="etapa"
-                                        value={etapa}
+                                        name="frecuencia_presenta"
+                                        value={frecuencia_presenta}
                                         className="hidden peer"
-                                        checked={formData.etapa === etapa}
-                                        onChange={handleInputChange}
+                                        checked={pitch2.respuestas.pitch.frecuencia_presenta === frecuencia_presenta}
+                                        onChange={handleChange}
                                     />
                                     <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                         <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                             {String.fromCharCode(65 + index)}
                                         </span>
                                     </div>
-                                    <span className="text-black">{etapa}</span>
+                                    <span className="text-black">{frecuencia_presenta}</span>
                                 </label>
                             ))}
                         </div>
@@ -115,25 +185,25 @@ export default function Pitch2() {
                                     "Algo preparado, pero podría mejorar",
                                     "No muy preparado, me cuesta estructurar un mensaje claro",
                                     "Nada preparado, no tengo un pitch definido",
-                                ].map((opcion, index) => (
+                                ].map((preparado_presentar, index) => (
                                     <label
                                         key={index}
                                         className="flex items-center gap-2 cursor-pointer"
                                     >
                                         <input
                                             type="radio"
-                                            name="opcion"
-                                            value={opcion}
+                                            name="preparado_presentar"
+                                            value={preparado_presentar}
                                             className="hidden peer"
-                                            checked={formData.opcion === opcion}
-                                            onChange={handleInputChange}
+                                            checked={pitch2.respuestas.pitch.preparado_presentar === preparado_presentar}
+                                            onChange={handleChange}
                                         />
                                         <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                             <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                                 {String.fromCharCode(65 + index)}
                                             </span>
                                         </div>
-                                        <span className="text-black">{opcion}</span>
+                                        <span className="text-black">{preparado_presentar}</span>
                                     </label>
                                 ))}
                             </div>
@@ -145,20 +215,20 @@ export default function Pitch2() {
                             <form className="mt-4 space-y-6">
                                 {/* Claridad de los objetivos organizacionales */}
                                 <div>
-                                    <label htmlFor="" className="block ">
+                                    <label className="block ">
                                         Claridad en el mensaje
                                     </label>
                                     <div className="flex items-center justify-between mt-2">
                                         {[1, 2, 3, 4, 5].map((value) => (
                                             <label
-                                                htmlFor={`objetivos-${value}`}
+                                                htmlFor={`claridad-${value}`}
                                                 key={value}
                                                 className="flex flex-col items-center"
                                             >
                                                 <input
                                                     type="radio"
-                                                    id={`objetivos-${value}`}
-                                                    name="claridad_objetivos"
+                                                    id={`claridad-${value}`}
+                                                    name="claridad"
                                                     value={value}
                                                     className="w-4 h-4 border border-gray-300 rounded-full appearance-none checked:bg-blue-500 focus:ring focus:ring-blue-300"
                                                 />
@@ -176,14 +246,14 @@ export default function Pitch2() {
                                     <div className="flex items-center justify-between mt-2">
                                         {[1, 2, 3, 4, 5].map((value) => (
                                             <label
-                                                htmlFor={`satisfaccion-${value}`}
+                                                htmlFor={`impacto_persuacion-${value}`}
                                                 key={value}
                                                 className="flex flex-col items-center"
                                             >
                                                 <input
                                                     type="radio"
-                                                    id={`satisfaccion-${value}`}
-                                                    name="satisfaccion_comunicacion"
+                                                    id={`impacto_persuacion-${value}`}
+                                                    name="impacto_persuacion"
                                                     value={value}
                                                     className="w-4 h-4 border border-gray-300 rounded-full appearance-none checked:bg-blue-500 focus:ring focus:ring-blue-300"
                                                 />
@@ -195,20 +265,20 @@ export default function Pitch2() {
 
                                 {/* */}
                                 <div>
-                                    <label htmlFor="" className="block ">
+                                    <label className="block ">
                                         Presentación visual (diapositivas, material de apoyo)
                                     </label>
                                     <div className="flex items-center justify-between mt-2">
                                         {[1, 2, 3, 4, 5].map((value) => (
                                             <label
-                                                htmlFor={`disposicion-${value}`}
+                                                htmlFor={`presentacion_visual-${value}`}
                                                 key={value}
                                                 className="flex flex-col items-center"
                                             >
                                                 <input
                                                     type="radio"
-                                                    id={`disposicion-${value}`}
-                                                    name="disposicion_cambio"
+                                                    id={`presentacion_visual-${value}`}
+                                                    name="presentacion_visual"
                                                     value={value}
                                                     className="w-4 h-4 border border-gray-300 rounded-full appearance-none checked:bg-blue-500 focus:ring focus:ring-blue-300"
                                                 />
@@ -225,14 +295,14 @@ export default function Pitch2() {
                                     <div className="flex items-center justify-between mt-2">
                                         {[1, 2, 3, 4, 5].map((value) => (
                                             <label
-                                                htmlFor={`seguridad-${value}`}
+                                                htmlFor={`seguridad_confianza-${value}`}
                                                 key={value}
                                                 className="flex flex-col items-center"
                                             >
                                                 <input
                                                     type="radio"
-                                                    id={`seguridad-${value}`}
-                                                    name="seguridad_hablar"
+                                                    id={`seguridad_confianza-${value}`}
+                                                    name="seguridad_confianza"
                                                     value={value}
                                                     className="w-4 h-4 border border-gray-300 rounded-full appearance-none checked:bg-blue-500 focus:ring focus:ring-blue-300"
                                                 />
@@ -247,17 +317,17 @@ export default function Pitch2() {
 
                     <div>
                         <div className="mb-6">
-                            <label htmlFor="lograr" className="block text-lg font-semibold">
+                            <label htmlFor="principales_desafios" className="block text-lg font-semibold">
                                 5. ¿Cuáles han sido los principales desafíos al presentar tu proyecto a clientes o inversores?
                             </label>
                             <input
-                                id="lograr"
-                                name="lograr"
+                                id="principales_desafios"
+                                name="principales_desafios"
                                 type="text"
                                 placeholder="Describe aquí"
+                                onChange={handleChange}
                                 className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
-                                value={formData.lograr}
-                                onChange={handleInputChange}
+                                
                             />
                         </div>
                     </div>
@@ -275,3 +345,4 @@ export default function Pitch2() {
         </div>
     );
 }
+

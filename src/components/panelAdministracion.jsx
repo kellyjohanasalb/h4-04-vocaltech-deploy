@@ -1,4 +1,4 @@
-import VocalTech1 from "../assets/icons/vovaltech.png";
+import VocalTech1 from "../assets/icons/VocalTech.png";
 import { FaEllipsisV, FaInfoCircle, FaTrashAlt, FaClipboardCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
