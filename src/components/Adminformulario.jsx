@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PaperClipIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid"; // Si usas Heroicons
-import {  Eye, ClipboardList, MessageCircle, Mail } from "lucide-react";
+import {  Eye, ClipboardList } from "lucide-react";
 
 
 export default function Formulario() {
@@ -195,14 +195,8 @@ export default function Formulario() {
         </button>
         
         <div className="flex space-x-4">
-          <button className="flex items-center bg-blue-500 text-white px-3 py-2 rounded-lg shadow-md hover:bg-blue-600 space-x-4">
-            <Mail className="w-4 h-4 mr-2" /> Email
-          </button>
-          <button className="flex items-center bg-blue-500 text-white px-3 py-2 rounded-lg shadow-md hover:bg-blue-600 space-x-4">
-            <MessageCircle className="w-4 h-4 mr-2" /> WhatsApp
-          </button>
           <button className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 space-x-4">
-            <PaperAirplaneIcon className="w-4 h-4 mr-2" /> Enviar Diagnóstico
+            <PaperAirplaneIcon className="w-4 h-4 mr-2" /> Enviar Diagnóstico al Email
           </button>
         </div>
       </div>
