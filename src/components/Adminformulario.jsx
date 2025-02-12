@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PaperClipIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid"; // Si usas Heroicons
-import { Paperclip, Send, Eye, ClipboardList, MessageCircle, Mail } from "lucide-react";
+import {  Eye, ClipboardList, MessageCircle, Mail } from "lucide-react";
 
 
 export default function Formulario() {
