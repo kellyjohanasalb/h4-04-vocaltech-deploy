@@ -33,12 +33,12 @@ const BeneficiosEmpre = () => {
     return (
         <section className="flex flex-col items-center justify-center h-auto max-w-6xl px-6 py-12 mx-auto text-center">
             <div className="w-full mb-10 text-left">
-            <h2 className="mb-3 text-5xl font-bold text-left text-black font-dm-sans sm:text-4xl">
-                Beneficios para tu emprendimiento
-            </h2>
-            <p className="mt-2 text-sm text-gray-600 font-manrope">
-                Lo que obtendrás con Vocaltech.
-            </p>
+                <h2 className="mb-3 text-5xl font-bold text-left text-black font-dm-sans sm:text-4xl">
+                    Beneficios para tu emprendimiento
+                </h2>
+                <p className="mt-2 text-sm text-gray-600 font-manrope">
+                    Lo que obtendrás con Vocaltech.
+                </p>
             </div>
 
             <div className="grid w-full grid-cols-1 gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-5">
@@ -57,7 +57,12 @@ const BeneficiosEmpre = () => {
 
             <p className="mt-8 text-gray-600">
                 Accede a nuestra guía de consejos y errores comunes:{" "}
-                <a href="#" className="font-medium text-blue-600 hover:underline">
+                <a 
+                    href="https://drive.google.com/file/d/1DPn7p3NkNvghTgoo5t8EsGZVXfB5ecF8/view?usp=sharing  " 
+                    className="font-medium text-blue-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Descargar Guía →
                 </a>
             </p>
