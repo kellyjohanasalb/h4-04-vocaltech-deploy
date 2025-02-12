@@ -1,5 +1,5 @@
 import BeneficiosEmpre from "./BeneficiosEmpre";
-import Clientes from "./Clientes";
+import Clientes from "./ClientesEmprendedores";
 import ComoFunciona from "./ComoFunciona";
 import Footer from "./footer";
 import HeroEmprendimiento from "./HeroEmprendimiento";
