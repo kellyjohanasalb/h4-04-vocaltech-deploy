@@ -28,8 +28,8 @@ import DetalleLead from "./components/DetalleLead";
 import Adminformulario  from "./Pages/AdminForm";
 import NosotrosPages from "./Pages/NosotrosPages";
 import Contacto from "./Pages/Contacto";
-
-
+import AdminformEmpresa  from "./Pages/AdminFormEm";
+import Adminbuttonconfig  from "./Pages/Adminconfigpage";
 
 
 
@@ -63,10 +63,14 @@ function App() {
 
           {/* Rutas de admin */}
           <Route path="/adminForm" element={<Adminformulario />} />
-
+           {/* Rutas de admin Empresa*/}
+          <Route path="/adminForm-empresa" element={<AdminformEmpresa />} />
+             {/* Rutas de admin configbutton*/}
+          <Route path="/adminconfig-button" element={<Adminbuttonconfig  />} />  
          {/* Rutas de admin Emprendedor */}
          <Route path="/adminEmprendedor" element={<AdminpageEmprendedor />} />
          <Route path="/adminEmprendedor/:id" element={<DetalleLead />} />
+
         
         <Route path="/form-emprendedor" element={<EmprendedorForm />} />
 

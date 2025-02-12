@@ -5,9 +5,10 @@ import { useState, useEffect } from "react";
 import chica from "../assets/images/perfil-castaña.png";
 import DetalleLead from "./DetalleLead";
 import Adminformulario from "./Adminformulario"; // Asegúrate de importar el componente
+import AdminformEmpresa from "../Pages/AdminFormEm";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { FaSearch, FaCalendarAlt } from "react-icons/fa";
-
+import Adminconfig from "../components/Adminconfig";
 // Sidebar
 const Sidebar = ({ setView }) => (
   <aside className="w-64 bg-gray-100 h-screen p-6 flex flex-col">
@@ -31,6 +32,7 @@ const Sidebar = ({ setView }) => (
         <span><FaUser className="w-4 h-4" /> </span>
         <span>Leads</span>
       </button>
+      {/*
       <button
         onClick={() => setView("diagnosticos")}
         className="flex items-center space-x-2 p-2 w-full rounded-full hover:bg-purple-700 hover:text-white"
@@ -38,10 +40,13 @@ const Sidebar = ({ setView }) => (
         <span>📋</span>
         <span>Diagnosticos</span>
       </button>
-
+       */}
     </nav>
 
-    <button className="flex items-center space-x-2 p-2 w-full rounded-full hover:bg-purple-700 hover:text-white">
+    <button 
+      onClick={() => setView("userprofile")} 
+      className="flex items-center space-x-2 p-2 w-full rounded-full hover:bg-purple-700 hover:text-white"
+    >
       <span>⚙️</span>
       <span>Configuración</span>
     </button>
@@ -119,6 +124,7 @@ const UsersTable = ({ setView, setSelectedLead }) => {
     fetch("https://vocaltech-api-gateway-production.up.railway.app/api/leads/findAll")
       .then((res) => res.json())
       .then((data) => {
+        console.log("Datos recibidos:", data); // 👀 Imprime los datos en la consola
         setData(data);
         setLoading(false);
       })
@@ -144,6 +150,7 @@ const UsersTable = ({ setView, setSelectedLead }) => {
       <table className="w-full bg-white shadow-md rounded-lg">
         <thead>
           <tr className="bg-gray-200 text-left">
+            <th className="p-2">id</th>
             <th className="p-2">Nombre</th>
             <th className="p-2">Email</th>
             <th className="p-2">Celular</th>
@@ -155,13 +162,14 @@ const UsersTable = ({ setView, setSelectedLead }) => {
         <tbody>
           {data.map((lead, index) => (
             <tr key={index} className="border-t relative">
+              <td className="p-2">{lead.id}</td>
               <td className="p-2">{lead.name}</td>
               <td className="p-2">{lead.email}</td>
-              <td className="p-2">{lead.phone}</td>
-              <td className="p-2">{lead.category}</td>
-              <td className="p-2">
+              <td className="p-2">{lead.whatsapp}</td>
+              <td className="p-2">{lead.categoria}</td>
+              <td className="p-2">{}
                 <span className="bg-green-100 text-green-600 p-1 rounded-md">
-                  {lead.status}
+                  {lead.etapa}
                 </span>
               </td>
               <td className="p-2 relative">
@@ -285,6 +293,12 @@ const Dashboard = () => {
           <Adminformulario />
         ) : view === "diagnosticos" ? ( // ✅ Agregado Diagnósticos
           <Diagnosticos />
+        ) : view === "userprofile" ? ( // ✅ Nueva condición para UserProfile
+          <div>
+            <h1 className="text-2xl font-bold mb-3 mt-10 ml-4">Configuración</h1>
+            <Adminconfig setView={setView} />  
+          </div>
+          
         ) : null}
       </main>
     </div>
