@@ -1,7 +1,19 @@
+import { useState } from "react";
+import { GrDocumentSound } from "react-icons/gr";
+import { MdOutlineFileUpload } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const FinEmpre = () => {
     const navigate = useNavigate();
+    const [audioFile, setAudioFile] = useState(null);
+
+    const handleAudioChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setAudioFile(file);
+        }
+    };
+
     const handleBackClick = () => {
         navigate("/talento-empre1");
     };
@@ -53,11 +65,11 @@ const FinEmpre = () => {
                     </div>
 
                     {/* Campo de celular */}
-                    <div>
+                    <div className="">
                         <label htmlFor="celular" className="block mb-2 text-sm text-left text-white">
                             Celular*
                         </label>
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 mb-10">
                             <input
                                 type="text"
                                 id="code"
@@ -70,6 +82,32 @@ const FinEmpre = () => {
                                 placeholder="911111111"
                                 className="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
+                        </div>
+                    </div>
+                    {/* Apartado 7: ¡Dale voz a tu historia! */}
+                    <div className="mt-6">
+                        <p className="text-left text-white">Queremos conocerte mejor. Si lo deseas puedes grabar un audio corto
+                            (30-60 segundos) contándonos sobre ti, tus objetivos y cómo podemos
+                            ayudarte.
+                        </p>
+                        <div className="mt-4">
+                            <input type="file" accept="audio/*" className="hidden" id="audioInput" onChange={handleAudioChange} />
+                            <button
+                                type="button"
+                                onClick={() => document.getElementById("audioInput").click()}
+                                className="flex items-center justify-center w-full gap-2 px-4 py-2 text-white border border-white rounded-md"
+                            >
+                                <MdOutlineFileUpload className="w-[20px] h-[20px]" /> Adjuntar archivo de audio
+                            </button>
+                            {audioFile && (
+                                <div className="flex items-center gap-4 mt-4">
+                                    <span className="flex items-center gap-2 text-blue-500"> <GrDocumentSound className="text-black" />{audioFile.name}</span>
+                                    <audio controls>
+                                        <source src={URL.createObjectURL(audioFile)} type={audioFile.type} />
+                                        Tu navegador no soporta la reproducción de audio.
+                                    </audio>
+                                </div>
+                            )}
                         </div>
                     </div>
 

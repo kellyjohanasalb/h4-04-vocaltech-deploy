@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // O cambiar según tu sistema de rutas.
 import ProgresBar from "./ProgresBar";
 import logo from "../assets/icons/VocalTech.png";
+import { MdOutlineFileUpload } from "react-icons/md";
+import { GrDocumentSound } from "react-icons/gr";
 
 export default function Talento2() {
   const navigate = useNavigate(); // Para redirigir al componente /talento1
   const handleBackClick = () => {
     navigate("/talento1");
-};
+  };
+  const [audioFile, setAudioFile] = useState(null);
   const [formData, setFormData] = useState({
     desafio: "",
     definido: "",
@@ -23,6 +26,13 @@ export default function Talento2() {
       [name]: value
     }));
   };
+  
+  const handleAudioChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        setAudioFile(file);
+    }
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,33 +51,33 @@ export default function Talento2() {
   return (
     <div className="flex flex-col items-center min-h-screen py-8 bg-white">
       <div>
-            <header className="flex items-center justify-center w-full max-w-4xl px-4">
-                <button onClick={handleBackClick} className="absolute flex items-center gap-4 text-lg font-medium text-black lg:left-36 max-lg:left-72">
-                    <svg
-                        width="26"
-                        height="16"
-                        viewBox="0 0 26 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM26 7L1 7V9L26 9V7Z"
-                            fill="black"
-                        />
-                    </svg>
-                    Regresar
-                </button>
-                <img
-                    src={logo}
-                    alt="VocalTech"
-                    className="lg:w-[328px] h-[54px]"
-                />
-            </header>
-            {/* Progress Bar */}
-            <div className="flex items-center justify-between w-full max-w-4xl mt-8">
-                <ProgresBar />
-            </div>
+        <header className="flex items-center justify-center w-full max-w-4xl px-4">
+          <button onClick={handleBackClick} className="absolute flex items-center gap-4 text-lg font-medium text-black lg:left-36 max-lg:left-72">
+            <svg
+              width="26"
+              height="16"
+              viewBox="0 0 26 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM26 7L1 7V9L26 9V7Z"
+                fill="black"
+              />
+            </svg>
+            Regresar
+          </button>
+          <img
+            src={logo}
+            alt="VocalTech"
+            className="lg:w-[328px] h-[54px]"
+          />
+        </header>
+        {/* Progress Bar */}
+        <div className="flex items-center justify-between w-full max-w-4xl mt-8">
+          <ProgresBar />
         </div>
+      </div>
       <form
         className="w-full max-w-4xl px-4 mt-20"
         onSubmit={handleSubmit}
@@ -246,38 +256,31 @@ export default function Talento2() {
             ))}
           </div>
         </div>
-        {/* Apartado 6: ¡Dale voz a tu historia! */}
+        {/* Apartado 7: ¡Dale voz a tu historia! */}
         <div className="mb-6">
-          <h2 className="text-lg font-semibold">6.¡Dale voz a tu historia!</h2>
-          <p className="mt-2 text-sm text-gray-600">
-            Queremos conocerte mejor. Si lo deseas, puedes grabar un audio corto (30-60 segundos) contándonos sobre ti, tus objetivos y cómo podemos ayudarte.
+          <label className="block text-lg font-semibold">6. ¡Dale voz a tu historia!</label>
+          <p className="text-[#9A9A9A]">Queremos conocerte mejor. Si lo deseas puedes grabar un audio corto
+            (30-60 segundos) contándonos sobre ti, tus objetivos y cómo podemos
+            ayudarte.
           </p>
           <div className="mt-4">
-            <label
-              htmlFor="audio-upload"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+            <input type="file" accept="audio/*" className="hidden" id="audioInput" onChange={handleAudioChange} />
+            <button
+              type="button"
+              onClick={() => document.getElementById("audioInput").click()}
+              className="flex items-center justify-center gap-2 px-4 py-2 text-black border border-black rounded-md"
             >
-              📁 Adjuntar archivo de audio
-              <input
-                type="file"
-                id="audio-upload"
-                accept="audio/*"
-                className="hidden"
-              />
-            </label>
-            <div className="mt-3">
-              <a
-                href="#"
-                className="text-sm text-blue-600 underline hover:text-blue-800"
-              >
-              </a>
-              <button
-                type="button"
-                className="ml-2 text-gray-500 hover:text-red-500 focus:outline-none"
-              >
-              
-              </button>
-            </div>
+              <MdOutlineFileUpload className="w-[20px] h-[20px]" /> Adjuntar archivo de audio
+            </button>
+            {audioFile && (
+              <div className="flex items-center gap-4 mt-4">
+                <span className="flex items-center gap-2 text-blue-500"> <GrDocumentSound className="text-black" />{audioFile.name}</span>
+                <audio controls>
+                  <source src={URL.createObjectURL(audioFile)} type={audioFile.type} />
+                  Tu navegador no soporta la reproducción de audio.
+                </audio>
+              </div>
+            )}
           </div>
         </div>
       </form>
@@ -296,7 +299,7 @@ export default function Talento2() {
           </p>
 
           {/* Formulario */}
-          <form className="space-y-4">
+          <form className="h-full space-y-4">
             {/* Campo de correo electrónico */}
             <div>
               <label htmlFor="email" className="block mb-2 text-sm text-left text-white">
