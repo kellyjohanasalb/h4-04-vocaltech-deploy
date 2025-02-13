@@ -116,9 +116,9 @@ export default function TalentoEmpre2() {
         }
     };
 
-    const handleButtonClick = async () => {
+    const handleButtonClick = () => {
         try {
-            await handleSubmit();
+           handleSubmit();
             navigate("/formulario-terminado");
         } catch (error) {
             console.error("Error al guardar los datos:", error);
