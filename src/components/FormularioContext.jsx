@@ -56,18 +56,29 @@ export const FormularioProvider = ({ children }) => {
             whatsapp: "string"
         });
 
-    // FunciÃ³n para actualizar el estado del formulario
+    const deepMerge = (target, source) => {
+        for (const key of Object.keys(source)) {
+            if (
+                typeof source[key] === "object" &&
+                source[key] !== null &&
+                !Array.isArray(source[key])
+            ) {
+                if (!target[key]) {
+                    target[key] = {}; // Si no existe el objeto, lo creamos
+                }
+                deepMerge(target[key], source[key]); // Llamada recursiva para fusionar
+            } else {
+                target[key] = source[key]; // Si no es un objeto, simplemente sobrescribimos
+            }
+        }
+        return target;
+    };
+
+    //Funcion para actualizar el estado del formulario
     const updateFormData = (newData) => {
         setFormData((prevData) => ({
             ...prevData,
-            ...Object.keys(newData).reduce((acc, key) => {
-                if (typeof newData[key] === "object" && prevData[key]) {
-                    acc[key] = { ...prevData[key], ...newData[key] };
-                } else {
-                    acc[key] = newData[key];
-                }
-                return acc;
-            }, {}),
+            ...deepMerge({ ...prevData }, newData)
         }));
     };
 

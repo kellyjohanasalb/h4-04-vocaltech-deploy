@@ -32,7 +32,7 @@ export default function EmprendedorForm() {
                         ...prevState.respuestas,
                         comunicacion: {
                             ...prevState.respuestas.comunicacion,
-                            capacidad_comunicar: value,
+                            [name]: value,
                         },
                     },
                 };

@@ -25,11 +25,13 @@ const FinEmpre = () => {
                 body: JSON.stringify(formData),
             });
             console.log("Datos", response);
+
+            const res = await response.json();
             
             if (response.ok) {
                 alert("Formulario enviado con éxito");
             } else {
-                alert("Error al enviar el formulario");
+                alert(`Error: ${res.message || "No se pudo enviar el formulario"}`);
             }
         } catch (error) {
             console.error("Error al enviar:", error);
@@ -43,9 +45,9 @@ const FinEmpre = () => {
     };
 
     const handleNext = () => {
-        updateFormData(data); // Actualiza el JSON global
+        updateFormData(data);
         handleSubmit();
-        navigate("/formulario-terminado"); // Navega al siguiente componente
+        navigate("/formulario-terminado");
     };
 
     const handleBackClick = () => {
@@ -107,14 +109,8 @@ const FinEmpre = () => {
                         </label>
                         <div className="flex gap-2 mb-10">
                             <input
-                                type="text"
-                                id="code"
-                                placeholder="+"
-                                className="w-16 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            />
-                            <input
                                 type="tel"
-                                id="celular"
+                                id="whatsapp"
                                 name="whatsapp"
                                 onChange={handleChange}
                                 placeholder="911111111"

@@ -13,7 +13,6 @@ export default function TalentoEmpre2() {
     const [talentoEmpre2, setTalentoEmpre2] = useState({
         respuestas: {
             talentos: {
-                incoporar_talento: "",
                 cualidades: "",
                 candidatos_evaluados: "",
                 vertical: "",
@@ -111,7 +110,7 @@ export default function TalentoEmpre2() {
 
     const handleButtonClick = () => {
         try {
-           handleSubmit();
+            handleSubmit();
             navigate("/formulario-terminado");
         } catch (error) {
             console.error("Error al guardar los datos:", error);
