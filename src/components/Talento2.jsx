@@ -11,21 +11,50 @@ export default function Talento2() {
     navigate("/talento1");
   };
   const [audioFile, setAudioFile] = useState(null);
-  const [formData, setFormData] = useState({
-    desafio: "",
-    definido: "",
-    talento: "",
-    roles: "",
-    perfil: "",
-  });
+  const [talento2, setTalento2] = useState({
+    respuestas:{
+        talentos: {
+            desafio: "",
+            perfil_roles: "",
+            acompanamiento: "",
+            rol: "",
+            impacto: ""
+        }
+    },
+    });
 
-  const handleInputChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
+    setTalento2((prevState) => ({
+        ...prevState,
+        respuestas: {
+            ...prevState.respuestas,
+            talentos: {
+                ...prevState.respuestas.talentos,
+                [name]: value,
+            },
+        },
     }));
-  };
+};
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    updateFormData(talento2);
+    console.log("Datos guardados:", talento2);
+    const { talentos } = talento2.respuestas;
+
+  const allAnswered = Object.values(talentos).every((value) => value.trim() !== "");
+
+  if (!allAnswered) {
+    alert("Por favor responde todas las preguntas antes de continuar.");
+    return;
+  }
+
+  console.log("Datos guardados:", talento2);
+  navigate("/talento1");
+};
+  
+
   
   const handleAudioChange = (e) => {
     const file = e.target.files[0];
@@ -34,19 +63,6 @@ export default function Talento2() {
     }
 };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Verificar si todas las respuestas están seleccionadas
-    const allAnswered = Object.values(formData).every((value) => value !== "");
-    if (!allAnswered) {
-      alert("Por favor responde todas las preguntas antes de continuar.");
-      return;
-    }
-
-    // Si todo está respondido, redirigir al componente /talento1
-    navigate("/talento1");
-  };
 
   return (
     <div className="flex flex-col items-center min-h-screen py-8 bg-white">
@@ -80,7 +96,7 @@ export default function Talento2() {
       </div>
       <form
         className="w-full max-w-4xl px-4 mt-20"
-        onSubmit={handleSubmit}
+        onSubmit={handleNext}
       >
         {/* Pregunta 1 */}
         <div className="mb-6">
@@ -104,7 +120,7 @@ export default function Talento2() {
                   name="desafio"
                   value={desafio}
                   className="hidden peer"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                 />
                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                   <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
@@ -128,24 +144,24 @@ export default function Talento2() {
               "Algo definido",
               "Poco definido",
               "No estoy seguro/a"
-            ].map((definido, index) => (
+            ].map((perfil_roles, index) => (
               <label
                 key={index}
                 className="flex items-center gap-2 cursor-pointer"
               >
                 <input
                   type="radio"
-                  name="definido"
-                  value={definido}
+                  name="perfil_roles"
+                  value={perfil_roles}
                   className="hidden peer"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                 />
                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                   <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                     {String.fromCharCode(65 + index)}
                   </span>
                 </div>
-                <span className="text-black">{definido}</span>
+                <span className="text-black">{perfil_roles}</span>
               </label>
             ))}
           </div>
@@ -161,24 +177,24 @@ export default function Talento2() {
               "Si",
               "No",
               "Tal véz"
-            ].map((talento, index) => (
+            ].map((acompanamiento, index) => (
               <label
                 key={index}
                 className="flex items-center gap-2 cursor-pointer"
               >
                 <input
                   type="radio"
-                  name="talento"
-                  value={talento}
+                  name="acompanamiento"
+                  value={acompanamiento}
                   className="hidden peer"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                 />
                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                   <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                     {String.fromCharCode(65 + index)}
                   </span>
                 </div>
-                <span className="text-black">{talento}</span>
+                <span className="text-black">{acompanamiento}</span>
               </label>
             ))}
           </div>
@@ -201,24 +217,24 @@ export default function Talento2() {
               "Team Leader",
               "Product Owner",
               "Otro"
-            ].map((roles, index) => (
+            ].map((rol, index) => (
               <label
                 key={index}
                 className="flex items-center gap-2 cursor-pointer"
               >
                 <input
                   type="radio"
-                  name="roles"
-                  value={roles}
+                  name="rol"
+                  value={rol}
                   className="hidden peer"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                 />
                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                   <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                     {String.fromCharCode(65 + index)}
                   </span>
                 </div>
-                <span className="text-black">{roles}</span>
+                <span className="text-black">{rol}</span>
               </label>
             ))}
           </div>
@@ -234,24 +250,24 @@ export default function Talento2() {
               "Algo claro",
               "Poco claro",
               "No estoy seguro/a  "
-            ].map((perfil, index) => (
+            ].map((impacto, index) => (
               <label
                 key={index}
                 className="flex items-center gap-2 cursor-pointer"
               >
                 <input
                   type="radio"
-                  name="perfil"
-                  value={perfil}
+                  name="impacto"
+                  value={impacto}
                   className="hidden peer"
-                  onChange={handleInputChange}
+                  onChange={handleChange}
                 />
                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                   <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                     {String.fromCharCode(65 + index)}
                   </span>
                 </div>
-                <span className="text-black">{perfil}</span>
+                <span className="text-black">{impacto}</span>
               </label>
             ))}
           </div>

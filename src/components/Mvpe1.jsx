@@ -1,136 +1,99 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { useFormulario } from "./FormularioContext";
 import { CgArrowRight } from "react-icons/cg";
 import ProgresBar from "./ProgresBar";
 import logo from "../assets/icons/VocalTech.png";
 
-
 export default function Mvpe1() {
     const { updateFormData } = useFormulario(); // Estado para guardar la opción seleccionada
-        const navigate = useNavigate(); // Hook para la navegación
-        const [mvpe1, setMvpe1] = useState({
-            name: "",
-            tiempo: "",
-            redes: "",
-            sector_actividad: "",
-            etapa: "",
-            categoria: "Emprendedor",
-            respuestas: {
-                comunicacion: {
-                    capacidad_comunicar: "",
-                    importancia_comunicacion_ventas: "",
-                    seguro_comunicar: "",
-                    principal_desafio: "",
-                    mayor_barrera: "",
-                    impacto_comunicacion_liderazgo: "",
-                    mayor_desafio: ""
-                },
-                pitch: {
-                    pitch: "",
-                    frecuencia_presenta: "",
-                    preparado_presentar: "",
-                    mejorar_pitch: {
-                        claridad: 4,
-                        impacto_persuacion: 4,
-                        presentacion_visual: 4,
-                        seguridad_confianza: 4
-                    },
-                    principales_desafios: ""
-                },
-                mvp: {
-                    desarrollar_mvp: "",
-                    etapa: "",
-                    validado: "",
-                    problema_mvp: "",
-                    mayor_dificultad: ""
-                },
-                talentos: {
-                    incoporar_talento: "",
-                    cualidades: "",
-                    candidatos_evaluados: "",
-                    vertical: "",
-                    rol: "",
-                    desafios: ""
-                }
+    const navigate = useNavigate(); // Hook para la navegación
+    const [mvpe1, setMvpe1] = useState({
+        respuestas: {
+            mvp: {
+                desarrollar_mvp: "",
             },
-            email: "",
-            whatsapp: "",
-            //capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
-        });
+        },
+    });
 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setMvpe1((prevState) => ({
-                ...prevState,
-                respuestas: {
-                    ...prevState.respuestas,
-                    mvp: {
-                        ...prevState.respuestas.mvp,
-                        [name]: value
-                    },
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        console.log("Cambiando:", name, value); // Depuración
+        setMvpe1((prevState) => ({
+            ...prevState,
+            respuestas: {
+                ...prevState.respuestas,
+                mvp: {
+                    ...prevState.respuestas.mvp,
+                    [name]: value,
                 },
-            }));
-        };
+            },
+        }));
+    };
 
-        const handleNext = (e) => {
-            e.preventDefault();
-            updateFormData(mvpe1); // Actualiza el JSON global
-            console.log("Datos guardados:", mvpe1);
+    const handleNext = (e) => {
+        e.preventDefault();
+        updateFormData(mvpe1); // Actualiza el JSON global
+        console.log("Datos guardados:", mvpe1);
 
-            const desarrollar_mvp = mvpe1.respuestas.mvp.desarrollar_mvp;
+        const desarrollar_mvp = mvpe1?.respuestas?.mvp?.desarrollar_mvp || "";
 
-            if (desarrollar_mvp === "Sí, estamos en la fase de idea y necesitamos validar" || desarrollar_mvp === "Sí, ya tenemos una idea valida y queremos desarrollar el MVP") {
-                navigate("/mvpe2"); // Redirigir a la ruta "MVPE 2"
-            } else if (desarrollar_mvp === "No, ya tenemos un producto desarrollado" || desarrollar_mvp === "No, y no consideramos una prioridad") {
-                navigate("/talento-empre1")
-            } else {
-                alert("Por favor selecciona una opción antes de continuar."); // Validar que se haya seleccionado una opción
-            }
-            
-        };
+        if (!desarrollar_mvp) {
+            alert("Por favor selecciona una opción antes de continuar.");
+            return;
+        }
+
+        if (
+            desarrollar_mvp === "Sí, estamos en la fase de idea y necesitamos validar" ||
+            desarrollar_mvp === "Sí, ya tenemos una idea valida y queremos desarrollar el MVP"
+        ) {
+            navigate("/mvpe2"); // Redirigir a la ruta "MVPE 2"
+        } else if (
+            desarrollar_mvp === "No, ya tenemos un producto desarrollado" ||
+            desarrollar_mvp === "No, y no consideramos una prioridad"
+        ) {
+            navigate("/talento-empre1");
+        }
+    };
 
     const handleBackClick = () => {
         navigate("/pitch1");
     };
 
-
     return (
         <div className="flex flex-col items-center min-h-screen py-8 bg-white">
             <div>
-            <header className="flex items-center justify-center w-full max-w-4xl px-4">
-                <button onClick={handleBackClick} className="absolute flex items-center gap-4 text-lg font-medium text-black lg:left-36 max-lg:left-72">
-                    <svg
-                        width="26"
-                        height="16"
-                        viewBox="0 0 26 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                <header className="flex items-center justify-center w-full max-w-4xl px-4">
+                    <button
+                        onClick={handleBackClick}
+                        className="absolute flex items-center gap-4 text-lg font-medium text-black lg:left-36 max-lg:left-72"
                     >
-                        <path
-                            d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM26 7L1 7V9L26 9V7Z"
-                            fill="black"
-                        />
-                    </svg>
-                    Regresar
-                </button>
-                <img                    
-                    src={logo}
-                    alt="VocalTech"
-                    className="lg:w-[328px] h-[54px]"
-                />
-            </header>
-            {/* Progress Bar */}
-            <div className="flex items-center justify-between w-full max-w-4xl mt-8">
-                <ProgresBar />
+                        <svg
+                            width="26"
+                            height="16"
+                            viewBox="0 0 26 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM26 7L1 7V9L26 9V7Z"
+                                fill="black"
+                            />
+                        </svg>
+                        Regresar
+                    </button>
+                    <img src={logo} alt="VocalTech" className="lg:w-[328px] h-[54px]" />
+                </header>
+
+                {/* Progress Bar */}
+                <div className="flex items-center justify-between w-full max-w-4xl mt-8">
+                    <ProgresBar />
+                </div>
             </div>
-        </div>
-            <form
-                className="w-full max-w-4xl px-4 mt-20"
-                onSubmit={handleNext} // Manejar el evento de envío del formulario
-            >
+
+            <form className="w-full max-w-4xl px-4 mt-20" onSubmit={handleNext}>
                 <div>
-                    <label className="block text-lg font-semibold" >
+                    <label className="block text-lg font-semibold">
                         1. ¿Tu emprendimiento necesita desarrollar un MVP?
                     </label>
                     <div className="mt-4 space-y-2">
@@ -138,7 +101,7 @@ export default function Mvpe1() {
                             "Sí, estamos en la fase de idea y necesitamos validar",
                             "Sí, ya tenemos una idea valida y queremos desarrollar el MVP",
                             "No, ya tenemos un producto desarrollado",
-                            "No, y no consideramos una prioridad"
+                            "No, y no consideramos una prioridad",
                         ].map((desarrollar_mvp, index) => (
                             <label
                                 htmlFor={`desarrollar_mvp-${index}`}
@@ -163,6 +126,7 @@ export default function Mvpe1() {
                         ))}
                     </div>
                 </div>
+
                 {/* Botón Siguiente */}
                 <div className="flex items-center justify-center">
                     <button

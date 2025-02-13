@@ -5,25 +5,55 @@ import ProgresBar from "./ProgresBar";
 import logo from "../assets/icons/VocalTech.png";
 
 export default function Mvp1() {
-    const [selectedOption, setSelectedOption] = useState(""); // Estado para guardar la opción seleccionada
     const navigate = useNavigate(); // Hook para la navegación
+    const [mvp1, setMvp1] = useState({
+        respuestas:{
+            mvp: {
+                desarrollar_mvp: "",
+            },
+        },
+        });
+
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            setMvp1((prevState) => {
+                if (name === "desarrollar_mvp") {
+                    return {
+                        ...prevState,
+                        respuestas: {
+                            ...prevState.respuestas,
+                            mvp: {
+                                ...prevState.respuestas.mvp,
+                                desarrollar_mvp: value,
+                            },
+                        },
+                    };
+                } else {
+                    return { ...prevState, [name]: value };
+                }
+            });
+        };
+
+        const handleNext = (e) =>{
+            e.preventDefault();
+            updateFormData(mvp1); // Actualiza el JSON global
+            console.log("Datos guardados:", mvp1);
+
+            if (mvp1.respuestas.mvp.desarrollar_mvp === "Si") {
+                navigate("/mvp2");
+            } else if (mvp1.respuestas.mvp.desarrollar_mv === "No" ||
+                mvp1.respuestas.mvp.desarrollar_mvp === "No estoy seguro/a") {
+                    navigate("/talento1");
+                } else {
+                    alert("Por favor selecciona una opción antes de continuar.");
+            }
+        };
+
     const handleBackClick = () => {
         navigate("/form-empresa");
     };
-    const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value); // Actualizar el estado con la opción seleccionada
-    };
 
-    const handleSubmit = (event) => {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-        if (selectedOption === "Si") {
-            navigate("/mvp2"); // Redirigir a la ruta "MVP 2" si selecciona "Si"
-        } else if (selectedOption === "No" || selectedOption === "No estoy seguro/a") {
-            navigate("/talento1"); // Redirigir a la ruta "Talento 1" para las otras opciones
-        } else {
-            alert("Por favor selecciona una opción antes de continuar."); // Validar que se haya seleccionado una opción
-        }
-    };
+    
 
     return (
         <div className="flex flex-col items-center min-h-screen py-8 bg-white">
@@ -58,33 +88,31 @@ export default function Mvp1() {
 
             <form
                 className="w-full max-w-4xl px-4 mt-20"
-                onSubmit={handleSubmit} // Manejar el evento de envío del formulario
+                onSubmit={handleNext} // Manejar el evento de envío del formulario
             >
                 <div>
                     <label className="block text-lg font-semibold" htmlFor="">
                         1.-¿Tu empresa necesita desarrollar un MVP?
                     </label>
                     <div className="mt-4 space-y-2">
-                        {["Si", "No", "No estoy seguro/a"].map((option, index) => (
+                        {["Si", "No", "No estoy seguro/a"].map((desarrollar_mvp, index) => (
                             <label
-                                htmlFor={`mvp1-${index}`}
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
-                                    id={`mvp1-${index}`}
                                     type="radio"
-                                    name="mvp1"
-                                    value={option}
+                                    name="desarrollar_mvp"
+                                    value={desarrollar_mvp}
                                     className="hidden peer"
-                                    onChange={handleOptionChange} // Manejar el cambio de opción
+                                    onChange={handleChange} // Manejar el cambio de opción
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{option}</span>
+                                <span className="text-black">{desarrollar_mvp}</span>
                             </label>
                         ))}
                     </div>

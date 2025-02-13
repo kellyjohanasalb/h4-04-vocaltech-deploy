@@ -56,7 +56,7 @@ export const FormularioProvider = ({ children }) => {
             whatsapp: "string"
         });
 
-    // Función para actualizar el estado del formulario
+    // FunciÃ³n para actualizar el estado del formulario
     const updateFormData = (newData) => {
         setFormData((prevData) => ({
             ...prevData,

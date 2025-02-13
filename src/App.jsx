@@ -65,9 +65,6 @@ function App() {
         {/* Ruta Formulario Empresa */}
         <Route path="/form-empresa" element={<FormEmpresaNavi />} />
 
-        {/* Ruta Formulario Emprendedor */}
-        <Route path="/form-emprendedor" element={<EmprendedorForm />} />
-
         {/* Rutas de admin */}
         <Route path="/adminpage" element={<Adminpage />} />
 

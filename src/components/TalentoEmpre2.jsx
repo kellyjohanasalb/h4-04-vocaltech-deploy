@@ -11,41 +11,7 @@ export default function TalentoEmpre2() {
     const navigate = useNavigate();
     const [audioFile, setAudioFile] = useState(null);
     const [talentoEmpre2, setTalentoEmpre2] = useState({
-        name: "",
-        tiempo: "",
-        redes: "",
-        sector_actividad: "",
-        etapa: "",
-        categoria: "Emprendedor",
         respuestas: {
-            comunicacion: {
-                capacidad_comunicar: "",
-                importancia_comunicacion_ventas: "",
-                seguro_comunicar: "",
-                principal_desafio: "",
-                mayor_barrera: "",
-                impacto_comunicacion_liderazgo: "",
-                mayor_desafio: "",
-            },
-            pitch: {
-                pitch: "",
-                frecuencia_presenta: "",
-                preparado_presentar: "",
-                mejorar_pitch: {
-                    claridad: 4,
-                    impacto_persuacion: 4,
-                    presentacion_visual: 4,
-                    seguridad_confianza: 4,
-                },
-                principales_desafios: "",
-            },
-            mvp: {
-                desarrollar_mvp: "",
-                etapa: "",
-                validado: "",
-                problema_mvp: "",
-                mayor_dificultad: "",
-            },
             talentos: {
                 incoporar_talento: "",
                 cualidades: "",
@@ -58,20 +24,40 @@ export default function TalentoEmpre2() {
         email: "",
         whatsapp: "",
     });
-
     const handleChange = (e) => {
         const { name, value } = e.target;
+
         setTalentoEmpre2((prevState) => ({
             ...prevState,
-            respuestas: {
-                ...prevState.respuestas,
-                talentos: {
-                    ...prevState.respuestas.talentos,
-                    [name]: value,
-                },
-            },
+            // Si el campo es 'email' o 'whatsapp', se actualiza directamente
+            ...(name === "email" || name === "whatsapp"
+                ? { [name]: value }
+                : {
+                    respuestas: {
+                        ...prevState.respuestas,
+                        talentos: {
+                            ...prevState.respuestas.talentos,
+                            [name]: value,
+                        },
+                    },
+                }),
         }));
     };
+
+
+    /*const handleChange = (e) => {
+            const { name, value } = e.target;
+            setTalentoEmpre2((prevState) => ({
+                ...prevState,
+                respuestas: {
+                    ...prevState.respuestas,
+                    talentos: {
+                        ...prevState.respuestas.talentos,
+                        [name]: value,
+                    },
+                },
+            }));
+        };*/
 
     const handleAudioChange = (e) => {
         const file = e.target.files[0];
@@ -82,37 +68,44 @@ export default function TalentoEmpre2() {
 
     const handleNext = (e) => {
         e.preventDefault();
-        if (!talentoEmpre2.respuestas.talentos.cualidades || 
-            !talentoEmpre2.respuestas.talentos.candidatos_evaluados || 
-            !talentoEmpre2.respuestas.talentos.vertical || 
-            !talentoEmpre2.respuestas.talentos.rol || 
-            !talentoEmpre2.respuestas.talentos.desafios) {
+        const { talentos } = talentoEmpre2.respuestas;
+
+        // Verifica si hay algún campo vacío
+        if (Object.values(talentos).some(valor => !valor || valor.trim() === "")) {
             alert("Por favor, completa todos los campos antes de continuar.");
             return;
         }
+
         updateFormData({ ...talentoEmpre2, audioFile });
         navigate("/fin-empre");
     };
+
 
     const handleBackClick = () => {
         navigate("/talento-empre1");
     };
 
     const handleSubmit = async () => {
+        console.log(formData);
+
         try {
-            const response = await fetch("https://vocaltech-api-gateway-production.up.railway.app/api/users/create", {
+            const response = await fetch("https://vocaltech-api-gateway-production.up.railway.app/api/leads/create", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
 
+            const data = await response.json();
+
             if (response.ok) {
                 alert("Formulario enviado con éxito");
+                navigate("/formulario-terminado");
             } else {
-                alert("Error al enviar el formulario");
+                alert(`Error: ${data.message || "No se pudo enviar el formulario"}`);
             }
         } catch (error) {
             console.error("Error al enviar:", error);
+            alert("Hubo un error al procesar la solicitud.");
         }
     };
 
@@ -375,6 +368,7 @@ export default function TalentoEmpre2() {
                     </div>
                 </div>
             </form>
+
             {/* Footer*/}
             <div className="w-full h-full  flex items-center justify-center min-h-screen bg-gradient-to-b from-[#525AF3] to-[#0B0B0BF7]">
                 <div className="w-full h-full max-w-md p-8 text-center ">
@@ -390,36 +384,42 @@ export default function TalentoEmpre2() {
                     </p>
 
                     {/* Formulario */}
-                    <form className="space-y-4">
+                    <form className="space-y-4" onSubmit={handleNext}>
                         {/* Campo de correo electrónico */}
                         <div>
                             <label htmlFor="email" className="block mb-2 text-sm text-left text-white">
                                 Email*
                             </label>
                             <input
-                                type="email"
                                 id="email"
+                                type="email"
+                                name="email" // Nombre debe coincidir con el de talentoEmpre2
                                 placeholder="ejemplo@correo.com"
+                                //value={talentoEmpre2.email === }
+                                onChange={handleChange}
                                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
                         </div>
 
                         {/* Campo de celular */}
                         <div>
-                            <label htmlFor="celular" className="block mb-2 text-sm text-left text-white">
+                            <label htmlFor="whatsapp" className="block mb-2 text-sm text-left text-white">
                                 Celular*
                             </label>
                             <div className="flex gap-2">
-                                <input
+                                {/*<input
                                     type="text"
                                     id="code"
                                     placeholder="+"
                                     className="w-16 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                />
+                                />*/}
                                 <input
+                                    id="whatsapp"
                                     type="tel"
-                                    id="celular"
+                                    name="whatsapp" // Nombre debe coincidir con el de talentoEmpre2
                                     placeholder="911111111"
+                                    //value={talentoEmpre2.whatsapp}
+                                    onChange={handleChange}
                                     className="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                                 />
                             </div>

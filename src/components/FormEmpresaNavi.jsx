@@ -2,20 +2,35 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CgArrowRight } from "react-icons/cg";
 import Header from "./Header";
+import { useFormulario } from "./FormularioContext";
 
 export default function FormEmpresaNavi() {
+    //const { updateFormData } = useFormulario();
     const navigate = useNavigate();
-    const [selectedOption6, setSelectedOption6] = useState(""); // Estado para la respuesta de la pregunta 6
+    const [empre, setEmpre] = useState({
+        name: "",
+        ubicacion: "",
+        redes: "",
+        sector_actividad: "",
+        empleados: "",
+        satisfecho: "",
+        categoria: "Empresa",
+        });
+    const handleChange = (e) => {
+        setEmpre({ ...empre, [e.target.name]: e.target.value });
+    };
 
-    const handleNextClick = (e) => {
+    const handleNext = (e) => {
         e.preventDefault();
+        updateFormData(empre); // Actualiza el JSON global
+        console.log("Datos guardados:", empre);
 
-        if (selectedOption6 ===  "Satisfecho/a" || selectedOption6 === "Muy satisfecho/a") {
+        if (empre.satisfecho ===  "Satisfecho/a" || empre.satisfecho === "Muy satisfecho/a") {
             navigate("/mvp1"); // Navegar a MVP1
         } else if (
-            selectedOption6 === "Neutral" ||
-            selectedOption6 === "Insatisfecho/a" ||
-            selectedOption6 === "Muy insatisfecho/a"
+            empre.satisfecho === "Neutral" ||
+            empre.satisfecho === "Insatisfecho/a" ||
+            empre.satisfecho === "Muy insatisfecho/a"
         ) {
             navigate("/comunicacion1"); // Navegar a Comunicacion1
         } else {
@@ -39,16 +54,18 @@ export default function FormEmpresaNavi() {
             </div>
 
             {/* Form */}
-            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={handleNextClick}>
+            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={handleNext}>
                 {/* Preguntas anteriores */}
                 <div className="mb-6">
-                    <label htmlFor="empresa" className="block text-lg font-semibold">
+                    <label htmlFor="name" className="block text-lg font-semibold">
                         1. Nombre de tu Empresa
                     </label>
                     <input
-                        id="empresa"
+                        id="name"
                         type="text"
+                        name="name"
                         placeholder="Nombre de tu empresa"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
@@ -59,29 +76,35 @@ export default function FormEmpresaNavi() {
                     <input
                         id="ubicacion"
                         type="text"
+                        name="ubicacion"
                         placeholder="Ubicación de tu empresa"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="sector" className="block text-lg font-semibold">
+                    <label htmlFor="redes" className="block text-lg font-semibold">
                         3. Redes Sociales / Sitio Web
                     </label>
                     <input
-                        id="sector"
+                        id="redes"
                         type="text"
+                        name="redes"
                         placeholder="Redes / Sitio web de tu emprendimiento"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="sector" className="block text-lg font-semibold">
+                    <label htmlFor="sector_actividad" className="block text-lg font-semibold">
                         4. Sector de Actividad
                     </label>
                     <input
-                        id="sector"
+                        id="sector_actividad"
                         type="text"
+                        name="sector_actividad"
                         placeholder="Ej. Tecnológico Comercial"
+                        onChange={handleChange}
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
@@ -90,12 +113,13 @@ export default function FormEmpresaNavi() {
                         5. ¿Número de Empleados?
                     </label>
                     <div className="mt-4 space-y-2">
-                        {["de 1 a 10", "de 11 a 50", "de 51 a 99", "más de 100"].map((etapa, index) => (
+                        {["de 1 a 10", "de 11 a 50", "de 51 a 99", "más de 100"].map((empleados, index) => (
                             <label key={index} className="flex items-center gap-2 cursor-pointer">
                                 <input
                                     type="radio"
-                                    name="etapa"
-                                    value={etapa}
+                                    name="empleados"
+                                    value={empleados}
+                                    onChange={handleChange}
                                     className="hidden peer"
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
@@ -103,7 +127,7 @@ export default function FormEmpresaNavi() {
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{etapa}</span>
+                                <span className="text-black">{empleados}</span>
                             </label>
                         ))}
                     </div>
@@ -121,16 +145,16 @@ export default function FormEmpresaNavi() {
                             "Neutral",
                             "Insatisfecho/a",
                             "Muy insatisfecho/a",
-                        ].map((opcion, index) => (
+                        ].map((satisfecho, index) => (
                             <label
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
                                     type="radio"
-                                    name="pregunta6"
-                                    value={opcion}
-                                    onChange={(e) => setSelectedOption6(e.target.value)}
+                                    name="satisfecho"
+                                    value={satisfecho}
+                                    onChange={handleChange}
                                     className="hidden peer"
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
@@ -138,7 +162,7 @@ export default function FormEmpresaNavi() {
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{opcion}</span>
+                                <span className="text-black">{satisfecho}</span>
                             </label>
                         ))}
                     </div>

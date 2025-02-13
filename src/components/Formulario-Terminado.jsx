@@ -10,8 +10,12 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import manos from "../assets/icons/High five representing team success.png";
 import Navbar from "./Navbar";
+import { useFormulario } from "./FormularioContext";
 
 const FormularioEnviado = () => {
+  const { formData } = useFormulario();
+  console.log("Datos:", formData);
+  
   return (
     <>
       {/* Navbar fijo en la parte superior */}

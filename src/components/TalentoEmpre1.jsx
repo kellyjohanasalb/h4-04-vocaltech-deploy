@@ -9,52 +9,11 @@ export default function TalentoEmpre1() {
     const { updateFormData } = useFormulario();
     const navigate = useNavigate();
     const [talentoEmpre1, setTalentoEmpre1] = useState({
-        name: "",
-        tiempo: "",
-        redes: "",
-        sector_actividad: "",
-        etapa: "",
-        categoria: "Emprendedor",
         respuestas: {
-            comunicacion: {
-                capacidad_comunicar: "",
-                importancia_comunicacion_ventas: "",
-                seguro_comunicar: "",
-                principal_desafio: "",
-                mayor_barrera: "",
-                impacto_comunicacion_liderazgo: "",
-                mayor_desafio: "",
-            },
-            pitch: {
-                pitch: "",
-                frecuencia_presenta: "",
-                preparado_presentar: "",
-                mejorar_pitch: {
-                    claridad: 4,
-                    impacto_persuacion: 4,
-                    presentacion_visual: 4,
-                    seguridad_confianza: 4,
-                },
-                principales_desafios: "",
-            },
-            mvp: {
-                desarrollar_mvp: "",
-                etapa: "",
-                validado: "",
-                problema_mvp: "",
-                mayor_dificultad: "",
-            },
             talentos: {
                 incoporar_talento: "",
-                cualidades: "",
-                candidatos_evaluados: "",
-                vertical: "",
-                rol: "",
-                desafios: "",
             },
-        },
-        email: "",
-        whatsapp: "",
+        }
     });
 
     const handleChange = (e) => {
@@ -76,13 +35,13 @@ export default function TalentoEmpre1() {
         updateFormData(talentoEmpre1);
         console.log("Datos guardados:", talentoEmpre1);
 
-        const incoporar_talento = talentoEmpre1.respuestas.talentos.incoporar_talento;
+        const incorporar_talento = talentoEmpre1.respuestas.talentos.incoporar_talento;
 
-        if (incoporar_talento === "Sí, estamos buscando perfiles Junior con potencial, pero necesitamos un proceso de selección especializado"
-            ||incoporar_talento === "Sí, pero aun no hemos definido un proceso claro para la selección de Junio") {
+        if (incorporar_talento === "Sí, estamos buscando perfiles Junior con potencial, pero necesitamos un proceso de selección especializado"
+            ||incorporar_talento === "Sí, pero aun no hemos definido un proceso claro para la selección de Junior") {
                 navigate("/talento-empre2"); // Redirigir a la ruta "MVPE 2"
-        } else if (incoporar_talento === "No estamos buscando talento Junior en este momento" ||
-                incoporar_talento === "Estamos enfocados en contratar perfiles con más experiencia") {
+        } else if (incorporar_talento === "No estamos buscando talento Junior en este momento" ||
+                incorporar_talento === "Estamos enfocados en contratar perfiles con más experiencia") {
                     navigate("/fin-empre"); // Redirigir a la ruta "Pitch 2" para las otras opciones
         } else {
             alert("Por favor, selecciona una opción antes de continuar."); // Validar que se haya seleccionado una opción
@@ -134,10 +93,10 @@ export default function TalentoEmpre1() {
                     <div className="mt-4 space-y-2">
                         {[
                             "Sí, estamos buscando perfiles Junior con potencial, pero necesitamos un proceso de selección especializado",
-                            "Sí, pero aun no hemos definido un proceso claro para la selección de Junio",
+                            "Sí, pero aun no hemos definido un proceso claro para la selección de Junior",
                             "No estamos buscando talento Junior en este momento",
                             "Estamos enfocados en contratar perfiles con más experiencia"
-                        ].map((incoporar_talento, index) => (
+                        ].map((incorporar_talento, index) => (
                             <label
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
@@ -145,9 +104,9 @@ export default function TalentoEmpre1() {
                                 <input
                                     type="radio"
                                     name="incoporar_talento"
-                                    value={incoporar_talento}
+                                    value={incorporar_talento}
                                     checked={
-                                        talentoEmpre1.respuestas.talentos.incoporar_talento === incoporar_talento
+                                        talentoEmpre1.respuestas.talentos.incoporar_talento === incorporar_talento
                                 }
                                     onChange={handleChange} // Manejar el cambio de opción
                                     className="hidden peer"
@@ -157,7 +116,7 @@ export default function TalentoEmpre1() {
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{incoporar_talento}</span>
+                                <span className="text-black">{incorporar_talento}</span>
                             </label>
                         ))}
                     </div>

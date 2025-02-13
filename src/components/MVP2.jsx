@@ -9,33 +9,46 @@ export default function MVP2() {
     const handleBackClick = () => {
         navigate("/mvp1");
     };
-    const [formData, setFormData] = useState({
-        claro: "",
-        asesoramiento: "",
-        etapa: "",
-        reto: ""
+    const [mvp2, setMvp2] = useState({
+        respuestas:{
+            mvp: {
+                etapa: "",
+                validar_ideas: "",
+                asesoramiento: "",
+                mayor_dificultad: ""
+            },
+        },
     });
 
-    const handleInputChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value
-        }));
+        setMvp2((prevState) => ({
+            ...prevState,
+            respuestas: {
+                ...prevState.respuestas,
+                mvp: {
+                    ...prevState.respuestas.mvp,
+                    [name]: value
+                }
+            }
+        }))
     };
 
-    const handleSubmit = (e) => {
+    const handleNext = (e) => {
         e.preventDefault();
+        updateFormDarta(mvp2)
+        console.log("Datos guardados:", mvp2);
 
-        // Verificar si todas las respuestas están seleccionadas
-        const allAnswered = Object.values(formData).every((value) => value !== "");
-        if (!allAnswered) {
-            alert("Por favor responde todas las preguntas antes de continuar.");
-            return;
+        const etapa = mvp2.respuestas.mvp.etapa;
+        const validar_ideas = mvp2.respuestas.mvp.validar_ideas;
+        const asesoramiento = mvp2.respuestas.mvp.asesoramiento;
+        const mayor_dificultad = mvp2.respuestas.mvp.mayor_dificultad;
+
+        if (etapa && validar_ideas && asesoramiento && mayor_dificultad){
+            navigate("/talento1");
+        } else {
+            alert("Por favor, complete todos los campos antes de continuar.");
         }
-
-        // Si todo está respondido, redirigir al componente /talento1
-        navigate("/talento1");
     };
 
     return (
@@ -70,7 +83,7 @@ export default function MVP2() {
         </div>
             <form
                 className="w-full max-w-4xl px-4 mt-20"
-                onSubmit={handleSubmit}
+                onSubmit={handleNext}
             >
                 {/* Pregunta 1 */}
                 <div className="mb-6">
@@ -83,24 +96,24 @@ export default function MVP2() {
                             "Algo claro",
                             "Poco claro",
                             "No estoy seguro/a"
-                        ].map((claro, index) => (
+                        ].map((validar_ideas, index) => (
                             <label
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
                                     type="radio"
-                                    name="claro"
-                                    value={claro}
+                                    name="validar_ideas"
+                                    value={validar_ideas}
                                     className="hidden peer"
-                                    onChange={handleInputChange}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{claro}</span>
+                                <span className="text-black">{validar_ideas}</span>
                             </label>
                         ))}
                     </div>
@@ -126,7 +139,7 @@ export default function MVP2() {
                                     name="asesoramiento"
                                     value={asesoramiento}
                                     className="hidden peer"
-                                    onChange={handleInputChange}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
@@ -160,7 +173,7 @@ export default function MVP2() {
                                     name="etapa"
                                     value={etapa}
                                     className="hidden peer"
-                                    onChange={handleInputChange}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
@@ -184,24 +197,24 @@ export default function MVP2() {
                             "Falta de conocimientos técnicos",
                             "Dificultad para encontrar un equipo adecuado",
                             "Validación de la idea"
-                        ].map((reto, index) => (
+                        ].map((mayor_dificultad, index) => (
                             <label
                                 key={index}
                                 className="flex items-center gap-2 cursor-pointer"
                             >
                                 <input
                                     type="radio"
-                                    name="reto"
-                                    value={reto}
+                                    name="mayor_dificultad"
+                                    value={mayor_dificultad}
                                     className="hidden peer"
-                                    onChange={handleInputChange}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
                                         {String.fromCharCode(65 + index)}
                                     </span>
                                 </div>
-                                <span className="text-black">{reto}</span>
+                                <span className="text-black">{mayor_dificultad}</span>
                             </label>
                         ))}
                     </div>

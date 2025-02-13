@@ -8,15 +8,8 @@ export default function ComunicacionEmpre1() {
   const { updateFormData } = useFormulario();
   const navigate = useNavigate();
   const [comunicacionEm, setComunicacionEm] = useState({
-    name: "",
-    tiempo: "",
-    redes: "",
-    sector_actividad: "",
-    etapa: "",
-    categoria: "Emprendedor",
     respuestas: {
       comunicacion: {
-        capacidad_comunicar: "",
         importancia_comunicacion_ventas: "",
         seguro_comunicar: "",
         principal_desafio: "",
@@ -24,37 +17,7 @@ export default function ComunicacionEmpre1() {
         impacto_comunicacion_liderazgo: "",
         mayor_desafio: "",
       },
-      pitch: {
-        pitch: "",
-        frecuencia_presenta: "",
-        preparado_presentar: "",
-        mejorar_pitch: {
-          claridad: 4,
-          impacto_persuacion: 4,
-          presentacion_visual: 4,
-          seguridad_confianza: 4,
-        },
-        principales_desafios: "",
-      },
-      mvp: {
-        desarrollar_mvp: "",
-        etapa: "",
-        validado: "",
-        problema_mvp: "",
-        mayor_dificultad: "",
-      },
-      talentos: {
-        incoporar_talento: "",
-        cualidades: "",
-        candidatos_evaluados: "",
-        vertical: "",
-        rol: "",
-        desafios: "",
-      },
     },
-    email: "",
-    whatsapp: "",
-    // capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
   });
 
   const handleChange = (e) => {

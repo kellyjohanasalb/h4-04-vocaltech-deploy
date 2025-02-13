@@ -7,7 +7,6 @@ import HeaderEmprendedor from "./HeaderEmprendedor";
 export default function EmprendedorForm() {
     const { updateFormData } = useFormulario();
     const navigate = useNavigate();
-    
     const [datos, setDatos] = useState({
         name: "",
         tiempo: "",
@@ -15,51 +14,32 @@ export default function EmprendedorForm() {
         sector_actividad: "",
         etapa: "",
         categoria: "Emprendedor",
-        respuestas: {
+        respuestas:{
             comunicacion: {
                 capacidad_comunicar: "",
-                importancia_comunicacion_ventas: "",
-                seguro_comunicar: "",
-                principal_desafio: "",
-                mayor_barrera: "",
-                impacto_comunicacion_liderazgo: "",
-                mayor_desafio: ""
             },
-            pitch: {
-                pitch: "",
-                frecuencia_presenta: "",
-                preparado_presentar: "",
-                mejorar_pitch: {
-                    claridad: 4,
-                    impacto_persuacion: 4,
-                    presentacion_visual: 4,
-                    seguridad_confianza: 4
-                },
-                principales_desafios: ""
-            },
-            mvp: {
-                desarrollar_mvp: "",
-                etapa: "",
-                validado: "",
-                problema_mvp: "",
-                mayor_dificultad: ""
-            },
-            talentos: {
-                incoporar_talento: "",
-                cualidades: "",
-                candidatos_evaluados: "",
-                vertical: "",
-                rol: "",
-                desafios: ""
             }
-        },
-        email: "",
-        whatsapp: "",
-        capacidad_comunicar: "" // Para almacenar la respuesta de la pregunta 6
-    });
+        });
 
     const handleChange = (e) => {
-        setDatos({ ...datos, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        setDatos((prevState) => {
+            if (name === "capacidad_comunicar") {
+                return {
+                    ...prevState,
+                    respuestas: {
+                        ...prevState.respuestas,
+                        comunicacion: {
+                            ...prevState.respuestas.comunicacion,
+                            capacidad_comunicar: value,
+                        },
+                    },
+                };
+            } else {
+                return { ...prevState, [name]: value };
+            }
+        });
     };
 
     const handleNext = (e) => {
@@ -67,10 +47,11 @@ export default function EmprendedorForm() {
         updateFormData(datos); // Actualiza el JSON global
         console.log("Datos guardados:", datos);
 
-        // Redirige según la respuesta seleccionada en la pregunta 6
-        if (datos.capacidad_comunicar === "Excelente") {
+        const capacidad = datos.respuestas.comunicacion.capacidad_comunicar;
+
+        if (capacidad === "Excelente") {
             navigate("/pitch1");
-        } else if (datos.capacidad_comunicar === "Buena, pero puede mejorar" || datos.capacidad_comunicar === "Necesito mucha ayuda") {
+        } else if (capacidad === "Buena, pero puede mejorar" || capacidad === "Necesito mucha ayuda") {
             navigate("/comunicacion-empre1");
         } else {
             alert("Por favor, complete todas las opciones");
@@ -94,7 +75,7 @@ export default function EmprendedorForm() {
             </div>
 
             {/* Form */}
-            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={ handleNext }>
+            <form className="w-full max-w-4xl px-4 mt-8" onSubmit={handleNext}>
                 <div className="mb-6">
                     <label htmlFor="empresa" className="block text-lg font-semibold">
                         1. Nombre de tu emprendimiento
@@ -108,6 +89,7 @@ export default function EmprendedorForm() {
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
+
                 <div className="mb-6">
                     <label htmlFor="tiempo" className="block text-lg font-semibold">
                         2. ¿Hace cuánto te encuentras emprendiendo esta iniciativa?
@@ -121,6 +103,7 @@ export default function EmprendedorForm() {
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
+
                 <div className="mb-6">
                     <label htmlFor="redes" className="block text-lg font-semibold">
                         3. Redes Sociales / Sitio Web
@@ -148,41 +131,35 @@ export default function EmprendedorForm() {
                         className="w-full p-2 mt-2 border-b border-gray-300 focus:outline-none focus:border-b-[#2575FC]"
                     />
                 </div>
-                <div>
-                    <div className="mb-6">
-                        <label className="block text-lg font-semibold">
-                            5. ¿En qué etapa se encuentra tu emprendimiento?
-                        </label>
-                        <div className="mt-4 space-y-2">
-                            {[
-                                "Idea Inicial",
-                                "Validando Mercado",
-                                "Generando Ingresos",
-                                "Buscando Escalabilidad",
-                            ].map((etapa, index) => (
-                                <label
-                                    key={index}
-                                    className="flex items-center gap-2 cursor-pointer"
-                                >
-                                    {/* El input y su contenido están en el mismo label */}
-                                    <input
-                                        type="radio"
-                                        name="etapa"
-                                        value={etapa}
-                                        onChange={handleChange}
-                                        className="hidden peer"
-                                    />
-                                    <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
-                                        <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
-                                            {String.fromCharCode(65 + index)}
-                                        </span>
-                                    </div>
-                                    <span className="text-black">{etapa}</span>
-                                </label>
-                            ))}
-                        </div>
+                <div className="mb-6">
+                    <h2 className="text-lg font-semibold">
+                        5. ¿En que etapa se encuentra tu emprendimiento?
+                    </h2>
+                    <div className="mt-4 space-y-2">
+                        {[
+                            "Idea Incial",
+                            "Validando Mercado",
+                            "Generando Ingresos",
+                            "Buscando Escalabilidad"
+                        ].map((etapa, index) => (
+                            <label key={index} className="flex items-center gap-2 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    name="etapa"
+                                    value={etapa}
+                                    onChange={handleChange}
+                                    className="hidden peer"
+                                />
+                                <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
+                                    <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
+                                        {String.fromCharCode(65 + index)}
+                                    </span>
+                                </div>
+                                <span className="text-black">{etapa}</span>
+                            </label>
+                        ))}
                     </div>
-                    </div>
+                </div>
 
                 {/* Pregunta 6 */}
                 <div className="mb-6">
@@ -191,10 +168,7 @@ export default function EmprendedorForm() {
                     </h2>
                     <div className="mt-4 space-y-2">
                         {["Excelente", "Buena, pero puede mejorar", "Necesito mucha ayuda"].map((opcion, index) => (
-                            <label
-                                key={index}
-                                className="flex items-center gap-2 cursor-pointer"
-                            >
+                            <label key={index} className="flex items-center gap-2 cursor-pointer">
                                 <input
                                     type="radio"
                                     name="capacidad_comunicar"

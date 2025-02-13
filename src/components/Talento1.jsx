@@ -5,26 +5,49 @@ import ProgresBar from "./ProgresBar";
 import logo from "../assets/icons/VocalTech.png";
 
 export default function Talento1() {
-    const [selectedTalento1, setSelectedTalento1] = useState(""); 
     const navigate = useNavigate(); 
-    const handleBackClick = () => {
-        navigate("/mvp1");
-    };
+    const [talento1, setTalento1] = useState({
+        respuestas:{
+            talentos: {
+                incoporar_talento: "",
+            }
+        },
+        });
 
-    const handleOptionTalento1 = (event) => {
-        setSelectedTalento1(event.target.value);
-    };
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            setTalento1((prevState) => ({
+                ...prevState,
+                respuestas: {
+                    ...prevState.respuestas,
+                    talentos: {
+                        ...prevState.respuestas.talentos,
+                        [name]: value,
+                    },
+                },
+            }));
+        };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (selectedTalento1 === "Si") {
-            navigate("/talento2");
-        } else if (selectedTalento1 === "No" || selectedTalento1 === "No estoy seguro/a") {
+        const handleNext = (e) => {
+            e.preventDefault();
+            updateFormData(talento1);
+            console.log("Datos guardados:", talento1);
+
+            const incoporar_talento = talento1.respuestas.talentos.incoporar_talento;
+
+            if (incoporar_talento === "Sí") {
+                navigate("/talento2");
+        }else if (incoporar_talento === "No" || incoporar_talento === "No estoy seguro/a"){
             navigate("/fin");
         } else {
             alert("Por favor selecciona una opción antes de continuar.");
         }
     };
+
+    const handleBackClick = () => {
+        navigate("/mvp1");
+    };
+        
 
     return (
         <div className="flex flex-col items-center min-h-screen py-8 bg-white">
@@ -56,7 +79,7 @@ export default function Talento1() {
                 <ProgresBar />
             </div>
         </div>
-            <form className="w-full max-w-4xl px-4 mt-20" onSubmit={handleSubmit}>
+            <form className="w-full max-w-4xl px-4 mt-20" onSubmit={handleNext}>
                 <div>
                     <label className="block text-lg font-semibold">
                         1.-¿Tu empresa está buscando nuevo talento?
@@ -65,12 +88,11 @@ export default function Talento1() {
                         {["Si", "No", "No estoy seguro/a"].map((talento1, index) => (
                             <label key={index} className="flex items-center gap-2 cursor-pointer">
                                 <input
-                                    id={`talento1-${index}`} 
                                     type="radio"
-                                    name="talento1"
+                                    name="incoporar_talento"
                                     value={talento1}
                                     className="hidden peer"
-                                    onChange={handleOptionTalento1}
+                                    onChange={handleChange}
                                 />
                                 <div className="flex items-center justify-center w-20 h-8 border-2 border-gray-300 rounded-lg peer-checked:bg-[#2575FC] peer-checked:border-[#2575FC]">
                                     <span className="text-sm font-normal text-[#9A9A9A] peer-checked:text-white">
@@ -95,3 +117,4 @@ export default function Talento1() {
         </div>
     );
 }
+
