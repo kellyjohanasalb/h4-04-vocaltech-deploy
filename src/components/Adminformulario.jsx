@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { PaperClipIcon, PaperAirplaneIcon } from "@heroicons/react/24/solid"; // Si usas Heroicons
 import {  Eye, ClipboardList } from "lucide-react";
+import { useSendEmail } from "../hooks/useSendEmail";
+import PropTypes from "prop-types"; // Importar PropTypes
 
 
-export default function Formulario() {
+export default function Formulario({ lead }) {
+  const { sendEmail, loading } = useSendEmail();
+  
   const [notasInternas, setNotasInternas] = useState("El lead necesita ayuda comunicacional de formar inmediata.Tambien podemos ofrecerte una solucion integral brincandole apoyo tecnologico para que contruya un MVP")
-  const [message, setMessage] = useState("Hola Leandro. Vimos tus datos y queremos ayudarte. ¿Te gustaría agendar una reunión?"); // Definir estado para el mensaje
+  const [message, setMessage] = useState(
+    "Hola " + (lead?.name || "Usuario") + ". Vimos tus datos y queremos ayudarte. ¿Te gustaría agendar una reunión?"
+  );
    const [formData, setFormData] = useState({
     comunicacion: [
       { id: "comunicarIdea", pregunta: "1. ¿Cómo describirías tu capacidad para comunicar tu idea?", respuesta: "necesito mucha ayuda" },
@@ -55,6 +61,37 @@ export default function Formulario() {
       ),
     }));
   };
+
+   // Asegurar que `lead` tiene valores antes de enviar
+   const handleSendEmail = () => {
+    console.log("📌 Verificando lead antes de enviar email:", lead);
+  
+    if (!lead) {
+      console.error("❌ Error: `lead` es undefined o null.");
+      alert("Error: No se encontró el lead.");
+      return;
+    }
+  
+    if (!lead.email) {
+      console.error("❌ Error: `lead.email` está vacío o undefined.");
+      alert("Error: El correo del lead es inválido.");
+      return;
+    }
+  
+    if (!lead._id) {
+      console.error("❌ Error: `lead._id` está vacío o undefined.");
+      alert("Error: El ID del lead es inválido.");
+      return;
+    }
+  
+    sendEmail({
+      leadId: lead._id, // Asegurar que `lead._id` existe
+      email: lead.email,
+      message,
+    });
+  };
+  
+
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white shadow-lg rounded-lg">
@@ -195,11 +232,26 @@ export default function Formulario() {
         </button>
         
         <div className="flex space-x-4">
-          <button className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 space-x-4">
-            <PaperAirplaneIcon className="w-4 h-4 mr-2" /> Enviar Diagnóstico al Email
+        <button
+            onClick={handleSendEmail}
+            disabled={loading}
+            className={`flex items-center px-4 py-2 rounded-lg shadow-md space-x-4 ${
+              loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600 text-white"
+            }`}
+          >
+            <PaperAirplaneIcon className="w-4 h-4 mr-2" /> {loading ? "Enviando..." : "Enviar Diagnóstico al Email"}
           </button>
         </div>
       </div>
     </div>
   );
 }
+
+// ✅ Validación de Props
+Formulario.propTypes = {
+  lead: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string, 
+  }).isRequired,
+};

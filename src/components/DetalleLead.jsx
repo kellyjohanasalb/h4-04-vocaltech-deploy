@@ -1,8 +1,6 @@
 
 
 
-
-
 const DetalleLead = ({ leadId,setView }) => {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-50">

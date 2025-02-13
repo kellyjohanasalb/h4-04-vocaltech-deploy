@@ -12,7 +12,7 @@ export function useSendEmail() {
 
     try {
       const response = await fetch(
-        "https://vocaltech-api-gateway-production.up.railway.app/api/notifications/sendNotification",
+        "https://vocaltech-api-gateway-production.up.railway.app/api/leads/findAll",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

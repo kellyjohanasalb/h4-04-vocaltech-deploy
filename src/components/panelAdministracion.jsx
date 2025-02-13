@@ -43,8 +43,8 @@ const Sidebar = ({ setView }) => (
        */}
     </nav>
 
-    <button 
-      onClick={() => setView("userprofile")} 
+    <button
+      onClick={() => setView("userprofile")}
       className="flex items-center space-x-2 p-2 w-full rounded-full hover:bg-purple-700 hover:text-white"
     >
       <span>⚙️</span>
@@ -143,6 +143,13 @@ const UsersTable = ({ setView, setSelectedLead }) => {
     setView("detalle");
   };
 
+  const handleSelectLead = (lead) => {
+    console.log("📌 Lead seleccionado en UsersTable:", lead);
+    setSelectedLead(lead);
+    setView("adminformulario");
+  };
+
+
   if (loading) return <div>Cargando...</div>;
 
   return (
@@ -162,12 +169,12 @@ const UsersTable = ({ setView, setSelectedLead }) => {
         <tbody>
           {data.map((lead, index) => (
             <tr key={index} className="border-t relative">
-              <td className="p-2">{lead.id}</td>
+              <td className="p-2">{lead._id}</td>
               <td className="p-2">{lead.name}</td>
               <td className="p-2">{lead.email}</td>
               <td className="p-2">{lead.whatsapp}</td>
               <td className="p-2">{lead.categoria}</td>
-              <td className="p-2">{}
+              <td className="p-2">{ }
                 <span className="bg-green-100 text-green-600 p-1 rounded-md">
                   {lead.etapa}
                 </span>
@@ -188,7 +195,9 @@ const UsersTable = ({ setView, setSelectedLead }) => {
                     >
                       <FaInfoCircle className="mr-2" /> Ver Detalles
                     </button>
-                    <button className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 w-full">
+                    <button
+                      onClick={() => handleSelectLead(lead)}
+                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 w-full">
                       <FaClipboardCheck className="mr-2" /> Diagnosticar
                     </button>
                     <button className="flex items-center px-4 py-2 text-red-600 hover:bg-red-100 w-full">
@@ -273,7 +282,7 @@ const Dashboard = () => {
       <main className="flex-1 flex flex-col">
         <Header />
 
-        {/* Stats siempre visible */}
+        {/* Control de Vistas */}
         {view === "stats" && (
           <>
             <Stats />
@@ -281,25 +290,24 @@ const Dashboard = () => {
           </>
         )}
 
-        {/* Renderiza "Gestión de Leads" solo en la vista "leads" */}
         {view === "leads" && <GestionLeads />}
 
-        {/* Tabla de usuarios en Leads */}
-        {view === "leads" ? (
-          <UsersTable setView={setView} setSelectedLead={setSelectedLead} />
-        ) : view === "detalle" && selectedLead ? (
+        {view === "detalle" && selectedLead && (
           <DetalleLead lead={selectedLead} setView={setView} />
-        ) : view === "adminformulario" ? (
-          <Adminformulario />
-        ) : view === "diagnosticos" ? ( // ✅ Agregado Diagnósticos
-          <Diagnosticos />
-        ) : view === "userprofile" ? ( // ✅ Nueva condición para UserProfile
+        )}
+
+        {view === "adminformulario" && selectedLead && (
+          <Adminformulario lead={selectedLead} />
+        )}
+
+        {view === "diagnosticos" && <Diagnosticos />}
+
+        {view === "userprofile" && (
           <div>
             <h1 className="text-2xl font-bold mb-3 mt-10 ml-4">Configuración</h1>
-            <Adminconfig setView={setView} />  
+            <Adminconfig setView={setView} />
           </div>
-          
-        ) : null}
+        )}
       </main>
     </div>
   );
